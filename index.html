@@ -200,12 +200,85 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft Ya
 
 /* Mobile responsive */
 @media (max-width:640px) {
-  .review-layout { flex-direction:column; }
+  .container { padding:8px; }
+
+  /* Tab bar - compact */
+  .tab-bar { border-radius:8px; margin-bottom:10px; }
+  .tab-bar .tab-item { font-size:13px; padding:10px 4px; }
+
+  /* Review header bar */
+  .review-topbar { flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+  .review-topbar .btn { font-size:13px; padding:7px 12px; }
+  .review-topbar span { font-size:12px; }
+
+  /* Review layout - sidebar on top */
+  .review-layout { flex-direction:column; gap:8px; }
   .review-sidebar { width:100%; }
-  .review-sidebar .kp-nav { display:flex; flex-wrap:nowrap; overflow-x:auto; max-height:none; position:static; gap:2px; padding:6px; }
-  .review-sidebar .kp-nav-item { flex-shrink:0; white-space:nowrap; border-left:none; border-bottom:2px solid transparent; padding:8px 12px; font-size:12px; }
-  .review-sidebar .kp-nav-item.active { border-left:none; border-bottom-color:#1a73e8; }
-  .tab-bar .tab-item { font-size:13px; padding:12px 6px; }
+
+  /* KP nav label - visible on mobile */
+  .kp-nav-label { display:flex!important; align-items:center; gap:4px; font-size:12px; color:#1a73e8; font-weight:600; margin-bottom:4px; padding:0 2px; }
+
+  /* Horizontal scroll nav */
+  .review-sidebar .kp-nav {
+    display:flex; flex-wrap:nowrap; overflow-x:auto;
+    max-height:none; position:static; gap:6px; padding:8px 6px;
+    background:#fff; border-radius:10px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+    /* Gradient fade hint on right */
+    mask-image:linear-gradient(to right, #000 85%, transparent 98%);
+    -webkit-mask-image:linear-gradient(to right, #000 85%, transparent 98%);
+  }
+  .review-sidebar .kp-nav-item {
+    flex-shrink:0; white-space:nowrap; border-left:none;
+    border-bottom:none; border-radius:16px;
+    padding:8px 14px; font-size:13px; font-weight:500;
+    background:#f5f6f8; color:#555;
+    transition:all .15s;
+  }
+  .review-sidebar .kp-nav-item.active {
+    border-left:none; background:#1a73e8; color:#fff;
+    font-weight:600; box-shadow:0 2px 8px rgba(26,115,232,0.3);
+  }
+  .review-sidebar .kp-nav-item .kp-count {
+    font-size:11px; opacity:0.7; margin-left:2px;
+  }
+
+  /* KP dropdown - shown below nav on mobile */
+  .kp-dropdown-wrap { display:block!important; padding:0 2px; margin-bottom:4px; }
+  .kp-dropdown-wrap select {
+    width:100%; padding:10px 12px; border-radius:8px;
+    border:1.5px solid #d0d5dd; background:#fff;
+    font-size:14px; color:#333; appearance:none;
+    background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E\");
+    background-repeat:no-repeat;
+    background-position:right 12px center;
+    padding-right:36px;
+  }
+
+  /* Review main area */
+  .review-main { min-width:0; }
+  .review-kp-section { margin-bottom:12px; }
+  .review-kp-header { padding:10px 14px; border-radius:8px 8px 0 0; }
+  .review-kp-header h3 { font-size:14px; }
+  .review-kp-explanation { padding:10px 14px; font-size:13px; line-height:1.7; }
+
+  /* Review question cards */
+  .review-qcard { padding:10px 14px; }
+  .review-qcard .rq-meta { font-size:10px; }
+  .review-qcard .rq-text { font-size:14px; line-height:1.6; }
+  .review-qcard .rq-answer { font-size:13px; padding:2px 8px; }
+  .review-qcard .rq-options { font-size:12px; }
+  .review-qcard .rq-explanation { font-size:12px; padding:6px 10px; }
+
+  /* Study guide */
+  .guide-section { padding:14px; }
+  .guide-section h3 { font-size:15px; }
+  .guide-section p, .guide-section li { font-size:13px; line-height:1.7; }
+
+  /* Quiz question card */
+  .q-text { font-size:16px; }
+  .q-option { padding:10px 14px; font-size:14px; }
 }
 
 </style>
@@ -965,8 +1038,14 @@ function renderReview() {
     </div>`;
   }
 
+  // Build dropdown HTML for quick jump (useful on mobile)
+  const dropdownHtml = sortedKP.map(([name, qs], i) => {
+    const sel = (reviewActiveKP === name || (reviewActiveKP === null && i === 0)) ? ' selected' : '';
+    return `<option value="${escapeHtml(name)}"${sel}>${name} (${qs.length}题)</option>`;
+  }).join('');
+
   return `
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+    <div class="review-topbar" style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
       <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
       <span style="font-size:14px;color:#666">📖 复习资料 · 按知识点分组</span>
     </div>
@@ -977,6 +1056,10 @@ function renderReview() {
     </div>
     <div class="review-layout">
       <div class="review-sidebar">
+        <div class="kp-nav-label" style="display:none">📂 知识点导航（左右滑动）</div>
+        <div class="kp-dropdown-wrap" style="display:none">
+          <select id="kpSelect" onchange="jumpToKP(this.value)">${dropdownHtml}</select>
+        </div>
         <div class="kp-nav">${sidebarHtml}</div>
       </div>
       <div class="review-main" id="reviewMain">
@@ -1207,7 +1290,13 @@ function bindEvents() {
           // Update active state
           document.querySelectorAll('.kp-nav-item').forEach(item => item.classList.remove('active'));
           const clicked = document.querySelector(`.kp-nav-item[data-kp="${kpName.replace(/"/g, '&quot;')}"]`);
-          if (clicked) clicked.classList.add('active');
+          if (clicked) {
+            clicked.classList.add('active');
+            // Scroll active item into view on mobile
+            if (window.innerWidth <= 640) {
+              clicked.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          }
           // Bind kp header toggle
           bindReviewHeader();
         } else {
@@ -1219,6 +1308,16 @@ function bindEvents() {
 
   // KP explanation toggle in review
   bindReviewHeader();
+
+  // Auto-scroll active KP nav item into view on mobile
+  if (screen === 'review' && window.innerWidth <= 640) {
+    setTimeout(() => {
+      const activeItem = document.querySelector('.kp-nav-item.active');
+      if (activeItem) {
+        activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }, 100);
+  }
 
   // Home screen
   document.querySelectorAll('[data-action]').forEach(el => {
@@ -1921,6 +2020,19 @@ function getKPHint(q) {
       <strong>📌 ${kpInfo.name}</strong> — 点击查看知识点解析
       <div class="kp-detail">${kpInfo.explanation}</div>
     </div>`;
+}
+
+function jumpToKP(kpName) {
+  reviewActiveKP = kpName;
+  // Re-render the review page
+  const app = document.getElementById('app');
+  app.innerHTML = renderReview();
+  // Scroll to review main area on mobile
+  const reviewMain = document.getElementById('reviewMain');
+  if (reviewMain && window.innerWidth <= 640) {
+    reviewMain.scrollIntoView({ behavior: 'smooth' });
+  }
+  bindEvents();
 }
 
 function bindReviewHeader() {
