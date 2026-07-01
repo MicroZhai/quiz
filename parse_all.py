@@ -47,8 +47,15 @@ def detect_section(line):
     return None
 
 def extract_choice_answer(text):
-    """从题干中提取选择题答案 (A-D)"""
+    """从题干中提取选择题答案 (A-D)，支持各种括号变体"""
+    # 半角括号: (A) ( B )
     m = re.search(r'\(\s*([A-D])\s*\)', text)
+    if m: return m.group(1)
+    # 全角括号: （A） （ B ）
+    m = re.search(r'（\s*([A-D])\s*）', text)
+    if m: return m.group(1)
+    # 混合括号: (A） （A) ( B） （B )
+    m = re.search(r'[（\(]\s*([A-D])\s*[）\)]', text)
     return m.group(1) if m else None
 
 def extract_truefalse_answer(line):
@@ -89,8 +96,10 @@ def parse_choice_questions(lines, start_idx, end_idx):
         # 提取答案
         answer = extract_choice_answer(qtext)
 
-        # 去除答案标记，清理题干
-        question = re.sub(r'\(\s*[A-D]\s*\)', '（）', qtext)
+        # 去除答案标记，清理题干（支持各种括号组合）
+        question = re.sub(r'[（\(]\s*[A-D]\s*[）\)]', '（ ）', qtext)
+        # 修复连续括号
+        question = re.sub(r'（\s*）', '（ ）', question)
         question = question.strip()
 
         # 提取选项（从题干后的部分）
@@ -117,11 +126,23 @@ def parse_choice_questions(lines, start_idx, end_idx):
                 if len(parts) >= 2:
                     # 第一部分是题干
                     question = parts[0].strip()
-                    question = re.sub(r'\(\s*[A-D]\s*\)', '（）', question)
+                    question = re.sub(r'[（\(]\s*[A-D]\s*[）\)]', '（ ）', question)
+                    question = re.sub(r'（\s*）', '（ ）', question)
                     for p in parts[1:]:
                         pm = re.match(r'([A-D])[、\.]\s*(.+)', p.strip())
                         if pm:
                             options.append((pm.group(1), pm.group(2).strip()))
+            # 第二种fallback: 选项用 . 分隔 如 A.text B.text
+            if not options:
+                opts2 = re.findall(r'([A-D])\.\s*(.+?)(?=\s*[A-D]\.|$)', qtext)
+                if len(opts2) >= 2:
+                    question = re.sub(r'[（\(]\s*[A-D]\s*[）\)]', '（ ）', qtext)
+                    question = re.sub(r'（\s*）', '（ ）', question)
+                    # 题干取到第一个选项前
+                    first_opt = re.search(r'[A-D]\.', question)
+                    if first_opt:
+                        options = [(l, t.strip()) for l, t in opts2]
+                        question = question[:first_opt.start()].strip()
 
         opt_texts = [t for _, t in options]
         opt_labels = [l for l, _ in options]
