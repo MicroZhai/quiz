@@ -1,0 +1,10 @@
+# Claude internal files
+.claude/
+
+# Original Word documents (binary, large)
+*.doc
+*.docx
+
+# Python cache
+__pycache__/
+*.pyc
