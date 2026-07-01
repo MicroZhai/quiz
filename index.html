@@ -1016,8 +1016,7 @@ function renderReviewQuestion(q) {
   // Explanation (for shortanswer/calculation)
   let explanationHtml = '';
   if (q.explanation) {
-    explanationHtml = `<div class="rq-explanation"><strong>📝 解析/答案：</strong><br>${q.explanation.replace(/
-/g, '<br>')}</div>`;
+    explanationHtml = `<div class="rq-explanation"><strong>📝 解析/答案：</strong><br>${q.explanation.replace(/\n/g, '<br>')}</div>`;
   }
 
   const typeBadge = getTypeName(q.type);
