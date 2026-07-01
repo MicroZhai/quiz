@@ -1256,7 +1256,7 @@
       "B",
       "C"
     ],
-    "answer": "",
+    "answer": "C",
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
@@ -1726,7 +1726,7 @@
       "B",
       "C"
     ],
-    "answer": "",
+    "answer": "B",
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
@@ -3481,7 +3481,7 @@
   {
     "type": "fill",
     "question": "材料在外力作用下引起形状和尺寸的改变，称为。它包括 和______。塑性变形是用",
-    "answer": "",
+    "answer": "变形，弹性变形，塑性变形",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -3503,7 +3503,7 @@
   {
     "type": "fill",
     "question": "金属材料的力学性能包括： 有 等金属材料在加工和使用过程中受不同形式的外力作用时所表现出 等来的性能。当外力达到或超过某一限度时，材料就会发生变形，断裂) 等。（强度，刚度，韧性，硬度，耐磨性： 甚至 ______",
-    "answer": "",
+    "answer": "强度，刚度，塑性，硬度，耐磨性",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -3514,7 +3514,7 @@
   {
     "type": "fill",
     "question": "布氏硬度一般不用计算，而是用专门的刻度放大镜量出压痕直径(4根据压痕直径的大小，再从专门的硬度表中查处相应的不是硬度值。d越小，布氏硬度值 布氏硬度值 ，也就是硬度 相反，d越大， 度。 硬 ______",
-    "answer": "",
+    "answer": "越大，越高，越小，越低",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -3525,7 +3525,7 @@
   {
     "type": "fill",
     "question": "布氏硬度是测量表面压痕直径的一种方法，通常用符号 表示。(HBS.HBW) 或 ______",
-    "answer": "",
+    "answer": "HBS，HBW",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -3547,7 +3547,7 @@
   {
     "type": "fill",
     "question": "金属材料的物理性能是指在 等物理 因素作用下，材料所表现的性能或固有属性。 ） ______",
-    "answer": "",
+    "answer": "物理性能，化学性能，工艺性能",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -3778,7 +3778,7 @@
   {
     "type": "fill",
     "question": "淬硬性是指钢在理想条件下淬火成。低碳钢淬火的最高硬度值低，淬硬性 铁等 43 钢的淬硬性主要取决于______ ；高碳钢淬火的最高硬度值高，淬硬性 生了 N",
-    "answer": "",
+    "answer": "低，碳含量，高",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -3800,7 +3800,7 @@
   {
     "type": "fill",
     "question": "45号钢淬火后的组织为： 和 4残余奥氏体) ______",
-    "answer": "",
+    "answer": "马氏体",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -3811,7 +3811,7 @@
   {
     "type": "fill",
     "question": "将______采用适当的方式进行 以获得所需要的组织结构与性能的一种工艺称为热处理。 和 4 切",
-    "answer": "",
+    "answer": "热处理",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -3822,7 +3822,7 @@
   {
     "type": "fill",
     "question": "钢的淬透性与钢的 冷却速度有密切的关系， 速度越低，钢的淬透性越好。 冷却 ______",
-    "answer": "",
+    "answer": "临界冷却，临界冷却",
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
@@ -4142,7 +4142,7 @@
     "type": "calculation",
     "question": "有一批45钢，有效厚度为50mm，长为500mm，在箱式炉中加热保温，工件的装炉方式为堆放，求该工件在炉中淬火保温时间。(保温系数取",
     "answer": "",
-    "explanation": "",
+    "explanation": "解：依据经验公式 t=α·k·D\n已知：α=1.2 k=1.7 D=50mm 代入得\nt=1.2×1.7×50=102(min)\n答：该工件在炉中的淬火保温时间为102min。",
     "section": "五、计算题",
     "topic": "热处理基础知识",
     "id": 270,
@@ -5061,7 +5061,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "D",
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
@@ -5741,7 +5741,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "C",
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
@@ -5994,7 +5994,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "A",
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
@@ -6650,7 +6650,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "ABC",
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
@@ -6671,7 +6671,7 @@
       "B",
       "C"
     ],
-    "answer": "",
+    "answer": "ABC",
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
@@ -6763,7 +6763,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "ABD",
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
@@ -8009,7 +8009,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "ABCD",
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
@@ -8032,7 +8032,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "ABCD",
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
@@ -8055,7 +8055,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "AB",
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
@@ -8078,7 +8078,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "ACD",
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
@@ -8101,7 +8101,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "ABCD",
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
@@ -8799,7 +8799,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "B",
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
@@ -8822,7 +8822,7 @@
       "C",
       "D"
     ],
-    "answer": "",
+    "answer": "B",
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
@@ -10254,7 +10254,7 @@
   {
     "type": "fill",
     "question": "在Fe- Fe3C相图中，共析温度为______℃，共析点S的含碳量为______%，奥氏体 的最大含碳量为______%，渗碳体的含碳量为______%。（727 0.77 2.11",
-    "answer": "",
+    "answer": "727，0.77，2.11，6.69",
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
@@ -10265,7 +10265,7 @@
   {
     "type": "fill",
     "question": "69） ______",
-    "answer": "",
+    "answer": "2.11",
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
@@ -10320,7 +10320,7 @@
   {
     "type": "fill",
     "question": "铸铁是含碳量大于______%铁碳合金。并且还含有硅、锰、硫、磷等元素。（",
-    "answer": "",
+    "answer": "2.11",
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
@@ -10431,7 +10431,7 @@
     "type": "calculation",
     "question": "558+0.471+0.465=1.494＞1 答：A、B、C三项产品不能共装一炉同时进行生产。",
     "answer": "",
-    "explanation": "",
+    "explanation": "解：据题中数据 0.558+0.471+0.465=1.494＞1\n答：A、B、C三项产品不能共装一炉同时进行生产。",
     "section": "四、计算题",
     "topic": "综合复习",
     "id": 665,
@@ -10497,7 +10497,7 @@
     "type": "calculation",
     "question": "283+0.311+0.285=0.879＜1 答：A、B、C三项产品能共装一炉同时进行生产。",
     "answer": "",
-    "explanation": "",
+    "explanation": "解：据题中数据 0.283+0.311+0.285=0.879＜1\n答：A、B、C三项产品能共装一炉同时进行生产。",
     "section": "四、计算题",
     "topic": "综合复习",
     "id": 671,
