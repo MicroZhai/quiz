@@ -282,6 +282,29 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft Ya
 }
 
 
+/* ===== Reader Mode ===== */
+.reader-sec-title { font-size:22px; font-weight:700; color:#1a73e8; padding:20px 0 10px; margin-top:8px; border-bottom:3px solid #1a73e8; }
+.reader-type-title { font-size:17px; font-weight:600; color:#555; margin:16px 0 8px; padding-left:12px; border-left:4px solid #1a73e8; }
+.reader-qcard { background:#fff; padding:14px 18px; border-bottom:1px solid #f0f0f0; transition:background .15s; }
+.reader-qcard:hover { background:#fafbff; }
+.reader-qcard .rq-meta { font-size:11px; color:#999; margin-bottom:4px; }
+.reader-qcard .rq-text { font-size:15px; line-height:1.7; }
+.reader-qcard .rq-answer { display:inline-block; background:#e6f4ea; color:#0d904f; padding:2px 10px; border-radius:4px; font-weight:700; font-size:14px; margin-left:6px; }
+.reader-qcard .rq-answer.wrong-ans { background:#fce8e6; color:#d93025; }
+.reader-qcard .rq-options { font-size:13px; color:#666; margin-top:4px; padding-left:8px; border-left:2px solid #e0e0e0; }
+.reader-qcard .rq-explanation { font-size:13px; color:#666; margin-top:6px; padding:8px 12px; background:#f8f9fa; border-radius:6px; line-height:1.6; }
+.reader-opt { display:inline; }
+.reader-opt-correct { color:#0d904f; font-weight:700; }
+.reader-back-top { position:fixed; bottom:24px; right:24px; z-index:100; width:44px; height:44px; border-radius:50%; background:#1a73e8; color:#fff; border:none; cursor:pointer; font-size:20px; box-shadow:0 4px 12px rgba(0,0,0,0.2); transition:all .2s; display:none; }
+.reader-back-top:hover { background:#1557b0; transform:translateY(-2px); }
+@media (max-width:640px) {
+  .reader-sec-title { font-size:18px; padding:14px 0 8px; }
+  .reader-type-title { font-size:15px; }
+  .reader-qcard { padding:10px 14px; }
+  .reader-qcard .rq-text { font-size:14px; }
+  .reader-back-top { bottom:16px; right:16px; width:40px; height:40px; font-size:18px; }
+}
+
 /* Smart Review */
 .smart-review-header { background:linear-gradient(135deg,#7c3aed,#5b21b6); }
 .stats-dashboard { display:grid; grid-template-columns:repeat(auto-fit, minmax(100px,1fr)); gap:8px; }
@@ -319,7 +342,7 @@ let currentFilter = { topic: 'all', type: 'all' };
 let currentQuestions = [];
 let currentIndex = 0;
 let answered = false;
-let screen = 'home'; // home | quiz | mistakes | exam | review | studyguide | smartreview
+let screen = 'home'; // home | quiz | mistakes | exam | review | studyguide | smartreview | reader
 let examQuestions = [];
 let examAnswers = {};
 let examSubmitted = false;
@@ -441,6 +464,7 @@ function render() {
   else if (screen === 'review') app.innerHTML = renderReview();
   else if (screen === 'studyguide') app.innerHTML = renderStudyGuide();
   else if (screen === 'smartreview') app.innerHTML = renderSmartReview();
+  else if (screen === 'reader') app.innerHTML = renderReader();
   bindEvents();
 }
 
@@ -467,6 +491,7 @@ function renderHome() {
     <div class="tab-bar">
       <div class="tab-item active" data-tab="home">🧪 刷题</div>
       <div class="tab-item" data-tab="review">📖 复习资料</div>
+      <div class="tab-item" data-tab="reader">📜 阅读模式</div>
       <div class="tab-item" data-tab="studyguide">📋 学习建议</div>
     </div>
 
@@ -808,6 +833,7 @@ function renderReview() {
     <div class="tab-bar">
       <div class="tab-item" data-tab="home">🧪 刷题</div>
       <div class="tab-item active" data-tab="review">📖 复习资料</div>
+      <div class="tab-item" data-tab="reader">📜 阅读模式</div>
       <div class="tab-item" data-tab="studyguide">📋 学习建议</div>
     </div>
     <div class="review-layout">
@@ -929,6 +955,173 @@ function renderSmartReview() {
   `;
 }
 
+// ========== READER MODE ==========
+// Linear reading mode: browse all questions in chapter order, like a book
+let readerActiveSection = null;
+
+const READER_SECTIONS = ['热处理基础知识', '热处理设备与工艺', '质量管理', '仪表知识', '综合复习'];
+const READER_TITLES = {
+  '热处理基础知识': '一、热处理基础知识',
+  '热处理设备与工艺': '二、热处理设备与工艺',
+  '质量管理': '三、质量管理',
+  '仪表知识': '四、仪表知识',
+  '综合复习': '五、综合复习',
+};
+const READER_TYPE_ORDER = ['choice', 'truefalse', 'fill', 'shortanswer', 'calculation'];
+const READER_TYPE_NAMES = {
+  'choice': '选择题', 'truefalse': '判断题', 'fill': '填空题',
+  'shortanswer': '简答题', 'calculation': '计算题',
+};
+
+function renderReader() {
+  // Group questions by topic → type
+  const groups = {};
+  for (const sec of READER_SECTIONS) {
+    groups[sec] = {};
+    for (const t of READER_TYPE_ORDER) groups[sec][t] = [];
+  }
+  QUESTIONS.forEach(q => {
+    const topic = q.topic || '';
+    if (groups[topic] && groups[topic][q.type]) {
+      groups[topic][q.type].push(q);
+    }
+  });
+
+  // Build sidebar navigation
+  const sidebarHtml = READER_SECTIONS.map(sec => {
+    const total = Object.values(groups[sec]).reduce((s, qs) => s + qs.length, 0);
+    const activeCls = (readerActiveSection === sec || (!readerActiveSection && sec === READER_SECTIONS[0])) ? ' active' : '';
+    return `<button class="kp-nav-item${activeCls}" data-reader-sec="${sec}">
+      ${READER_TITLES[sec]} <span class="kp-count">${total}</span>
+    </button>`;
+  }).join('');
+
+  // Build main content - show all sections on one scrollable page
+  const activeSection = readerActiveSection || READER_SECTIONS[0];
+  let mainHtml = '';
+  let globalNum = 0;
+  for (const sec of READER_SECTIONS) {
+    const isActive = sec === activeSection;
+    mainHtml += `<div class="reader-section" id="reader-${sec}" style="${isActive ? '' : 'display:none'}">
+      <div class="reader-sec-title">${READER_TITLES[sec]}</div>`;
+
+    for (const t of READER_TYPE_ORDER) {
+      const qs = groups[sec][t];
+      if (qs.length === 0) continue;
+      mainHtml += `<div class="reader-type-title">${READER_TYPE_NAMES[t]}（${qs.length}题）</div>`;
+      for (const q of qs) {
+        globalNum++;
+        mainHtml += renderReaderQCard(q, globalNum);
+      }
+    }
+    mainHtml += '</div>';
+  }
+
+  // Build dropdown for mobile quick jump
+  const dropdownHtml = READER_SECTIONS.map(sec => {
+    const total = Object.values(groups[sec]).reduce((s, qs) => s + qs.length, 0);
+    const sel = (readerActiveSection === sec || (!readerActiveSection && sec === READER_SECTIONS[0])) ? ' selected' : '';
+    return `<option value="${sec}"${sel}>${READER_TITLES[sec]} (${total}题)</option>`;
+  }).join('');
+
+  return `
+    <div class="review-topbar" style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+      <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
+      <span style="font-size:14px;color:#666">📜 阅读模式 · 按章节顺序从头到尾浏览</span>
+    </div>
+    <div class="tab-bar">
+      <div class="tab-item" data-tab="home">🧪 刷题</div>
+      <div class="tab-item" data-tab="review">📖 复习资料</div>
+      <div class="tab-item active" data-tab="reader">📜 阅读模式</div>
+      <div class="tab-item" data-tab="studyguide">📋 学习建议</div>
+    </div>
+    <div class="review-layout">
+      <div class="review-sidebar">
+        <div class="kp-nav-label" style="display:none">📂 章节导航（左右滑动）</div>
+        <div class="kp-dropdown-wrap" style="display:none">
+          <select id="readerSelect" onchange="jumpToReaderSection(this.value)">${dropdownHtml}</select>
+        </div>
+        <div class="kp-nav">${sidebarHtml}</div>
+      </div>
+      <div class="review-main" id="readerMain">
+        ${mainHtml}
+      </div>
+    </div>
+    <button class="reader-back-top" id="readerBackTop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
+  `;
+}
+
+function renderReaderQCard(q, num) {
+  // Clean question text: strip trailing option markers
+  let dq = q.question;
+  const optM = dq.match(/\s+[A-D][、.．]/);
+  if (optM && q.options && q.options.length > 0) {
+    dq = dq.substring(0, optM.index).trim();
+  }
+
+  let answerHtml = '';
+  let extraHtml = '';
+
+  if (q.type === 'choice') {
+    answerHtml = q.answer
+      ? `<span class="rq-answer">${escapeHtml(q.answer)}</span>`
+      : '<span class="rq-answer" style="background:#fff3e0;color:#e65100">?</span>';
+    if (q.options && q.options.length > 0) {
+      extraHtml = `<div class="rq-options">${q.options.map((o, i) => {
+        const label = q.option_labels && q.option_labels[i] ? q.option_labels[i] : String.fromCharCode(65+i);
+        const isCorrect = label === q.answer;
+        return `<span class="reader-opt${isCorrect ? ' reader-opt-correct' : ''}">${label}. ${escapeHtml(o)}</span>`;
+      }).join(' &nbsp;|&nbsp; ')}</div>`;
+    }
+  } else if (q.type === 'truefalse') {
+    answerHtml = q.answer === '√'
+      ? '<span class="rq-answer">✓ 正确</span>'
+      : '<span class="rq-answer wrong-ans">✗ 错误</span>';
+  } else if (q.type === 'fill') {
+    answerHtml = q.answer
+      ? `<span class="rq-answer">${escapeHtml(q.answer)}</span>`
+      : '<span class="rq-answer" style="background:#fff3e0;color:#e65100">答案缺失</span>';
+  } else {
+    // shortanswer / calculation
+    if (q.explanation) {
+      extraHtml = `<div class="rq-explanation"><strong>📝 解析/答案：</strong><br>${q.explanation.replace(/\n/g, '<br>')}</div>`;
+    } else if (q.answer) {
+      answerHtml = `<span class="rq-answer">${escapeHtml(q.answer)}</span>`;
+    }
+  }
+
+  const typeBadge = getTypeName(q.type);
+
+  return `
+    <div class="reader-qcard" id="rq-${q.id}">
+      <div class="rq-meta">${num}. [${typeBadge}] ${answerHtml}</div>
+      <div class="rq-text">${escapeHtml(dq)}</div>
+      ${extraHtml}
+    </div>`;
+}
+
+function jumpToReaderSection(secName) {
+  readerActiveSection = secName;
+  const mainDiv = document.getElementById('readerMain');
+  if (!mainDiv) { render(); return; }
+  // Hide all sections, show selected
+  mainDiv.querySelectorAll('.reader-section').forEach(el => {
+    el.style.display = el.id === 'reader-' + secName ? '' : 'none';
+  });
+  // Update nav active state
+  document.querySelectorAll('[data-reader-sec]').forEach(item => {
+    item.classList.toggle('active', item.dataset.readerSec === secName);
+  });
+  // Scroll to top of section
+  const target = document.getElementById('reader-' + secName);
+  if (target) target.scrollIntoView({ behavior: 'smooth' });
+  // On mobile, scroll nav item into view
+  if (window.innerWidth <= 640) {
+    const navItem = document.querySelector(`[data-reader-sec="${secName}"]`);
+    if (navItem) navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+}
+
 // ========== STUDY GUIDE ==========
 function renderStudyGuide() {
   // Count questions per topic
@@ -966,6 +1159,7 @@ function renderStudyGuide() {
     <div class="tab-bar">
       <div class="tab-item" data-tab="home">🧪 刷题</div>
       <div class="tab-item" data-tab="review">📖 复习资料</div>
+      <div class="tab-item" data-tab="reader">📜 阅读模式</div>
       <div class="tab-item active" data-tab="studyguide">📋 学习建议</div>
     </div>
 
@@ -1051,6 +1245,7 @@ function bindEvents() {
       const tab = this.dataset.tab;
       if (tab === 'home') { screen = 'home'; render(); }
       else if (tab === 'review') { screen = 'review'; reviewActiveKP = null; render(); }
+      else if (tab === 'reader') { screen = 'reader'; readerActiveSection = null; render(); }
       else if (tab === 'studyguide') { screen = 'studyguide'; render(); }
     });
   });
@@ -1120,6 +1315,24 @@ function bindEvents() {
       }
     });
   });
+
+  // Reader section nav
+  document.querySelectorAll('[data-reader-sec]').forEach(el => {
+    el.addEventListener('click', function() {
+      jumpToReaderSection(this.dataset.readerSec);
+    });
+  });
+
+  // Reader back-to-top button (named to avoid duplicate listeners)
+  if (document.getElementById('readerBackTop')) {
+    if (window._readerScrollHandler) window.removeEventListener('scroll', window._readerScrollHandler);
+    window._readerScrollHandler = () => {
+      const btn = document.getElementById('readerBackTop');
+      if (btn) btn.style.display = window.scrollY > 400 ? 'block' : 'none';
+    };
+    window.addEventListener('scroll', window._readerScrollHandler);
+    window._readerScrollHandler();
+  }
 
   // KP explanation toggle in review
   bindReviewHeader();
