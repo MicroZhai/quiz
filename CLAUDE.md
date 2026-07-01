@@ -106,10 +106,33 @@ git commit -m "描述修改内容"
 git push origin master:main
 ```
 
+## 知识点标注系统（2026-07-01 新增）
+
+### 概况
+- 679 题全部标注了 `knowledge_point` 和 `knowledge_point_key` 字段
+- 共 25 个核心知识点，覆盖率 ~95%
+- 标注脚本：`tag_knowledge_points.py`（关键词匹配 + 规则）
+
+### 知识点数据
+- `knowledge_points.json`：25 个知识点的核心解析、关键概念、考试重点
+- quiz.html 内嵌该数据，通过 `getKPInfo(question)` 获取题目对应知识点
+
+### 更新题库流程
+1. 修改 `复习题整合.md`
+2. 运行 `python parse_all.py` 重新解析（可选，覆盖率不完整）
+3. 运行 `python tag_knowledge_points.py` 为题库标注知识点
+4. 运行 `python build_quiz.py` 重新生成 quiz.html（嵌入最新数据）
+5. `cp quiz.html index.html` 同步
+
 ## quiz.html 技术要点
 
 - 纯静态 HTML/CSS/JS，零依赖，file:// 协议可直接打开
 - 题库通过 `<script src="questions.js">` 加载（`window.ALL_QUESTIONS`）
+- 知识点数据内嵌在 HTML 中（`KNOWLEDGE_POINTS` / `KP_MAP`）
+- **三个 Tab**：🧪 刷题 / 📖 复习资料 / 📋 学习建议
+- **复习模式**：按知识点分组展示全部题目，答案可见，左侧知识点导航
+- **学习建议页**：推荐学习路径、知识点题量分布、薄弱环节分析、高分技巧
+- **刷题反馈**：答完题显示对应知识点解析（可点击展开）
 - **考试模式**：按比例从题库抽题（largest remainder method），一页卷面，自动判分
 - **填空题判分**：模糊匹配，关键词覆盖 ≥60% 算对
 - **错题本**：localStorage 持久化存储
@@ -122,3 +145,4 @@ git push origin master:main
 3. 综合复习章节的题目与前面章节有重复（属于汇总性质，刻意保留）
 4. 判断题少量行仍存在格式问题（原始数据破损）
 5. parse_all.py 从整合文档解析的覆盖率（538题）低于原始多文件解析（679题），因此以 questions.json 为准
+6. ~30 道题（4.4%）未匹配到知识点标签，归入"综合/未分类"
