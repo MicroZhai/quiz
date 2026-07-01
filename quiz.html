@@ -187,7 +187,7 @@ let examTotalCount = 50; // default exam question count
 
 // ========== HELPERS ==========
 function getTypeName(t) {
-  const map = { choice:'选择题', truefalse:'判断题', fill:'填空题', shortanswer:'简答题', calculation:'计算题', drawing:'作图题' };
+  const map = { choice:'选择题', truefalse:'判断题', fill:'填空题', shortanswer:'简答题', calculation:'计算题' };
   return map[t] || t;
 }
 
@@ -627,7 +627,7 @@ function bindEvents() {
     fillInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkFillAnswer(); });
   }
 
-  // Open questions (short answer, calculation, drawing)
+  // Open questions (short answer, calculation)
   const showBtn = document.getElementById('showAnswerBtn');
   if (showBtn) {
     showBtn.addEventListener('click', function() {
@@ -945,7 +945,7 @@ function renderExamPaper() {
       } else if (q.type === 'fill') {
         autoTotal++;
         if (checkFillAnswerMatch(ua, q.answer)) { autoCorrect++; correctCount++; }
-      } else if (q.type === 'shortanswer' || q.type === 'calculation' || q.type === 'drawing') {
+      } else if (q.type === 'shortanswer' || q.type === 'calculation') {
         if (ua === 'correct') correctCount++;
       }
     });

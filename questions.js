@@ -9113,14 +9113,5 @@ window.ALL_QUESTIONS = [
     "section": "五、简答题",
     "topic": "综合复习",
     "id": 679
-  },
-  {
-    "type": "drawing",
-    "question": "根据下列立体图中的视觉方向,投影出各个方向的平面视图（注：至少画出5个示意图， 即各线条符合视图即可）。 A向视图： B向视图： C向视图： D向视图： E向视图： F向视图：",
-    "answer": "",
-    "explanation": "请根据题目要求作图",
-    "section": "六、作图题",
-    "topic": "综合复习",
-    "id": 680
   }
 ];
