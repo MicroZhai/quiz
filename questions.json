@@ -18,7 +18,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 1
+    "id": 1,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -37,7 +39,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 2
+    "id": 2,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "choice",
@@ -58,7 +62,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 3
+    "id": 3,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "choice",
@@ -79,7 +85,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 4
+    "id": 4,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "choice",
@@ -100,7 +108,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 5
+    "id": 5,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -121,7 +131,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 6
+    "id": 6,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -142,7 +154,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 7
+    "id": 7,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -163,7 +177,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 8
+    "id": 8,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -174,7 +190,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 9
+    "id": 9,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -195,7 +213,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 10
+    "id": 10,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -216,7 +236,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 11
+    "id": 11,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -235,7 +257,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 12
+    "id": 12,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "choice",
@@ -254,7 +278,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 13
+    "id": 13,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -271,7 +297,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 14
+    "id": 14,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -290,7 +318,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 15
+    "id": 15,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -311,7 +341,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 16
+    "id": 16,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -332,7 +364,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 17
+    "id": 17,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -353,7 +387,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 18
+    "id": 18,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -374,7 +410,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 19
+    "id": 19,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -395,7 +433,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 20
+    "id": 20,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -416,7 +456,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 21
+    "id": 21,
+    "knowledge_point": "冷却介质与淬透性",
+    "knowledge_point_key": "cooling_quenchants"
   },
   {
     "type": "choice",
@@ -437,7 +479,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 22
+    "id": 22,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -458,7 +502,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 23
+    "id": 23,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -481,7 +527,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 24
+    "id": 24,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -502,7 +550,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 25
+    "id": 25,
+    "knowledge_point": "正火",
+    "knowledge_point_key": "normalizing"
   },
   {
     "type": "choice",
@@ -529,7 +579,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 26
+    "id": 26,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -550,7 +602,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 27
+    "id": 27,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -571,7 +625,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 28
+    "id": 28,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "choice",
@@ -592,7 +648,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 29
+    "id": 29,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -613,7 +671,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 30
+    "id": 30,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -630,7 +690,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 31
+    "id": 31,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -651,7 +713,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 32
+    "id": 32,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -672,7 +736,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 33
+    "id": 33,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "choice",
@@ -693,7 +759,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 34
+    "id": 34,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "choice",
@@ -714,7 +782,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 35
+    "id": 35,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -735,7 +805,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 36
+    "id": 36,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -756,7 +828,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 37
+    "id": 37,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -777,7 +851,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 38
+    "id": 38,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -804,7 +880,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 39
+    "id": 39,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -825,7 +903,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 40
+    "id": 40,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -846,7 +926,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 41
+    "id": 41,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -867,7 +949,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 42
+    "id": 42,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -888,7 +972,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 43
+    "id": 43,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "choice",
@@ -909,7 +995,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 44
+    "id": 44,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -930,7 +1018,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 45
+    "id": 45,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "choice",
@@ -951,7 +1041,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 46
+    "id": 46,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -972,7 +1064,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 47
+    "id": 47,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -993,7 +1087,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 48
+    "id": 48,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -1012,7 +1108,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 49
+    "id": 49,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -1031,7 +1129,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 50
+    "id": 50,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -1048,7 +1148,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 51
+    "id": 51,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1067,7 +1169,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 52
+    "id": 52,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1086,7 +1190,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 53
+    "id": 53,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -1105,7 +1211,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 54
+    "id": 54,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -1124,7 +1232,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 55
+    "id": 55,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1143,7 +1253,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 56
+    "id": 56,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -1162,7 +1274,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 57
+    "id": 57,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1181,7 +1295,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 58
+    "id": 58,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1200,7 +1316,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 59
+    "id": 59,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -1219,7 +1337,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 60
+    "id": 60,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1238,7 +1358,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 61
+    "id": 61,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "choice",
@@ -1257,7 +1379,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 62
+    "id": 62,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "choice",
@@ -1276,7 +1400,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 63
+    "id": 63,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "choice",
@@ -1297,7 +1423,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 64
+    "id": 64,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "choice",
@@ -1316,7 +1444,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 65
+    "id": 65,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "choice",
@@ -1333,7 +1463,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 66
+    "id": 66,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "choice",
@@ -1358,7 +1490,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 67
+    "id": 67,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1377,7 +1511,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 68
+    "id": 68,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1396,7 +1532,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 69
+    "id": 69,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1415,7 +1553,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 70
+    "id": 70,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "choice",
@@ -1432,7 +1572,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 71
+    "id": 71,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -1451,7 +1593,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 72
+    "id": 72,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1470,7 +1614,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 73
+    "id": 73,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -1489,7 +1635,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 74
+    "id": 74,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1508,7 +1656,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 75
+    "id": 75,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -1527,7 +1677,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 76
+    "id": 76,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "choice",
@@ -1546,7 +1698,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 77
+    "id": 77,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -1565,7 +1719,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 78
+    "id": 78,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -1584,7 +1740,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 79
+    "id": 79,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -1603,7 +1761,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 80
+    "id": 80,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1614,7 +1774,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 81
+    "id": 81,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1631,7 +1793,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 82
+    "id": 82,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -1650,7 +1814,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 83
+    "id": 83,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1669,7 +1835,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 84
+    "id": 84,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -1688,7 +1856,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 85
+    "id": 85,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "choice",
@@ -1705,7 +1875,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 86
+    "id": 86,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1724,7 +1896,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 87
+    "id": 87,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -1743,7 +1917,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 88
+    "id": 88,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1762,7 +1938,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 89
+    "id": 89,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1781,7 +1959,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 90
+    "id": 90,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1800,7 +1980,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 91
+    "id": 91,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1817,7 +1999,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 92
+    "id": 92,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1834,7 +2018,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 93
+    "id": 93,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "choice",
@@ -1853,7 +2039,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 94
+    "id": 94,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "choice",
@@ -1872,7 +2060,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 95
+    "id": 95,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "choice",
@@ -1891,7 +2081,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 96
+    "id": 96,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "choice",
@@ -1910,7 +2102,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 97
+    "id": 97,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "choice",
@@ -1929,7 +2123,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 98
+    "id": 98,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -1946,7 +2142,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 99
+    "id": 99,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "choice",
@@ -1965,7 +2163,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 100
+    "id": 100,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -1984,7 +2184,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 101
+    "id": 101,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -2003,7 +2205,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 102
+    "id": 102,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -2022,7 +2226,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 103
+    "id": 103,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "choice",
@@ -2041,7 +2247,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 104
+    "id": 104,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "choice",
@@ -2060,7 +2268,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 105
+    "id": 105,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -2079,7 +2289,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理基础知识",
-    "id": 106
+    "id": 106,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -2088,7 +2300,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 107
+    "id": 107,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -2097,7 +2311,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 108
+    "id": 108,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2106,7 +2322,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 109
+    "id": 109,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2115,7 +2333,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 110
+    "id": 110,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2124,7 +2344,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 111
+    "id": 111,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2133,7 +2355,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 112
+    "id": 112,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2142,7 +2366,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 113
+    "id": 113,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2151,7 +2377,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 114
+    "id": 114,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "truefalse",
@@ -2160,7 +2388,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 115
+    "id": 115,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "truefalse",
@@ -2169,7 +2399,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 116
+    "id": 116,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -2178,7 +2410,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 117
+    "id": 117,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "truefalse",
@@ -2187,7 +2421,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 118
+    "id": 118,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2196,7 +2432,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 119
+    "id": 119,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -2205,7 +2443,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 120
+    "id": 120,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "truefalse",
@@ -2214,7 +2454,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 121
+    "id": 121,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -2223,7 +2465,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 122
+    "id": 122,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2232,7 +2476,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 123
+    "id": 123,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2241,7 +2487,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 124
+    "id": 124,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2250,7 +2498,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 125
+    "id": 125,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2259,7 +2509,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 126
+    "id": 126,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -2268,7 +2520,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 127
+    "id": 127,
+    "knowledge_point": "珠光体与贝氏体转变",
+    "knowledge_point_key": "pearlite_bainite"
   },
   {
     "type": "truefalse",
@@ -2277,7 +2531,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 128
+    "id": 128,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2286,7 +2542,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 129
+    "id": 129,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -2295,7 +2553,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 130
+    "id": 130,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2304,7 +2564,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 131
+    "id": 131,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -2313,7 +2575,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 132
+    "id": 132,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "truefalse",
@@ -2322,7 +2586,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 133
+    "id": 133,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -2331,7 +2597,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 134
+    "id": 134,
+    "knowledge_point": "气氛控制",
+    "knowledge_point_key": "atmosphere_control"
   },
   {
     "type": "truefalse",
@@ -2340,7 +2608,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 135
+    "id": 135,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2349,7 +2619,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 136
+    "id": 136,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2358,7 +2630,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 137
+    "id": 137,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -2367,7 +2641,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 138
+    "id": 138,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -2376,7 +2652,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 139
+    "id": 139,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -2385,7 +2663,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 140
+    "id": 140,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "truefalse",
@@ -2394,7 +2674,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 141
+    "id": 141,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -2403,7 +2685,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 142
+    "id": 142,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -2412,7 +2696,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 143
+    "id": 143,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "truefalse",
@@ -2421,7 +2707,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 144
+    "id": 144,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2430,7 +2718,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 145
+    "id": 145,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -2439,7 +2729,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 146
+    "id": 146,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -2448,7 +2740,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 147
+    "id": 147,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -2457,7 +2751,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 148
+    "id": 148,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -2466,7 +2762,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 149
+    "id": 149,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2475,7 +2773,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 150
+    "id": 150,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2484,7 +2784,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 151
+    "id": 151,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2493,7 +2795,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 152
+    "id": 152,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2502,7 +2806,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 153
+    "id": 153,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2511,7 +2817,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 154
+    "id": 154,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2520,7 +2828,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 155
+    "id": 155,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2529,7 +2839,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 156
+    "id": 156,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "truefalse",
@@ -2538,7 +2850,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 157
+    "id": 157,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2547,7 +2861,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 158
+    "id": 158,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2556,7 +2872,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 159
+    "id": 159,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -2565,7 +2883,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 160
+    "id": 160,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2574,7 +2894,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 161
+    "id": 161,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2583,7 +2905,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 162
+    "id": 162,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2592,7 +2916,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 163
+    "id": 163,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2601,7 +2927,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 164
+    "id": 164,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2610,7 +2938,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 165
+    "id": 165,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2619,7 +2949,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 166
+    "id": 166,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2628,7 +2960,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 167
+    "id": 167,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -2637,7 +2971,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 168
+    "id": 168,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2646,7 +2982,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 169
+    "id": 169,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2655,7 +2993,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 170
+    "id": 170,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -2664,7 +3004,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 171
+    "id": 171,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2673,7 +3015,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 172
+    "id": 172,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2682,7 +3026,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 173
+    "id": 173,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -2691,7 +3037,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 174
+    "id": 174,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2700,7 +3048,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 175
+    "id": 175,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2709,7 +3059,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 176
+    "id": 176,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2718,7 +3070,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 177
+    "id": 177,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2727,7 +3081,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 178
+    "id": 178,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2736,7 +3092,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 179
+    "id": 179,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "truefalse",
@@ -2745,7 +3103,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 180
+    "id": 180,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2754,7 +3114,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 181
+    "id": 181,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2763,7 +3125,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 182
+    "id": 182,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2772,7 +3136,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 183
+    "id": 183,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2781,7 +3147,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 184
+    "id": 184,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "truefalse",
@@ -2790,7 +3158,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 185
+    "id": 185,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -2799,7 +3169,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 186
+    "id": 186,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2808,7 +3180,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 187
+    "id": 187,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -2817,7 +3191,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 188
+    "id": 188,
+    "knowledge_point": "珠光体与贝氏体转变",
+    "knowledge_point_key": "pearlite_bainite"
   },
   {
     "type": "truefalse",
@@ -2826,7 +3202,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 189
+    "id": 189,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2835,7 +3213,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 190
+    "id": 190,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "truefalse",
@@ -2844,7 +3224,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 191
+    "id": 191,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2853,7 +3235,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 192
+    "id": 192,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "truefalse",
@@ -2862,7 +3246,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 193
+    "id": 193,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -2871,7 +3257,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 194
+    "id": 194,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -2880,7 +3268,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 195
+    "id": 195,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -2889,7 +3279,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 196
+    "id": 196,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2898,7 +3290,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 197
+    "id": 197,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "truefalse",
@@ -2907,7 +3301,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 198
+    "id": 198,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -2916,7 +3312,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 199
+    "id": 199,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "truefalse",
@@ -2925,7 +3323,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 200
+    "id": 200,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "truefalse",
@@ -2934,7 +3334,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 201
+    "id": 201,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -2943,7 +3345,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 202
+    "id": 202,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "truefalse",
@@ -2952,7 +3356,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 203
+    "id": 203,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2961,7 +3367,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 204
+    "id": 204,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "truefalse",
@@ -2970,7 +3378,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 205
+    "id": 205,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -2979,7 +3389,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理基础知识",
-    "id": 206
+    "id": 206,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "fill",
@@ -2988,7 +3400,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 207
+    "id": 207,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -2997,7 +3411,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 208
+    "id": 208,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -3006,7 +3422,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 209
+    "id": 209,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3015,7 +3433,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 210
+    "id": 210,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3024,7 +3444,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 211
+    "id": 211,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -3033,7 +3455,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 212
+    "id": 212,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3042,7 +3466,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 213
+    "id": 213,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3051,7 +3477,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 214
+    "id": 214,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3060,7 +3488,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 215
+    "id": 215,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3069,7 +3499,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 216
+    "id": 216,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -3078,7 +3510,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 217
+    "id": 217,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3087,7 +3521,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 218
+    "id": 218,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -3096,7 +3532,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 219
+    "id": 219,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -3105,7 +3543,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 220
+    "id": 220,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -3114,7 +3554,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 221
+    "id": 221,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -3123,7 +3565,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 222
+    "id": 222,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "fill",
@@ -3132,7 +3576,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 223
+    "id": 223,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -3141,7 +3587,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 224
+    "id": 224,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "fill",
@@ -3150,7 +3598,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 225
+    "id": 225,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "fill",
@@ -3159,7 +3609,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 226
+    "id": 226,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "fill",
@@ -3168,7 +3620,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 227
+    "id": 227,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -3177,7 +3631,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 228
+    "id": 228,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -3186,7 +3642,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 229
+    "id": 229,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "fill",
@@ -3195,7 +3653,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 230
+    "id": 230,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -3204,7 +3664,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 231
+    "id": 231,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "fill",
@@ -3213,7 +3675,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 232
+    "id": 232,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -3222,7 +3686,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 233
+    "id": 233,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "fill",
@@ -3231,7 +3697,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 234
+    "id": 234,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3240,7 +3708,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 235
+    "id": 235,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -3249,7 +3719,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 236
+    "id": 236,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "fill",
@@ -3258,7 +3730,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 237
+    "id": 237,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -3267,7 +3741,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 238
+    "id": 238,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -3276,7 +3752,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 239
+    "id": 239,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -3285,7 +3763,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 240
+    "id": 240,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "fill",
@@ -3294,7 +3774,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 241
+    "id": 241,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -3303,7 +3785,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 242
+    "id": 242,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "fill",
@@ -3312,7 +3796,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 243
+    "id": 243,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -3321,7 +3807,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 244
+    "id": 244,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "fill",
@@ -3330,7 +3818,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 245
+    "id": 245,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "fill",
@@ -3339,7 +3829,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 246
+    "id": 246,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -3348,7 +3840,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 247
+    "id": 247,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "fill",
@@ -3357,7 +3851,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 248
+    "id": 248,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "fill",
@@ -3366,7 +3862,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 249
+    "id": 249,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "fill",
@@ -3375,7 +3873,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 250
+    "id": 250,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -3384,7 +3884,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 251
+    "id": 251,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -3393,7 +3895,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 252
+    "id": 252,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -3402,7 +3906,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 253
+    "id": 253,
+    "knowledge_point": "有色金属热处理",
+    "knowledge_point_key": "nonferrous_heat_treatment"
   },
   {
     "type": "fill",
@@ -3411,7 +3917,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 254
+    "id": 254,
+    "knowledge_point": "有色金属热处理",
+    "knowledge_point_key": "nonferrous_heat_treatment"
   },
   {
     "type": "fill",
@@ -3420,7 +3928,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 255
+    "id": 255,
+    "knowledge_point": "变形与开裂",
+    "knowledge_point_key": "deformation_cracking"
   },
   {
     "type": "fill",
@@ -3429,7 +3939,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 256
+    "id": 256,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -3438,7 +3950,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 257
+    "id": 257,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -3447,7 +3961,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 258
+    "id": 258,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -3456,7 +3972,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理基础知识",
-    "id": 259
+    "id": 259,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "shortanswer",
@@ -3465,7 +3983,9 @@
     "explanation": "38CrMoA1A：表示平均含碳量为0.38%，主要合金元素铭，钼、铝含量均小于1.5%的高级优质合金钢。 3Cr3Mo3VNb (HM3)：表示平均含碳量为0.30%，主要合金元素铭、钼含量均为3%左右，钒、铌含量小于1.5%的工具钢。 3Gr13：表示平均含碳量为0.3%，合金元素铬含量为13%左右的不锈钢(或马氏体不锈钢)。 GH2036：表示时效强化型铁基高温合金。 HPb59-1：表示含铜量为59%，铅含量为1%，其余为锌的铅黄铜。15Mn：表示平均含碳量为0.15%左右，平均含锰量为1%左右的优质碳素结构钢。 GCr15：表示含铬量为1.5%的滚动轴承钢。 GH3044：表示固溶强化型镍基高温合金。",
     "section": "四、简答题",
     "topic": "热处理基础知识",
-    "id": 260
+    "id": 260,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "shortanswer",
@@ -3474,7 +3994,9 @@
     "explanation": "1)热处理淬火冷却时由于工件表里存在温度差，由热胀冷缩的不一致而产生的内应力；相变应力是由于工件淬火过程中工件表里组织转变不一致而产生的内应力 2)热应力引起工件沿轴向缩缩短，平面凸起，棱角谈谈圆，即使工件趋于球形；相恋应力引起工件变形特性与热应力相反。",
     "section": "四、简答题",
     "topic": "热处理基础知识",
-    "id": 261
+    "id": 261,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "shortanswer",
@@ -3483,7 +4005,9 @@
     "explanation": "钢淬火的主要目的是为了获得马氏体，提高钢的强度和硬度。 为了使钢件热透，使奥氏体转变彻底并均匀化。所以要进行保温。",
     "section": "四、简答题",
     "topic": "热处理基础知识",
-    "id": 262
+    "id": 262,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "shortanswer",
@@ -3492,7 +4016,9 @@
     "explanation": "a、降低钢的硬度，提高塑性，以利于切削加工及冷变形加工：b、细化晶粒，均匀钢的组织及成分，改善钢的性能或为以后的热处理作准备：c、消除钢中的残余内应力，以防止变形和开裂",
     "section": "四、简答题",
     "topic": "热处理基础知识",
-    "id": 263
+    "id": 263,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "shortanswer",
@@ -3501,7 +4027,9 @@
     "explanation": "a、减少或消除淬火时产生的内应力，防止工件在使用过程中产生变形和开裂：b、通过回火提高钢的韧性，适当调整钢的强度和硬度，使工件达到所要求的力学性能，以满足各种工件的性能需要：c、稳定组织，使工件在使用过程中不发生组织转变，从而保证工件的形状和尺寸不变，保证工件的精度。",
     "section": "四、简答题",
     "topic": "热处理基础知识",
-    "id": 264
+    "id": 264,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "shortanswer",
@@ -3510,7 +4038,9 @@
     "explanation": "主要是利用钢在加热和冷却时内部组织发生转变的基本规律，根据这些基本规律和要求来确定加热温度、保温时间和冷却介质等有关参数，以达到改善材料性能的目的。",
     "section": "四、简答题",
     "topic": "热处理基础知识",
-    "id": 265
+    "id": 265,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "shortanswer",
@@ -3519,7 +4049,9 @@
     "explanation": "合金钢回火稳定性较高，一般是有利的：在达到相同硬度的情况下，合金钢的回火温度应比碳钢高，回火时间也应增长，可进一步消除残余应力，因而合金钢的塑性、韧性较碳钢好；而在同一温度回火时，合金钢的强度、硬度比碳钢高。",
     "section": "四、简答题",
     "topic": "热处理基础知识",
-    "id": 266
+    "id": 266,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "calculation",
@@ -3528,7 +4060,9 @@
     "explanation": "解：因为珠光体含碳量为0.77%，所以该钢的含碳量为： C%=P%×0.77%=45%×0.77%=0.45×0.77%=0.3465% 根据碳钢的命名法则，含碳量为0.3465%左右的钢，其牌号应为35钢。答：该钢的含碳量为0.3465%，钢号应为35钢。",
     "section": "五、计算题",
     "topic": "热处理基础知识",
-    "id": 267
+    "id": 267,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "calculation",
@@ -3537,7 +4071,9 @@
     "explanation": "解：根据经验公式，有 (1)当HRC取54时 回火温度=(60-54)×11+200=266(C)(2)当HRC取60时 回火温度=(60-60)×11+200=200(℃) 故，该模具淬火后的回火温度范围是：200~266℃",
     "section": "五、计算题",
     "topic": "热处理基础知识",
-    "id": 268
+    "id": 268,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "calculation",
@@ -3546,7 +4082,9 @@
     "explanation": "解：根据经验公式， (1)当HRC取35时 回火温度=(60-35)×10+200=450(C) (2)当HRC取40时 回火温度=(60-40)×10+200=400(C) 故，该工装淬火后的回火温度范围是：400~450℃",
     "section": "五、计算题",
     "topic": "热处理基础知识",
-    "id": 269
+    "id": 269,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "calculation",
@@ -3555,7 +4093,9 @@
     "explanation": "",
     "section": "五、计算题",
     "topic": "热处理基础知识",
-    "id": 270
+    "id": 270,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "calculation",
@@ -3564,7 +4104,9 @@
     "explanation": "解：依据经验公式 t=a·k· D 已知：a=1.2 k=1.7 D=50mm 代入上式中得 t=1.2×1.7×50=102(min) 答：该工件在炉中的淬火保温时间为102min。",
     "section": "五、计算题",
     "topic": "热处理基础知识",
-    "id": 271
+    "id": 271,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "calculation",
@@ -3573,7 +4115,9 @@
     "explanation": "解：根据已知条件，有 回火保温时间=(110~120)+(75-60)×1.2=(128~138)min 答：取回火保温时间为130min",
     "section": "五、计算题",
     "topic": "热处理基础知识",
-    "id": 272
+    "id": 272,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "calculation",
@@ -3582,7 +4126,9 @@
     "explanation": "解：根据题意及已知条件，得该环形锻件的壁厚为：外径最大尺寸-内径最小尺寸 (455+3)-(305-3)=78(mm) 锻件的高度为：52+3=55(mm) (1)第一炉次的保温时间为： 单件环件的有效厚度为55mm，高度方向叠装两层的有效厚度为：(1+(2-1)×0.6)×55=88 (mm) 根据热透有效厚度确定规则，产品的壁厚78mm小于88mm，则取双层叠装时的有效厚度为78mm 故保温时间为=(150~160)+(78-60)×2=(186~196)min (2)第二炉次的保温时间为： 单层装炉时，产品的有效厚度为高度尺寸55mm，则保温时间为(150~160)min。",
     "section": "五、计算题",
     "topic": "热处理基础知识",
-    "id": 273
+    "id": 273,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -3603,7 +4149,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 274
+    "id": 274,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3624,7 +4172,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 275
+    "id": 275,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3645,7 +4195,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 276
+    "id": 276,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3666,7 +4218,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 277
+    "id": 277,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3687,7 +4241,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 278
+    "id": 278,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3708,7 +4264,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 279
+    "id": 279,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3729,7 +4287,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 280
+    "id": 280,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3750,7 +4310,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 281
+    "id": 281,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3769,7 +4331,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 282
+    "id": 282,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3790,7 +4354,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 283
+    "id": 283,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3811,7 +4377,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 284
+    "id": 284,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3832,7 +4400,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 285
+    "id": 285,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "choice",
@@ -3853,7 +4423,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 286
+    "id": 286,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3874,7 +4446,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 287
+    "id": 287,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "choice",
@@ -3895,7 +4469,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 288
+    "id": 288,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3914,7 +4490,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 289
+    "id": 289,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3935,7 +4513,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 290
+    "id": 290,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3956,7 +4536,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 291
+    "id": 291,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -3977,7 +4559,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 292
+    "id": 292,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -3986,7 +4570,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 293
+    "id": 293,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -3995,7 +4581,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 294
+    "id": 294,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4004,7 +4592,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 295
+    "id": 295,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4013,7 +4603,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 296
+    "id": 296,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "truefalse",
@@ -4022,7 +4614,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 297
+    "id": 297,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "truefalse",
@@ -4031,7 +4625,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 298
+    "id": 298,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4040,7 +4636,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 299
+    "id": 299,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4049,7 +4647,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 300
+    "id": 300,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4058,7 +4658,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 301
+    "id": 301,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -4067,7 +4669,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 302
+    "id": 302,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4076,7 +4680,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 303
+    "id": 303,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -4085,7 +4691,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 304
+    "id": 304,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "truefalse",
@@ -4094,7 +4702,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 305
+    "id": 305,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4103,7 +4713,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 306
+    "id": 306,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4112,7 +4724,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 307
+    "id": 307,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -4121,7 +4735,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 308
+    "id": 308,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -4130,7 +4746,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 309
+    "id": 309,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4139,7 +4757,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 310
+    "id": 310,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -4148,7 +4768,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 311
+    "id": 311,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4157,7 +4779,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 312
+    "id": 312,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -4166,7 +4790,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 313
+    "id": 313,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4175,7 +4801,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 314
+    "id": 314,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -4184,7 +4812,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 315
+    "id": 315,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4203,7 +4833,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 316
+    "id": 316,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4224,7 +4856,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 317
+    "id": 317,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4241,7 +4875,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 318
+    "id": 318,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4262,7 +4898,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 319
+    "id": 319,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -4281,7 +4919,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 320
+    "id": 320,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4302,7 +4942,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 321
+    "id": 321,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -4319,7 +4961,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 322
+    "id": 322,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4338,7 +4982,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 323
+    "id": 323,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4359,7 +5005,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 324
+    "id": 324,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -4380,7 +5028,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 325
+    "id": 325,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4401,7 +5051,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 326
+    "id": 326,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4422,7 +5074,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 327
+    "id": 327,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "choice",
@@ -4443,7 +5097,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 328
+    "id": 328,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "choice",
@@ -4464,7 +5120,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 329
+    "id": 329,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "choice",
@@ -4483,7 +5141,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 330
+    "id": 330,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4504,7 +5164,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 331
+    "id": 331,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -4523,7 +5185,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 332
+    "id": 332,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "choice",
@@ -4544,7 +5208,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 333
+    "id": 333,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "choice",
@@ -4563,7 +5229,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 334
+    "id": 334,
+    "knowledge_point": "珠光体与贝氏体转变",
+    "knowledge_point_key": "pearlite_bainite"
   },
   {
     "type": "choice",
@@ -4582,7 +5250,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 335
+    "id": 335,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4601,7 +5271,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 336
+    "id": 336,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4620,7 +5292,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 337
+    "id": 337,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -4641,7 +5315,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 338
+    "id": 338,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4662,7 +5338,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 339
+    "id": 339,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -4683,7 +5361,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 340
+    "id": 340,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4704,7 +5384,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 341
+    "id": 341,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4723,7 +5405,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 342
+    "id": 342,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4740,7 +5424,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 343
+    "id": 343,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -4759,7 +5445,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 344
+    "id": 344,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4780,7 +5468,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 345
+    "id": 345,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "choice",
@@ -4801,7 +5491,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 346
+    "id": 346,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4820,7 +5512,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 347
+    "id": 347,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4841,7 +5535,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 348
+    "id": 348,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4862,7 +5558,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 349
+    "id": 349,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -4879,7 +5577,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 350
+    "id": 350,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -4900,7 +5600,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 351
+    "id": 351,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "choice",
@@ -4921,7 +5623,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 352
+    "id": 352,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -4940,7 +5644,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 353
+    "id": 353,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "choice",
@@ -4961,7 +5667,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 354
+    "id": 354,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "choice",
@@ -4978,7 +5686,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 355
+    "id": 355,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "choice",
@@ -4999,7 +5709,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 356
+    "id": 356,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "choice",
@@ -5018,7 +5730,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 357
+    "id": 357,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -5039,7 +5753,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 358
+    "id": 358,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -5058,7 +5774,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 359
+    "id": 359,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -5077,7 +5795,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 360
+    "id": 360,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "choice",
@@ -5098,7 +5818,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 361
+    "id": 361,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -5119,7 +5841,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 362
+    "id": 362,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -5140,7 +5864,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 363
+    "id": 363,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -5157,7 +5883,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 364
+    "id": 364,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -5178,7 +5906,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 365
+    "id": 365,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -5207,7 +5937,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 366
+    "id": 366,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -5228,7 +5960,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 367
+    "id": 367,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -5249,7 +5983,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 368
+    "id": 368,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -5270,7 +6006,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 369
+    "id": 369,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -5289,7 +6027,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 370
+    "id": 370,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -5318,7 +6058,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 371
+    "id": 371,
+    "knowledge_point": "正火",
+    "knowledge_point_key": "normalizing"
   },
   {
     "type": "choice",
@@ -5337,7 +6079,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 372
+    "id": 372,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -5360,7 +6104,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 373
+    "id": 373,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -5379,7 +6125,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 374
+    "id": 374,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -5400,7 +6148,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 375
+    "id": 375,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -5421,7 +6171,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 376
+    "id": 376,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -5442,7 +6194,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 377
+    "id": 377,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -5463,7 +6217,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 378
+    "id": 378,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "choice",
@@ -5484,7 +6240,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 379
+    "id": 379,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "choice",
@@ -5505,7 +6263,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 380
+    "id": 380,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "choice",
@@ -5524,7 +6284,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 381
+    "id": 381,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -5545,7 +6307,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 382
+    "id": 382,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -5566,7 +6330,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 383
+    "id": 383,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -5587,7 +6353,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 384
+    "id": 384,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -5608,7 +6376,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 385
+    "id": 385,
+    "knowledge_point": "冷却介质与淬透性",
+    "knowledge_point_key": "cooling_quenchants"
   },
   {
     "type": "choice",
@@ -5629,7 +6399,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 386
+    "id": 386,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -5650,7 +6422,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 387
+    "id": 387,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "choice",
@@ -5671,7 +6445,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 388
+    "id": 388,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -5692,7 +6468,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 389
+    "id": 389,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -5713,7 +6491,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 390
+    "id": 390,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -5732,7 +6512,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 391
+    "id": 391,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -5749,7 +6531,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 392
+    "id": 392,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -5770,7 +6554,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 393
+    "id": 393,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "choice",
@@ -5789,7 +6575,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 394
+    "id": 394,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "choice",
@@ -5810,7 +6598,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 395
+    "id": 395,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "choice",
@@ -5831,7 +6621,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 396
+    "id": 396,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "choice",
@@ -5852,7 +6644,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 397
+    "id": 397,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "choice",
@@ -5873,7 +6667,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 398
+    "id": 398,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -5894,7 +6690,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 399
+    "id": 399,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -5913,7 +6711,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "热处理设备与工艺",
-    "id": 400
+    "id": 400,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -5922,7 +6722,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 401
+    "id": 401,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -5931,7 +6733,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 402
+    "id": 402,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "truefalse",
@@ -5940,7 +6744,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 403
+    "id": 403,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "truefalse",
@@ -5949,7 +6755,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 404
+    "id": 404,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -5958,7 +6766,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 405
+    "id": 405,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -5967,7 +6777,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 406
+    "id": 406,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "truefalse",
@@ -5976,7 +6788,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 407
+    "id": 407,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -5985,7 +6799,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 408
+    "id": 408,
+    "knowledge_point": "变形与开裂",
+    "knowledge_point_key": "deformation_cracking"
   },
   {
     "type": "truefalse",
@@ -5994,7 +6810,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 409
+    "id": 409,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "truefalse",
@@ -6003,7 +6821,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 410
+    "id": 410,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "truefalse",
@@ -6012,7 +6832,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 411
+    "id": 411,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "truefalse",
@@ -6021,7 +6843,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 412
+    "id": 412,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -6030,7 +6854,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 413
+    "id": 413,
+    "knowledge_point": "气氛控制",
+    "knowledge_point_key": "atmosphere_control"
   },
   {
     "type": "truefalse",
@@ -6039,7 +6865,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 414
+    "id": 414,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "truefalse",
@@ -6048,7 +6876,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 415
+    "id": 415,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -6057,7 +6887,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 416
+    "id": 416,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -6066,7 +6898,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 417
+    "id": 417,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -6075,7 +6909,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 418
+    "id": 418,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -6084,7 +6920,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 419
+    "id": 419,
+    "knowledge_point": "C曲线与TTT图",
+    "knowledge_point_key": "ttt_cct_diagram"
   },
   {
     "type": "truefalse",
@@ -6093,7 +6931,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 420
+    "id": 420,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -6102,7 +6942,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 421
+    "id": 421,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "truefalse",
@@ -6111,7 +6953,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 422
+    "id": 422,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -6120,7 +6964,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 423
+    "id": 423,
+    "knowledge_point": "珠光体与贝氏体转变",
+    "knowledge_point_key": "pearlite_bainite"
   },
   {
     "type": "truefalse",
@@ -6129,7 +6975,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 424
+    "id": 424,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -6138,7 +6986,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 425
+    "id": 425,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -6147,7 +6997,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 426
+    "id": 426,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "truefalse",
@@ -6156,7 +7008,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 427
+    "id": 427,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -6165,7 +7019,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 428
+    "id": 428,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -6174,7 +7030,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 429
+    "id": 429,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -6183,7 +7041,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 430
+    "id": 430,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "truefalse",
@@ -6192,7 +7052,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 431
+    "id": 431,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -6201,7 +7063,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 432
+    "id": 432,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -6210,7 +7074,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 433
+    "id": 433,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "truefalse",
@@ -6219,7 +7085,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 434
+    "id": 434,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -6228,7 +7096,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 435
+    "id": 435,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -6237,7 +7107,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 436
+    "id": 436,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -6246,7 +7118,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 437
+    "id": 437,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -6255,7 +7129,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 438
+    "id": 438,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -6264,7 +7140,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 439
+    "id": 439,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -6273,7 +7151,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 440
+    "id": 440,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -6282,7 +7162,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 441
+    "id": 441,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "truefalse",
@@ -6291,7 +7173,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 442
+    "id": 442,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "truefalse",
@@ -6300,7 +7184,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 443
+    "id": 443,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -6309,7 +7195,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 444
+    "id": 444,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "truefalse",
@@ -6318,7 +7206,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 445
+    "id": 445,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "truefalse",
@@ -6327,7 +7217,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 446
+    "id": 446,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "truefalse",
@@ -6336,7 +7228,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 447
+    "id": 447,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -6345,7 +7239,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 448
+    "id": 448,
+    "knowledge_point": "正火",
+    "knowledge_point_key": "normalizing"
   },
   {
     "type": "truefalse",
@@ -6354,7 +7250,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 449
+    "id": 449,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -6363,7 +7261,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 450
+    "id": 450,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -6372,7 +7272,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 451
+    "id": 451,
+    "knowledge_point": "珠光体与贝氏体转变",
+    "knowledge_point_key": "pearlite_bainite"
   },
   {
     "type": "truefalse",
@@ -6381,7 +7283,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 452
+    "id": 452,
+    "knowledge_point": "冷却介质与淬透性",
+    "knowledge_point_key": "cooling_quenchants"
   },
   {
     "type": "truefalse",
@@ -6390,7 +7294,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 453
+    "id": 453,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -6399,7 +7305,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 454
+    "id": 454,
+    "knowledge_point": "有色金属热处理",
+    "knowledge_point_key": "nonferrous_heat_treatment"
   },
   {
     "type": "truefalse",
@@ -6408,7 +7316,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 455
+    "id": 455,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -6417,7 +7327,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 456
+    "id": 456,
+    "knowledge_point": "马氏体转变",
+    "knowledge_point_key": "martensite_transformation"
   },
   {
     "type": "truefalse",
@@ -6426,7 +7338,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 457
+    "id": 457,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -6435,7 +7349,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 458
+    "id": 458,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -6444,7 +7360,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 459
+    "id": 459,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -6453,7 +7371,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 460
+    "id": 460,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -6462,7 +7382,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 461
+    "id": 461,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -6471,7 +7393,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 462
+    "id": 462,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -6480,7 +7404,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 463
+    "id": 463,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -6489,7 +7415,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 464
+    "id": 464,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "truefalse",
@@ -6498,7 +7426,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 465
+    "id": 465,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "truefalse",
@@ -6507,7 +7437,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 466
+    "id": 466,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -6516,7 +7448,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 467
+    "id": 467,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "truefalse",
@@ -6525,7 +7459,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 468
+    "id": 468,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -6534,7 +7470,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 469
+    "id": 469,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -6543,7 +7481,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 470
+    "id": 470,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "truefalse",
@@ -6552,7 +7492,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 471
+    "id": 471,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -6561,7 +7503,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 472
+    "id": 472,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -6570,7 +7514,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 473
+    "id": 473,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -6579,7 +7525,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 474
+    "id": 474,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -6588,7 +7536,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 475
+    "id": 475,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -6597,7 +7547,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 476
+    "id": 476,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -6606,7 +7558,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 477
+    "id": 477,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -6615,7 +7569,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 478
+    "id": 478,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -6624,7 +7580,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "热处理设备与工艺",
-    "id": 479
+    "id": 479,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "fill",
@@ -6633,7 +7591,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 480
+    "id": 480,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "fill",
@@ -6642,7 +7602,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 481
+    "id": 481,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "fill",
@@ -6651,7 +7613,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 482
+    "id": 482,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "fill",
@@ -6660,7 +7624,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 483
+    "id": 483,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -6669,7 +7635,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 484
+    "id": 484,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -6678,7 +7646,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 485
+    "id": 485,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -6687,7 +7657,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 486
+    "id": 486,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -6696,7 +7668,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 487
+    "id": 487,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "fill",
@@ -6705,7 +7679,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 488
+    "id": 488,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -6714,7 +7690,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 489
+    "id": 489,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -6723,7 +7701,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 490
+    "id": 490,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "fill",
@@ -6732,7 +7712,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 491
+    "id": 491,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "fill",
@@ -6741,7 +7723,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 492
+    "id": 492,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "fill",
@@ -6750,7 +7734,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 493
+    "id": 493,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "fill",
@@ -6759,7 +7745,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 494
+    "id": 494,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -6768,7 +7756,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 495
+    "id": 495,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -6777,7 +7767,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 496
+    "id": 496,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -6786,7 +7778,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 497
+    "id": 497,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "fill",
@@ -6795,7 +7789,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 498
+    "id": 498,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "fill",
@@ -6804,7 +7800,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 499
+    "id": 499,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -6813,7 +7811,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 500
+    "id": 500,
+    "knowledge_point": "正火",
+    "knowledge_point_key": "normalizing"
   },
   {
     "type": "fill",
@@ -6822,7 +7822,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 501
+    "id": 501,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "fill",
@@ -6831,7 +7833,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "热处理设备与工艺",
-    "id": 502
+    "id": 502,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "shortanswer",
@@ -6840,7 +7844,9 @@
     "explanation": "(1)冷压校正法：(2)热校直法：(3)热点校正法；(4)反击法：(5)计算法；(6)喷砂校直法：(7)淬火校直法；(8)回火校直法。",
     "section": "四、简答题",
     "topic": "热处理设备与工艺",
-    "id": 503
+    "id": 503,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "calculation",
@@ -6849,7 +7855,9 @@
     "explanation": "解：A产品占12/25 B产品占9/20 C产品占18/30 A+B+C=12/25+9/20+18/30=0.48+0.45+0.6=1.53>1 所以不能用该电炉同时生产A、B、C项产品。",
     "section": "五、计算题",
     "topic": "热处理设备与工艺",
-    "id": 504
+    "id": 504,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "calculation",
@@ -6858,7 +7866,9 @@
     "explanation": "解：锻件高=48+5=53 锻件壁厚=(239-135)/2=52 因为 锻件高≥锻件壁厚 所以 锻件有效厚度取锻件锻件壁厚52 该锻件正火保温时间=(10~30) min+2.5min/mm*有效厚度=(10~30)min+2.5min/mm*52 =140 min~160 min:该锻件回火保温时间=(60~80)min+3min/mm*有效厚度=(60~80)min+3min/mm*52 =226 min~246 min。",
     "section": "五、计算题",
     "topic": "热处理设备与工艺",
-    "id": 505
+    "id": 505,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "calculation",
@@ -6867,7 +7877,9 @@
     "explanation": "解：试环保温时间=835/60=13h:55min 试环出炉时间=4：43+13h+55min=18:38出炉 试块剩余保温时间=(1425-835)/60=9h:50min 试块出炉时间=18：38+15min+9h+55min=次日4:48 锻件剩余保温时间=(1535-1425)/60=1h：50min 锻件出炉时间=次日4：48 +15min+1h+50min=次日6：53",
     "section": "五、计算题",
     "topic": "热处理设备与工艺",
-    "id": 506
+    "id": 506,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "calculation",
@@ -6876,7 +7888,9 @@
     "explanation": "解：F%=(6.69-0.77)/(6.69-0)=88.5% Fe3C%=1-F%=11.5% 答：铁素体含量为88.5%，渗碳体为11.5%。",
     "section": "五、计算题",
     "topic": "热处理设备与工艺",
-    "id": 507
+    "id": 507,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -6897,7 +7911,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 508
+    "id": 508,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -6916,7 +7932,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 509
+    "id": 509,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -6937,7 +7955,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 510
+    "id": 510,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -6958,7 +7978,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 511
+    "id": 511,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -6979,7 +8001,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 512
+    "id": 512,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -6998,7 +8022,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 513
+    "id": 513,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7019,7 +8045,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 514
+    "id": 514,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7040,7 +8068,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 515
+    "id": 515,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7061,7 +8091,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 516
+    "id": 516,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "choice",
@@ -7082,7 +8114,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 517
+    "id": 517,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7103,7 +8137,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 518
+    "id": 518,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7124,7 +8160,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 519
+    "id": 519,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "choice",
@@ -7145,7 +8183,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 520
+    "id": 520,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -7166,7 +8206,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "质量管理",
-    "id": 521
+    "id": 521,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7175,7 +8217,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 522
+    "id": 522,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -7184,7 +8228,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 523
+    "id": 523,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -7193,7 +8239,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 524
+    "id": 524,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7202,7 +8250,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 525
+    "id": 525,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "truefalse",
@@ -7211,7 +8261,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 526
+    "id": 526,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -7220,7 +8272,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 527
+    "id": 527,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -7229,7 +8283,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 528
+    "id": 528,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7238,7 +8294,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 529
+    "id": 529,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7247,7 +8305,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 530
+    "id": 530,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7256,7 +8316,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 531
+    "id": 531,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -7265,7 +8327,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 532
+    "id": 532,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "truefalse",
@@ -7274,7 +8338,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 533
+    "id": 533,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "truefalse",
@@ -7283,7 +8349,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 534
+    "id": 534,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -7292,7 +8360,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 535
+    "id": 535,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -7301,7 +8371,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "质量管理",
-    "id": 536
+    "id": 536,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "fill",
@@ -7310,7 +8382,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 537
+    "id": 537,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7319,7 +8393,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 538
+    "id": 538,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7328,7 +8404,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 539
+    "id": 539,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7337,7 +8415,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 540
+    "id": 540,
+    "knowledge_point": "冷却介质与淬透性",
+    "knowledge_point_key": "cooling_quenchants"
   },
   {
     "type": "fill",
@@ -7346,7 +8426,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 541
+    "id": 541,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "fill",
@@ -7355,7 +8437,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 542
+    "id": 542,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "fill",
@@ -7364,7 +8448,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 543
+    "id": 543,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7373,7 +8459,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 544
+    "id": 544,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7382,7 +8470,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 545
+    "id": 545,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7391,7 +8481,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 546
+    "id": 546,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7400,7 +8492,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 547
+    "id": 547,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7409,7 +8503,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 548
+    "id": 548,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7418,7 +8514,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 549
+    "id": 549,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7427,7 +8525,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 550
+    "id": 550,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "fill",
@@ -7436,7 +8536,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "质量管理",
-    "id": 551
+    "id": 551,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -7457,7 +8559,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 552
+    "id": 552,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "choice",
@@ -7478,7 +8582,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 553
+    "id": 553,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "choice",
@@ -7497,7 +8603,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 554
+    "id": 554,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7518,7 +8626,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 555
+    "id": 555,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "choice",
@@ -7539,7 +8649,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 556
+    "id": 556,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "choice",
@@ -7560,7 +8672,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 557
+    "id": 557,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "choice",
@@ -7581,7 +8695,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 558
+    "id": 558,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "choice",
@@ -7602,7 +8718,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 559
+    "id": 559,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -7623,7 +8741,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 560
+    "id": 560,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7644,7 +8764,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 561
+    "id": 561,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7665,7 +8787,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 562
+    "id": 562,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "choice",
@@ -7684,7 +8808,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 563
+    "id": 563,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -7701,7 +8827,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 564
+    "id": 564,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "choice",
@@ -7722,7 +8850,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "仪表知识",
-    "id": 565
+    "id": 565,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "truefalse",
@@ -7731,7 +8861,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 566
+    "id": 566,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "truefalse",
@@ -7740,7 +8872,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 567
+    "id": 567,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "truefalse",
@@ -7749,7 +8883,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 568
+    "id": 568,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "truefalse",
@@ -7758,7 +8894,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 569
+    "id": 569,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7767,7 +8905,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 570
+    "id": 570,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -7776,7 +8916,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 571
+    "id": 571,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "truefalse",
@@ -7785,7 +8927,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 572
+    "id": 572,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -7794,7 +8938,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 573
+    "id": 573,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "truefalse",
@@ -7803,7 +8949,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 574
+    "id": 574,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7812,7 +8960,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 575
+    "id": 575,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "truefalse",
@@ -7821,7 +8971,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 576
+    "id": 576,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "truefalse",
@@ -7830,7 +8982,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 577
+    "id": 577,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7839,7 +8993,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 578
+    "id": 578,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -7848,7 +9004,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "仪表知识",
-    "id": 579
+    "id": 579,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "fill",
@@ -7857,7 +9015,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 580
+    "id": 580,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "fill",
@@ -7866,7 +9026,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 581
+    "id": 581,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -7875,7 +9037,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 582
+    "id": 582,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "fill",
@@ -7884,7 +9048,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 583
+    "id": 583,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "fill",
@@ -7893,7 +9059,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 584
+    "id": 584,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "fill",
@@ -7902,7 +9070,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 585
+    "id": 585,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "fill",
@@ -7911,7 +9081,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 586
+    "id": 586,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "fill",
@@ -7920,7 +9092,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 587
+    "id": 587,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "fill",
@@ -7929,7 +9103,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 588
+    "id": 588,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "fill",
@@ -7938,7 +9114,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 589
+    "id": 589,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "fill",
@@ -7947,7 +9125,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 590
+    "id": 590,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "fill",
@@ -7956,7 +9136,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 591
+    "id": 591,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "fill",
@@ -7965,7 +9147,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 592
+    "id": 592,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "fill",
@@ -7974,7 +9158,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "仪表知识",
-    "id": 593
+    "id": 593,
+    "knowledge_point": "温度测量与热电偶",
+    "knowledge_point_key": "temperature_measurement"
   },
   {
     "type": "choice",
@@ -7995,7 +9181,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 594
+    "id": 594,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "choice",
@@ -8016,7 +9204,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 595
+    "id": 595,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8037,7 +9227,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 596
+    "id": 596,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -8058,7 +9250,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 597
+    "id": 597,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8077,7 +9271,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 598
+    "id": 598,
+    "knowledge_point": "冷却介质与淬透性",
+    "knowledge_point_key": "cooling_quenchants"
   },
   {
     "type": "choice",
@@ -8098,7 +9294,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 599
+    "id": 599,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -8119,7 +9317,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 600
+    "id": 600,
+    "knowledge_point": "正火",
+    "knowledge_point_key": "normalizing"
   },
   {
     "type": "choice",
@@ -8138,7 +9338,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 601
+    "id": 601,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -8157,7 +9359,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 602
+    "id": 602,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8178,7 +9382,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 603
+    "id": 603,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -8199,7 +9405,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 604
+    "id": 604,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -8220,7 +9428,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 605
+    "id": 605,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8239,7 +9449,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 606
+    "id": 606,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8260,7 +9472,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 607
+    "id": 607,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "choice",
@@ -8279,7 +9493,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 608
+    "id": 608,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8300,7 +9516,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 609
+    "id": 609,
+    "knowledge_point": "正火",
+    "knowledge_point_key": "normalizing"
   },
   {
     "type": "choice",
@@ -8321,7 +9539,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 610
+    "id": 610,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -8342,7 +9562,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 611
+    "id": 611,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -8363,7 +9585,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 612
+    "id": 612,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8384,7 +9608,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 613
+    "id": 613,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "choice",
@@ -8403,7 +9629,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 614
+    "id": 614,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -8422,7 +9650,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 615
+    "id": 615,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8441,7 +9671,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 616
+    "id": 616,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "choice",
@@ -8462,7 +9694,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 617
+    "id": 617,
+    "knowledge_point": "表面与化学热处理",
+    "knowledge_point_key": "surface_chemical_heat_treatment"
   },
   {
     "type": "choice",
@@ -8483,7 +9717,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 618
+    "id": 618,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "choice",
@@ -8504,7 +9740,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 619
+    "id": 619,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -8525,7 +9763,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 620
+    "id": 620,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "choice",
@@ -8544,7 +9784,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 621
+    "id": 621,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -8563,7 +9805,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 622
+    "id": 622,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "choice",
@@ -8584,7 +9828,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 623
+    "id": 623,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "choice",
@@ -8605,7 +9851,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 624
+    "id": 624,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "choice",
@@ -8626,7 +9874,9 @@
     "explanation": "",
     "section": "一、选择题",
     "topic": "综合复习",
-    "id": 625
+    "id": 625,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -8635,7 +9885,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 626
+    "id": 626,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -8644,7 +9896,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 627
+    "id": 627,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "truefalse",
@@ -8653,7 +9907,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 628
+    "id": 628,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "truefalse",
@@ -8662,7 +9918,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 629
+    "id": 629,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -8671,7 +9929,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 630
+    "id": 630,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -8680,7 +9940,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 631
+    "id": 631,
+    "knowledge_point": "变形与开裂",
+    "knowledge_point_key": "deformation_cracking"
   },
   {
     "type": "truefalse",
@@ -8689,7 +9951,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 632
+    "id": 632,
+    "knowledge_point": "晶粒与组织",
+    "knowledge_point_key": "grain_structure"
   },
   {
     "type": "truefalse",
@@ -8698,7 +9962,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 633
+    "id": 633,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "truefalse",
@@ -8707,7 +9973,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 634
+    "id": 634,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -8716,7 +9984,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 635
+    "id": 635,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -8725,7 +9995,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 636
+    "id": 636,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -8734,7 +10006,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 637
+    "id": 637,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "truefalse",
@@ -8743,7 +10017,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 638
+    "id": 638,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "truefalse",
@@ -8752,7 +10028,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 639
+    "id": 639,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -8761,7 +10039,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 640
+    "id": 640,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -8770,7 +10050,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 641
+    "id": 641,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "truefalse",
@@ -8779,7 +10061,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 642
+    "id": 642,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -8788,7 +10072,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 643
+    "id": 643,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -8797,7 +10083,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 644
+    "id": 644,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "truefalse",
@@ -8806,7 +10094,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 645
+    "id": 645,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "truefalse",
@@ -8815,7 +10105,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 646
+    "id": 646,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "truefalse",
@@ -8824,7 +10116,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 647
+    "id": 647,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "truefalse",
@@ -8833,7 +10127,9 @@
     "explanation": "",
     "section": "二、判断题",
     "topic": "综合复习",
-    "id": 648
+    "id": 648,
+    "knowledge_point": "安全与操作规范",
+    "knowledge_point_key": "safety_operation"
   },
   {
     "type": "fill",
@@ -8842,7 +10138,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 649
+    "id": 649,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "fill",
@@ -8851,7 +10149,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 650
+    "id": 650,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -8860,7 +10160,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 651
+    "id": 651,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "fill",
@@ -8869,7 +10171,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 652
+    "id": 652,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -8878,7 +10182,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 653
+    "id": 653,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -8887,7 +10193,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 654
+    "id": 654,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -8896,7 +10204,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 655
+    "id": 655,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -8905,7 +10215,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 656
+    "id": 656,
+    "knowledge_point": "综合/未分类",
+    "knowledge_point_key": "general"
   },
   {
     "type": "fill",
@@ -8914,7 +10226,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 657
+    "id": 657,
+    "knowledge_point": "加热与保温",
+    "knowledge_point_key": "heating_holding"
   },
   {
     "type": "fill",
@@ -8923,7 +10237,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 658
+    "id": 658,
+    "knowledge_point": "热处理设备",
+    "knowledge_point_key": "heat_treatment_equipment"
   },
   {
     "type": "fill",
@@ -8932,7 +10248,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 659
+    "id": 659,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -8941,7 +10259,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 660
+    "id": 660,
+    "knowledge_point": "力学性能",
+    "knowledge_point_key": "mechanical_properties"
   },
   {
     "type": "fill",
@@ -8950,7 +10270,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 661
+    "id": 661,
+    "knowledge_point": "合金元素作用",
+    "knowledge_point_key": "alloy_elements"
   },
   {
     "type": "fill",
@@ -8959,7 +10281,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 662
+    "id": 662,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "fill",
@@ -8968,7 +10292,9 @@
     "explanation": "",
     "section": "三、填空题",
     "topic": "综合复习",
-    "id": 663
+    "id": 663,
+    "knowledge_point": "奥氏体转变",
+    "knowledge_point_key": "austenite_transformation"
   },
   {
     "type": "calculation",
@@ -8977,7 +10303,9 @@
     "explanation": "解：A产品数量为：65+2=67（件） 炉子占比为：67/120=0.558 B产品数量为：130+2=132（件） 炉子占比为：132/280=0.471 C产品数量为：105+2=107（件） 炉子占比为：107/230=0.465 三项同时装炉总占比为：",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 664
+    "id": 664,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "calculation",
@@ -8986,7 +10314,9 @@
     "explanation": "",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 665
+    "id": 665,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "calculation",
@@ -8995,7 +10325,9 @@
     "explanation": "解：根据Fe-Fe3C相图及杠杆原理，得 铁素体含量F=（6.69-0.45）/（6.69-0）×100%=93.3% 渗碳体含量Fe3C=1-F=1-93.3%=6.7%",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 666
+    "id": 666,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "calculation",
@@ -9004,7 +10336,9 @@
     "explanation": "解：根据Fe-Fe3C相图及杠杆原理，得 铁素体含量F=（6.69-0.35）/（6.69-0）×100%=94.8% 渗碳体含量Fe3C=1-F=1-94.8%=5.2%",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 667
+    "id": 667,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "calculation",
@@ -9013,7 +10347,9 @@
     "explanation": "解：根据Fe-Fe3C相图可知，珠光体的含碳量为0.77%，渗碳体的含碳量为6.69%，则 铁素体含量F=（6.69-0.77）/（6.69-0）×100%=88.5% 渗碳体含量Fe3C=1-F=1-88.5%=11.5%",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 668
+    "id": 668,
+    "knowledge_point": "铁碳相图",
+    "knowledge_point_key": "iron_carbon_diagram"
   },
   {
     "type": "calculation",
@@ -9022,7 +10358,9 @@
     "explanation": "解：因为珠光体含碳量为0.77%，所以该钢的含碳量为： C%=P%×0.77%=45%×0.77%=0.45×0.77%=0.3465% 根据碳钢的命名法则，含碳量为0.3465%左右的钢，其牌号应为35钢。 答：该钢的含碳量为0.3465%，钢号应为35钢。",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 669
+    "id": 669,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "calculation",
@@ -9031,7 +10369,9 @@
     "explanation": "解：A产品数量为：32+2=34（件） 炉子占比为：34/120=0.283 B产品数量为：50+6=56（件） 炉子占比为：56/180=0.311 C产品数量为：35+2=37（件） 炉子占比为：37/130=0.285 三项同时装炉总占比为：",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 670
+    "id": 670,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "calculation",
@@ -9040,7 +10380,9 @@
     "explanation": "",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 671
+    "id": 671,
+    "knowledge_point": "热处理工艺设计",
+    "knowledge_point_key": "heat_treatment_process_design"
   },
   {
     "type": "calculation",
@@ -9049,7 +10391,9 @@
     "explanation": "解：金相组织中珠光体含量为：1-48%=52% 又因为珠光体含碳量为0.77%，所以该钢的含碳量为： C%=P%×0.77%=52%×0.77%=0.52×0.77%=0.4004% 根据碳钢的命名法则，含碳量为0.4004%左右的钢，其牌号应为40钢。 答：该钢的含碳量为0.4004%，钢号应为40钢。",
     "section": "四、计算题",
     "topic": "综合复习",
-    "id": 672
+    "id": 672,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "shortanswer",
@@ -9058,7 +10402,9 @@
     "explanation": "a、降低钢的硬度，提高塑性，以利于切削加工及冷变形加工；b、细化晶粒，均匀 钢的组织及成分，改善钢的性能或为以后的热处理作准备；c、消除钢中的残余内应力， 以防止变形和开裂。",
     "section": "五、简答题",
     "topic": "综合复习",
-    "id": 673
+    "id": 673,
+    "knowledge_point": "退火",
+    "knowledge_point_key": "annealing"
   },
   {
     "type": "shortanswer",
@@ -9067,7 +10413,9 @@
     "explanation": "合金钢回火稳定性较高，一般是有利的：在达到相同硬度的情况下，合金钢的回火 温度应比碳钢高，回火时间也应增长，可进一步消除残余应力，因而合金钢的塑性、韧 性较碳钢好；而在同一温度回火时，合金钢的强度、硬度比碳钢高。",
     "section": "五、简答题",
     "topic": "综合复习",
-    "id": 674
+    "id": 674,
+    "knowledge_point": "钢的分类与牌号",
+    "knowledge_point_key": "steel_classification"
   },
   {
     "type": "shortanswer",
@@ -9076,7 +10424,9 @@
     "explanation": "a、减少或消除淬火时产生的内应力，防止工件在使用过程中产生变形和开裂；b、 通过回火提高钢的韧性，适当调整钢的强度和硬度，使工件达到所要求的力学性能，以 满足各种工件的性能需要；c、稳定组织，使工件在使用过程中不发生组织转变，从而保 证工件的形状和尺寸不变，保证工件的精度。",
     "section": "五、简答题",
     "topic": "综合复习",
-    "id": 675
+    "id": 675,
+    "knowledge_point": "回火",
+    "knowledge_point_key": "tempering"
   },
   {
     "type": "shortanswer",
@@ -9085,7 +10435,9 @@
     "explanation": "五清是指：产品批次清、质量状况清、原始记录清、数量清、炉批号清。 六分批是指：分批投料、分批加工、分批转工、分批入库、分批装配、分批出厂。",
     "section": "五、简答题",
     "topic": "综合复习",
-    "id": 676
+    "id": 676,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "shortanswer",
@@ -9094,7 +10446,9 @@
     "explanation": "原因找不出不放过；责任查不清不放过；纠正措施不落实不放过；验证不充分不放 过；教育不到位不放过。",
     "section": "五、简答题",
     "topic": "综合复习",
-    "id": 677
+    "id": 677,
+    "knowledge_point": "质量管理与检验",
+    "knowledge_point_key": "quality_inspection"
   },
   {
     "type": "shortanswer",
@@ -9103,7 +10457,9 @@
     "explanation": "（1）钢淬火的主要目的是为了获得马氏体，提高钢的强度和硬度。 （2）理想的淬火冷却介质是：淬火冷却速率应为开始先缓慢冷却之后快速冷却最后缓慢 冷却。 （3）因为这样的冷却速率既得到马氏体组织，又减小了热应力和组织应力，防止钢件变 形或开裂等。 （4）生产中类似的操作方式如：双液淬火，钢件在空气中预冷后再入油冷却等。",
     "section": "五、简答题",
     "topic": "综合复习",
-    "id": 678
+    "id": 678,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   },
   {
     "type": "shortanswer",
@@ -9112,6 +10468,8 @@
     "explanation": "钢淬火的主要目的是为了获得马氏体，提高钢的强度和硬度。 为了使钢件热透，使奥氏体转变彻底并均匀化。所以要进行保温。",
     "section": "五、简答题",
     "topic": "综合复习",
-    "id": 679
+    "id": 679,
+    "knowledge_point": "淬火",
+    "knowledge_point_key": "quenching"
   }
 ]
