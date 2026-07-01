@@ -243,7 +243,7 @@ function renderReview() {
 function renderReviewQuestion(q) {
   // Clean question text
   let dq = q.question;
-  const optM = dq.match(/\s{2,}[A-D][、\.]/);
+  const optM = dq.match(/\s+[A-D][、.．]/);
   if (optM && q.options && q.options.length > 0) {
     dq = dq.substring(0, optM.index).trim();
   }
