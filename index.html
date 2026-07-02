@@ -5,396 +5,432 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>热处理考试刷题系统</title>
 <style>
+/* ===== Design Tokens ===== */
+:root {
+  --primary:#2563eb; --primary-hover:#1d4ed8; --primary-light:#eff3ff; --primary-100:#dbeafe;
+  --success:#16a34a; --success-light:#f0fdf4; --success-100:#dcfce7;
+  --warning:#d97706; --warning-light:#fffbeb; --warning-100:#fef3c7;
+  --danger:#dc2626; --danger-light:#fef2f2; --danger-100:#fee2e2;
+  --purple:#7c3aed; --purple-hover:#6d28d9;
+  --bg:#f1f5f9; --surface:#ffffff; --surface-hover:#f8fafc;
+  --text:#0f172a; --text-secondary:#475569; --text-muted:#94a3b8;
+  --border:#e2e8f0; --border-light:#f1f5f9;
+  --radius-sm:8px; --radius:12px; --radius-lg:16px; --radius-xl:20px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.04);
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.06),0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:0 10px 25px rgba(0,0,0,0.08),0 4px 10px rgba(0,0,0,0.04);
+  --sidebar-w:240px; --bottombar-h:64px;
+}
+
+/* ===== Reset & Base ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; background:#f0f2f5; color:#333; min-height:100vh; }
-.container { max-width:800px; margin:0 auto; padding:16px; }
+html { scroll-behavior:smooth; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif; background:var(--bg); color:var(--text); min-height:100vh; -webkit-tap-highlight-color:transparent; }
 
-/* Header */
-.header { background:linear-gradient(135deg,#1a73e8,#1557b0); color:#fff; padding:20px 24px; border-radius:12px; margin-bottom:16px; text-align:center; }
-.header h1 { font-size:24px; margin-bottom:4px; }
-.header p { opacity:0.85; font-size:14px; }
+/* ===== App Shell ===== */
+.app-shell { display:flex; min-height:100vh; }
 
-/* Cards */
-.card { background:#fff; border-radius:12px; padding:20px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+/* ===== Sidebar (Desktop) ===== */
+.sidebar { width:var(--sidebar-w); background:var(--surface); border-right:1px solid var(--border); display:flex; flex-direction:column; position:fixed; top:0; left:0; bottom:0; z-index:50; overflow-y:auto; }
+.sidebar-brand { padding:24px 20px 20px; cursor:pointer; display:flex; align-items:center; gap:10px; border-bottom:1px solid var(--border-light); }
+.sidebar-logo { width:40px; height:40px; background:linear-gradient(135deg,var(--primary),var(--purple)); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:20px; }
+.sidebar-title { font-size:17px; font-weight:700; color:var(--text); }
+.sidebar-nav { flex:1; padding:12px 10px; display:flex; flex-direction:column; gap:2px; }
+.sidebar-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:var(--radius-sm); border:none; background:transparent; cursor:pointer; font-size:14px; color:var(--text-secondary); transition:all .15s; text-align:left; width:100%; font-family:inherit; }
+.sidebar-item:hover { background:var(--primary-light); color:var(--primary); }
+.sidebar-item.active { background:var(--primary-light); color:var(--primary); font-weight:600; }
+.sidebar-item .side-icon { font-size:18px; width:24px; text-align:center; flex-shrink:0; }
+.sidebar-item .side-badge { margin-left:auto; background:var(--danger); color:#fff; font-size:11px; padding:2px 8px; border-radius:10px; min-width:20px; text-align:center; }
+.sidebar-stats { padding:16px 20px; border-top:1px solid var(--border-light); font-size:12px; color:var(--text-muted); }
 
-/* Stats grid */
-.stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:10px; margin-bottom:16px; }
-.stat-card { background:#fff; border-radius:12px; padding:16px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,0.08); cursor:pointer; transition:all .2s; }
-.stat-card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.12); }
-.stat-card .num { font-size:32px; font-weight:700; color:#1a73e8; }
-.stat-card .label { font-size:13px; color:#666; margin-top:4px; }
-.stat-card.active { border:2px solid #1a73e8; background:#e8f0fe; }
+/* ===== Main Content ===== */
+.main-content { flex:1; margin-left:var(--sidebar-w); padding:20px 24px 24px; max-width:calc(880px + var(--sidebar-w)); }
+.main-content .container { max-width:800px; }
 
-/* Buttons */
-.btn { display:inline-block; padding:10px 20px; border-radius:8px; border:none; cursor:pointer; font-size:15px; transition:all .2s; text-decoration:none; }
-.btn-primary { background:#1a73e8; color:#fff; }
-.btn-primary:hover { background:#1557b0; }
-.btn-outline { background:#fff; color:#1a73e8; border:1.5px solid #1a73e8; }
-.btn-outline:hover { background:#e8f0fe; }
-.btn-success { background:#0d904f; color:#fff; }
-.btn-danger { background:#d93025; color:#fff; }
-.btn-lg { padding:14px 28px; font-size:17px; }
-.btn-sm { padding:6px 14px; font-size:13px; }
-.btn-block { display:block; width:100%; text-align:center; }
-.btn:disabled { opacity:0.5; cursor:not-allowed; }
+/* ===== Bottom Bar (Mobile) ===== */
+.bottombar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:50; height:var(--bottombar-h); background:var(--surface); border-top:1px solid var(--border); padding:6px 8px env(safe-area-inset-bottom,8px); }
+.bottombar-inner { display:flex; height:100%; max-width:500px; margin:0 auto; }
+.bottombar-item { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; border:none; background:transparent; cursor:pointer; font-size:11px; color:var(--text-muted); transition:all .15s; border-radius:var(--radius-sm); padding:4px 0; font-family:inherit; }
+.bottombar-item .bb-icon { font-size:22px; }
+.bottombar-item.active { color:var(--primary); font-weight:600; }
 
-/* Filter row */
-.filter-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
-.filter-row .btn { font-size:13px; padding:6px 14px; }
-.filter-row .btn.active { background:#1a73e8; color:#fff; }
+/* ===== Cards ===== */
+.card { background:var(--surface); border-radius:var(--radius-lg); padding:20px 24px; margin-bottom:16px; box-shadow:var(--shadow); border:1px solid var(--border); transition:box-shadow .2s,transform .2s; }
+.card:hover { box-shadow:var(--shadow-md); }
+.card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.card-header h3 { font-size:17px; font-weight:600; }
 
-/* Quiz area */
-.quiz-progress { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:14px; color:#666; }
-.progress-bar { height:4px; background:#e0e0e0; border-radius:2px; margin-bottom:16px; }
-.progress-bar-fill { height:100%; background:#1a73e8; border-radius:2px; transition:width .3s; }
+/* ===== Header Cards ===== */
+.hero-card { background:linear-gradient(135deg,var(--primary),#4f46e5); color:#fff; border-radius:var(--radius-lg); padding:28px 24px; margin-bottom:20px; box-shadow:var(--shadow-md); border:none; position:relative; overflow:hidden; }
+.hero-card::after { content:''; position:absolute; top:-50%; right:-20%; width:200px; height:200px; background:rgba(255,255,255,0.06); border-radius:50%; pointer-events:none; }
+.hero-card h1 { font-size:26px; margin-bottom:4px; position:relative; z-index:1; }
+.hero-card p { opacity:0.85; font-size:14px; position:relative; z-index:1; }
+.exam-hero { background:linear-gradient(135deg,#ea580c,#dc2626); }
 
-.question-text { font-size:18px; line-height:1.7; margin-bottom:20px; padding:16px; background:#f8f9fa; border-radius:8px; border-left:4px solid #1a73e8; }
-.question-meta { font-size:12px; color:#999; margin-bottom:8px; }
+/* ===== Stats Grid ===== */
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:20px; }
+.stat-card { background:var(--surface); border-radius:var(--radius); padding:18px 16px; text-align:center; box-shadow:var(--shadow-sm); border:1px solid var(--border); cursor:pointer; transition:all .2s; }
+.stat-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:var(--primary-100); }
+.stat-card .stat-icon { font-size:28px; margin-bottom:6px; }
+.stat-card .stat-num { font-size:30px; font-weight:700; color:var(--primary); }
+.stat-card .stat-label { font-size:12px; color:var(--text-muted); margin-top:2px; }
+.stat-card.stat-danger .stat-num { color:var(--danger); }
 
-.options { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
-.option { padding:14px 16px; border:2px solid #e0e0e0; border-radius:10px; cursor:pointer; transition:all .15s; font-size:16px; display:flex; align-items:center; gap:10px; }
-.option:hover { border-color:#1a73e8; background:#f8f9ff; }
-.option.selected { border-color:#1a73e8; background:#e8f0fe; }
-.option.correct { border-color:#0d904f; background:#e6f4ea; animation: correctPop .45s ease; }
-.option.wrong { border-color:#d93025; background:#fce8e6; animation: shake .45s ease; }
-.option .letter { width:32px; height:32px; border-radius:50%; background:#e8f0fe; color:#1a73e8; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0; transition:all .3s; }
-.option.correct .letter { background:#0d904f; color:#fff; animation: letterPop .3s ease .15s both; }
-.option.wrong .letter { background:#d93025; color:#fff; }
-.option.multi-select { user-select:none; }
+/* ===== Buttons ===== */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:10px 20px; border-radius:var(--radius-sm); border:none; cursor:pointer; font-size:14px; font-weight:500; transition:all .15s; text-decoration:none; white-space:nowrap; font-family:inherit; }
+.btn:active { transform:scale(.97); }
+.btn-primary { background:var(--primary); color:#fff; }
+.btn-primary:hover { background:var(--primary-hover); box-shadow:var(--shadow-md); }
+.btn-outline { background:var(--surface); color:var(--primary); border:1.5px solid var(--border); }
+.btn-outline:hover { background:var(--primary-light); border-color:var(--primary); }
+.btn-success { background:var(--success); color:#fff; }
+.btn-success:hover { opacity:.9; }
+.btn-danger { background:var(--danger); color:#fff; }
+.btn-danger:hover { opacity:.9; }
+.btn-ghost { background:transparent; color:var(--text-secondary); }
+.btn-ghost:hover { background:var(--bg); color:var(--text); }
+.btn-lg { padding:14px 28px; font-size:16px; border-radius:var(--radius); }
+.btn-sm { padding:6px 14px; font-size:13px; border-radius:6px; }
+.btn-block { display:flex; width:100%; }
+.btn:disabled { opacity:.4; cursor:not-allowed; pointer-events:none; }
 
-/* ===== Answer Feedback Animations ===== */
-@keyframes correctPop {
-  0% { transform:scale(1); }
-  30% { transform:scale(1.03); }
-  60% { transform:scale(.99); }
-  100% { transform:scale(1); }
-}
-@keyframes shake {
-  0%,100% { transform:translateX(0); }
-  20% { transform:translateX(-6px); }
-  40% { transform:translateX(6px); }
-  60% { transform:translateX(-4px); }
-  80% { transform:translateX(3px); }
-}
-@keyframes letterPop {
-  0% { transform:scale(1); }
-  50% { transform:scale(1.35); }
-  100% { transform:scale(1); }
-}
-@keyframes feedbackSlide {
-  0% { opacity:0; transform:translateY(8px); }
-  100% { opacity:1; transform:translateY(0); }
-}
-@keyframes cardGlowGreen {
-  0% { box-shadow:0 0 0 0 rgba(13,144,79,.4); }
-  50% { box-shadow:0 0 0 8px rgba(13,144,79,0); }
-  100% { box-shadow:0 0 0 0 rgba(13,144,79,0); }
-}
-@keyframes cardGlowRed {
-  0% { box-shadow:0 0 0 0 rgba(217,48,37,.4); }
-  50% { box-shadow:0 0 0 8px rgba(217,48,37,0); }
-  100% { box-shadow:0 0 0 0 rgba(217,48,37,0); }
-}
-@keyframes scoreCountUp {
-  0% { opacity:0; transform:translateY(20px) scale(.8); }
-  100% { opacity:1; transform:translateY(0) scale(1); }
-}
+/* ===== Action Cards (2x2 grid) ===== */
+.actions-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+.action-card { background:var(--surface); border-radius:var(--radius); padding:22px 18px; border:1px solid var(--border); cursor:pointer; transition:all .2s; text-align:center; box-shadow:var(--shadow-sm); }
+.action-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:var(--primary-100); }
+.action-card .ac-icon { font-size:32px; margin-bottom:8px; }
+.action-card .ac-title { font-size:15px; font-weight:600; color:var(--text); }
+.action-card .ac-sub { font-size:12px; color:var(--text-muted); margin-top:2px; }
 
-.feedback.animate-in { animation: feedbackSlide .35s ease both; }
-.question-card.correct-glow { animation: cardGlowGreen .6s ease; }
-.question-card.wrong-glow { animation: cardGlowRed .6s ease; }
+/* ===== Filter Chips ===== */
+.chip-group { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { padding:6px 14px; border-radius:20px; border:1.5px solid var(--border); background:var(--surface); cursor:pointer; font-size:13px; color:var(--text-secondary); transition:all .15s; font-family:inherit; }
+.chip:hover { border-color:var(--primary); color:var(--primary); }
+.chip.active { background:var(--primary); color:#fff; border-color:var(--primary); }
 
-.tf-buttons { display:flex; gap:12px; margin-bottom:20px; }
-.tf-btn { flex:1; padding:24px; border:2px solid #e0e0e0; border-radius:10px; cursor:pointer; font-size:32px; text-align:center; transition:all .15s; }
-.tf-btn:hover { border-color:#1a73e8; background:#f8f9ff; }
-.tf-btn.correct { border-color:#0d904f; background:#e6f4ea; }
-.tf-btn.wrong { border-color:#d93025; background:#fce8e6; }
+/* ===== Quiz Area ===== */
+.quiz-topbar { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.quiz-topbar .qt-info { font-size:13px; color:var(--text-muted); }
+.quiz-topbar .qt-count { margin-left:auto; font-size:13px; color:var(--text-secondary); font-weight:500; }
+.progress-bar { height:3px; background:var(--border); border-radius:2px; margin-bottom:20px; overflow:hidden; }
+.progress-bar-fill { height:100%; background:linear-gradient(90deg,var(--primary),#4f46e5); border-radius:2px; transition:width .3s; }
 
-.fill-input { width:100%; padding:14px; border:2px solid #e0e0e0; border-radius:10px; font-size:16px; margin-bottom:12px; }
-.fill-input:focus { outline:none; border-color:#1a73e8; }
+.question-card { background:var(--surface); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow); border:1px solid var(--border); margin-bottom:16px; }
+.question-card.correct-glow { animation:cardGlowGreen .6s ease; }
+.question-card.wrong-glow { animation:cardGlowRed .6s ease; }
+.question-meta { display:flex; align-items:center; gap:8px; margin-bottom:16px; font-size:13px; color:var(--text-muted); }
+.question-meta .q-type-badge { background:var(--primary-light); color:var(--primary); padding:3px 10px; border-radius:12px; font-weight:500; font-size:12px; }
+.question-text { font-size:17px; line-height:1.8; margin-bottom:24px; padding:16px 20px; background:var(--bg); border-radius:var(--radius); border-left:4px solid var(--primary); }
 
-.answer-reveal { padding:16px; background:#e6f4ea; border-radius:8px; margin:12px 0; font-size:15px; line-height:1.7; }
-.answer-reveal strong { color:#0d904f; }
+/* Options */
+.options { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
+.option { padding:16px 20px; border:2px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .18s; font-size:16px; line-height:1.7; display:block; width:100%; background:var(--surface); position:relative; }
+.option:hover { border-color:var(--primary); background:var(--primary-light); transform:translateX(3px); }
+.option.selected { border-color:var(--primary); background:var(--primary-light); box-shadow:0 0 0 1px var(--primary); }
+.option.correct { border-color:var(--success); background:var(--success-light); animation:correctPop .45s ease; }
+.option.wrong { border-color:var(--danger); background:var(--danger-light); animation:shake .45s ease; }
+.option .letter { width:36px; height:36px; border-radius:50%; background:var(--primary-light); color:var(--primary); display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0; transition:all .3s; margin-right:12px; vertical-align:middle; }
+.option.correct .letter { background:var(--success); color:#fff; animation:letterPop .3s ease .15s both; }
+.option.wrong .letter { background:var(--danger); color:#fff; }
 
-.feedback { padding:12px 16px; border-radius:8px; margin:12px 0; font-size:15px; font-weight:600; }
-.feedback.correct { background:#e6f4ea; color:#0d904f; }
-.feedback.wrong { background:#fce8e6; color:#d93025; }
+/* True/False */
+.tf-buttons { display:flex; gap:12px; margin-bottom:24px; }
+.tf-btn { flex:1; padding:28px; border:2px solid var(--border); border-radius:var(--radius); cursor:pointer; font-size:28px; text-align:center; transition:all .15s; background:var(--surface); font-weight:600; }
+.tf-btn:hover { border-color:var(--primary); background:var(--primary-light); }
+.tf-btn.correct { border-color:var(--success); background:var(--success-light); color:var(--success); }
+.tf-btn.wrong { border-color:var(--danger); background:var(--danger-light); color:var(--danger); }
 
-.self-check { display:flex; gap:10px; margin-top:12px; }
-.nav-buttons { display:flex; gap:10px; justify-content:space-between; margin-top:16px; }
+/* Fill input */
+.fill-input { width:100%; padding:14px 18px; border:2px solid var(--border); border-radius:var(--radius); font-size:15px; margin-bottom:12px; transition:border-color .15s; font-family:inherit; background:var(--surface); }
+.fill-input:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,.1); }
+.fill-actions { display:flex; gap:8px; }
 
-/* Mistake list */
-.mistake-item { padding:12px; border-bottom:1px solid #eee; cursor:pointer; }
-.mistake-item:hover { background:#f8f9fa; }
-.mistake-item .q-type { font-size:11px; color:#1a73e8; font-weight:600; }
+/* Feedback */
+.answer-reveal { padding:16px 20px; background:var(--success-light); border-radius:var(--radius); margin:12px 0; font-size:14px; line-height:1.7; border:1px solid var(--success-100); }
+.answer-reveal strong { color:var(--success); }
+.feedback { padding:14px 18px; border-radius:var(--radius); margin:16px 0; font-size:15px; font-weight:600; }
+.feedback.correct { background:var(--success-light); color:var(--success); border:1px solid var(--success-100); }
+.feedback.wrong { background:var(--danger-light); color:var(--danger); border:1px solid var(--danger-100); }
+.feedback.animate-in { animation:feedbackSlide .35s ease both; }
+.self-check { display:flex; gap:10px; margin-top:12px; align-items:center; }
+.nav-buttons { display:flex; gap:10px; justify-content:space-between; margin-top:20px; }
 
-/* Tabs */
-.tabs { display:flex; border-bottom:2px solid #e0e0e0; margin-bottom:16px; }
-.tab { padding:10px 18px; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; font-size:14px; color:#666; }
-.tab.active { color:#1a73e8; border-bottom-color:#1a73e8; font-weight:600; }
+/* ===== Animations ===== */
+@keyframes correctPop { 0%{transform:scale(1)} 30%{transform:scale(1.03)} 60%{transform:scale(.99)} 100%{transform:scale(1)} }
+@keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(3px)} }
+@keyframes letterPop { 0%{transform:scale(1)} 50%{transform:scale(1.35)} 100%{transform:scale(1)} }
+@keyframes feedbackSlide { 0%{opacity:0;transform:translateY(8px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes cardGlowGreen { 0%{box-shadow:0 0 0 0 rgba(22,163,74,.4)} 50%{box-shadow:0 0 0 10px rgba(22,163,74,0)} 100%{box-shadow:0 0 0 0 rgba(22,163,74,0)} }
+@keyframes cardGlowRed { 0%{box-shadow:0 0 0 0 rgba(220,38,38,.4)} 50%{box-shadow:0 0 0 10px rgba(220,38,38,0)} 100%{box-shadow:0 0 0 0 rgba(220,38,38,0)} }
+@keyframes scoreCountUp { 0%{opacity:0;transform:translateY(20px) scale(.8)} 100%{opacity:1;transform:translateY(0) scale(1)} }
+@keyframes fadeIn { 0%{opacity:0} 100%{opacity:1} }
 
+/* ===== Mistake List ===== */
+.mistake-item { padding:14px 18px; border-bottom:1px solid var(--border-light); cursor:pointer; transition:background .15s; }
+.mistake-item:hover { background:var(--surface-hover); }
+.mistake-item:last-child { border-bottom:none; }
+.mistake-item .q-type { font-size:11px; color:var(--primary); font-weight:600; background:var(--primary-light); padding:2px 8px; border-radius:10px; }
+
+/* ===== Tab Bar ===== */
+.tab-bar { display:flex; background:var(--surface); border-radius:var(--radius); margin-bottom:16px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border); }
+.tab-bar .tab-item { flex:1; text-align:center; padding:12px 8px; cursor:pointer; font-size:14px; font-weight:500; color:var(--text-secondary); transition:all .2s; border-bottom:3px solid transparent; border:none; background:transparent; font-family:inherit; }
+.tab-bar .tab-item:hover { color:var(--primary); background:var(--primary-light); }
+.tab-bar .tab-item.active { color:var(--primary); border-bottom-color:var(--primary); }
+
+/* ===== Review Mode ===== */
+.review-layout { display:flex; gap:16px; }
+.review-sidebar { width:180px; flex-shrink:0; }
+.review-sidebar .kp-nav { background:var(--surface); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border); position:sticky; top:80px; max-height:calc(100vh - 120px); overflow-y:auto; }
+.review-sidebar .kp-nav-item { display:block; width:100%; text-align:left; padding:10px 14px; border:none; background:transparent; cursor:pointer; font-size:13px; color:var(--text-secondary); border-left:3px solid transparent; transition:all .15s; font-family:inherit; }
+.review-sidebar .kp-nav-item:hover { background:var(--primary-light); color:var(--primary); }
+.review-sidebar .kp-nav-item.active { background:var(--primary-light); color:var(--primary); border-left-color:var(--primary); font-weight:600; }
+.review-sidebar .kp-nav-item .kp-count { font-size:11px; color:var(--text-muted); float:right; }
+.review-main { flex:1; min-width:0; }
+.review-kp-section { margin-bottom:20px; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border); }
+.review-kp-header { background:linear-gradient(135deg,var(--primary),var(--primary-hover)); color:#fff; padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+.review-kp-header h3 { font-size:15px; margin:0; }
+.review-kp-explanation { background:var(--primary-light); padding:14px 18px; font-size:14px; line-height:1.8; color:var(--text); display:none; border-left:4px solid var(--primary); }
+.review-kp-explanation.show { display:block; }
+.review-kp-explanation .kp-section-label { font-size:12px; color:var(--primary); font-weight:600; margin-top:6px; }
+.review-qcard { background:var(--surface); padding:14px 18px; border-bottom:1px solid var(--border-light); transition:background .15s; }
+.review-qcard:hover { background:var(--surface-hover); }
+.review-qcard:last-child { border-bottom:none; }
+.review-qcard .rq-meta { font-size:11px; color:var(--text-muted); margin-bottom:4px; }
+.review-qcard .rq-text { font-size:15px; line-height:1.7; }
+.review-qcard .rq-answer { display:inline-block; background:var(--success-light); color:var(--success); padding:2px 10px; border-radius:4px; font-weight:700; font-size:14px; margin-left:6px; }
+.review-qcard .rq-answer.wrong-ans { background:var(--danger-light); color:var(--danger); }
+.review-qcard .rq-options { font-size:13px; color:var(--text-secondary); margin-top:4px; padding-left:8px; border-left:2px solid var(--border); }
+.review-qcard .rq-explanation { font-size:13px; color:var(--text-secondary); margin-top:6px; padding:10px 14px; background:var(--bg); border-radius:var(--radius-sm); line-height:1.6; }
+
+/* ===== Study Guide ===== */
+.guide-section { background:var(--surface); border-radius:var(--radius); padding:20px 24px; margin-bottom:16px; box-shadow:var(--shadow-sm); border:1px solid var(--border); }
+.guide-section h3 { margin-bottom:10px; font-size:17px; }
+.guide-section p,.guide-section li { font-size:14px; line-height:1.8; color:var(--text-secondary); }
+.guide-section ol,.guide-section ul { padding-left:20px; }
+.guide-highlight { background:linear-gradient(135deg,var(--warning-light),var(--warning-100)); padding:16px 20px; border-radius:var(--radius); border-left:4px solid var(--warning); margin:12px 0; }
+.guide-highlight.green { background:linear-gradient(135deg,var(--success-light),var(--success-100)); border-left-color:var(--success); }
+
+/* ===== KP Hint ===== */
+.kp-hint { font-size:13px; color:var(--primary); margin-top:12px; padding:12px 16px; background:var(--primary-light); border-radius:var(--radius); line-height:1.6; cursor:pointer; border:1px solid var(--primary-100); }
+.kp-hint strong { cursor:pointer; }
+.kp-hint .kp-detail { display:none; margin-top:8px; color:var(--text); font-weight:normal; }
+.kp-hint .kp-detail.show { display:block; }
+
+/* ===== Exam Mode ===== */
+.exam-header { background:linear-gradient(135deg,#ea580c,#dc2626); color:#fff; padding:20px 24px; border-radius:var(--radius-lg); margin-bottom:16px; text-align:center; }
+.exam-header h1 { font-size:22px; margin-bottom:4px; }
+.exam-header p { opacity:.85; font-size:13px; }
+.exam-config-card { background:var(--surface); border-radius:var(--radius); padding:20px 24px; margin-bottom:16px; box-shadow:var(--shadow-sm); border:1px solid var(--border); }
+.exam-config-card h3 { margin-bottom:8px; }
+.preset-btns { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.custom-row { display:flex; gap:8px; align-items:center; margin-top:8px; }
+.custom-row input { width:80px; padding:8px 12px; border:2px solid var(--border); border-radius:var(--radius-sm); font-size:15px; text-align:center; font-family:inherit; }
+.custom-row input:focus { outline:none; border-color:var(--primary); }
+.exam-scorecard { background:var(--surface); border-radius:var(--radius-lg); padding:32px 24px; margin-bottom:20px; text-align:center; box-shadow:var(--shadow-md); border:1px solid var(--border); }
+.exam-scorecard .big-num { font-size:64px; font-weight:800; }
+.exam-scorecard .big-num.great { color:var(--success); }
+.exam-scorecard .big-num.good { color:var(--primary); }
+.exam-scorecard .big-num.fair { color:var(--warning); }
+.exam-scorecard .big-num.poor { color:var(--danger); }
+.exam-scorecard .score-detail { font-size:14px; color:var(--text-secondary); margin-top:4px; }
+.exam-progress-sticky { position:sticky; top:0; z-index:10; background:var(--bg); padding:10px 16px; border-radius:var(--radius); margin-bottom:12px; display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-secondary); backdrop-filter:blur(8px); }
+.exam-progress-sticky .mini-bar { flex:1; height:6px; background:var(--border); border-radius:3px; overflow:hidden; }
+.exam-progress-sticky .mini-bar-fill { height:100%; background:var(--primary); border-radius:3px; transition:width .2s; }
+.exam-qcard { background:var(--surface); border-radius:var(--radius); padding:16px 20px; margin-bottom:10px; box-shadow:var(--shadow-sm); border:1px solid var(--border); border-left:4px solid var(--border); transition:border-color .3s; }
+.exam-qcard.submitted.correct { border-left-color:var(--success); }
+.exam-qcard.submitted.wrong { border-left-color:var(--danger); }
+.exam-qcard .eq-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.exam-qcard .eq-num { font-weight:700; font-size:14px; color:var(--primary); }
+.exam-qcard .eq-type-badge { font-size:11px; color:var(--text-muted); background:var(--bg); padding:2px 8px; border-radius:10px; }
+.exam-qcard .eq-result { font-size:12px; font-weight:600; display:none; }
+.exam-qcard.submitted .eq-result { display:inline; }
+.exam-qcard .eq-text { font-size:15px; line-height:1.7; margin-bottom:10px; }
+.exam-qcard .eq-options { display:flex; flex-direction:column; gap:4px; }
+.exam-qcard .eq-opt { padding:8px 12px; border:1.5px solid var(--border); border-radius:var(--radius-sm); cursor:pointer; font-size:14px; display:flex; align-items:center; gap:8px; transition:all .12s; }
+.exam-qcard .eq-opt:hover { border-color:var(--primary); }
+.exam-qcard .eq-opt.picked { border-color:var(--primary); background:var(--primary-light); }
+.exam-qcard.submitted .eq-opt.correct-ans { border-color:var(--success); background:var(--success-light); }
+.exam-qcard.submitted .eq-opt.wrong-pick { border-color:var(--danger); background:var(--danger-light); }
+.exam-qcard .eq-letter { width:24px; height:24px; border-radius:50%; background:var(--primary-light); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:11px; flex-shrink:0; }
+.exam-qcard.submitted .eq-opt.correct-ans .eq-letter { background:var(--success); color:#fff; }
+.exam-qcard.submitted .eq-opt.wrong-pick .eq-letter { background:var(--danger); color:#fff; }
+.exam-qcard .eq-tf { display:flex; gap:8px; }
+.exam-qcard .eq-tf .eq-btn { flex:1; padding:10px; border:1.5px solid var(--border); border-radius:var(--radius-sm); cursor:pointer; text-align:center; font-size:15px; transition:all .12s; background:var(--surface); }
+.exam-qcard .eq-tf .eq-btn:hover { border-color:var(--primary); }
+.exam-qcard .eq-tf .eq-btn.picked { border-color:var(--primary); background:var(--primary-light); }
+.exam-qcard.submitted .eq-tf .eq-btn.correct-ans { border-color:var(--success); background:var(--success-light); }
+.exam-qcard.submitted .eq-tf .eq-btn.wrong-pick { border-color:var(--danger); background:var(--danger-light); }
+.exam-qcard .eq-input { width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:14px; font-family:inherit; }
+.exam-qcard .eq-input:focus { outline:none; border-color:var(--primary); }
+.exam-qcard .eq-answer-show { font-size:13px; color:var(--success); margin-top:8px; display:none; }
+.exam-qcard.submitted .eq-answer-show { display:block; }
+.exam-qcard .eq-self-btns { display:flex; gap:6px; margin-top:8px; }
+.exam-sticky-bottom { position:sticky; bottom:16px; z-index:10; padding-top:8px; }
+.exam-sticky-bottom .btn { box-shadow:var(--shadow-lg); width:100%; }
+
+/* ===== Reader Mode ===== */
+.reader-sec-title { font-size:22px; font-weight:700; color:var(--primary); padding:20px 0 12px; margin-top:8px; border-bottom:3px solid var(--primary); }
+.reader-type-title { font-size:16px; font-weight:600; color:var(--text-secondary); margin:16px 0 10px; padding-left:12px; border-left:4px solid var(--primary); }
+.reader-qcard { background:var(--surface); padding:16px 20px; border-bottom:1px solid var(--border-light); transition:all .15s; }
+.reader-qcard:hover { background:var(--surface-hover); }
+.reader-qcard .rq-meta { font-size:12px; color:var(--text-muted); margin-bottom:4px; }
+.reader-qcard .rq-text { font-size:15px; line-height:1.7; }
+.reader-qcard .rq-answer { display:inline-block; background:var(--success-light); color:var(--success); padding:2px 10px; border-radius:4px; font-weight:700; font-size:14px; margin-left:6px; }
+.reader-qcard .rq-answer.wrong-ans { background:var(--danger-light); color:var(--danger); }
+.reader-qcard .rq-options { font-size:13px; color:var(--text-secondary); margin-top:4px; padding-left:8px; border-left:2px solid var(--border); }
+.reader-qcard .rq-explanation { font-size:13px; color:var(--text-secondary); margin-top:6px; padding:10px 14px; background:var(--bg); border-radius:var(--radius-sm); line-height:1.6; }
+.reader-opt { display:inline; }
+.reader-opt-correct { color:var(--success); font-weight:700; }
+.reader-back-top { position:fixed; bottom:80px; right:24px; z-index:40; width:44px; height:44px; border-radius:50%; background:var(--primary); color:#fff; border:none; cursor:pointer; font-size:20px; box-shadow:var(--shadow-md); transition:all .2s; display:none; }
+.reader-back-top:hover { background:var(--primary-hover); transform:translateY(-2px); }
+.reader-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:12px; padding:12px 16px; background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-sm); border:1px solid var(--border); }
+.reader-toolbar-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.reader-search { flex:1; min-width:140px; padding:8px 12px 8px 34px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:14px; outline:none; transition:border-color .2s; background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") 10px center no-repeat; font-family:inherit; }
+.reader-search:focus { border-color:var(--primary); background-color:var(--surface); }
+.reader-fs-btn { width:32px; height:32px; border-radius:6px; border:1.5px solid var(--border); background:var(--surface); cursor:pointer; font-weight:700; color:var(--text-secondary); transition:all .15s; font-size:13px; display:flex; align-items:center; justify-content:center; }
+.reader-fs-btn:hover { border-color:var(--primary); color:var(--primary); }
+.reader-fs-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+.reader-fs-sm .reader-qcard .rq-text { font-size:14px; }
+.reader-fs-lg .reader-qcard .rq-text { font-size:17px; }
+.reader-stats { font-size:12px; color:var(--text-muted); white-space:nowrap; }
+.reader-search-count { font-size:12px; color:var(--primary); white-space:nowrap; display:none; }
+.reader-search-count.show { display:inline; }
+.rq-kp-badge { display:inline-block; background:var(--primary-light); color:var(--primary); padding:2px 10px; border-radius:10px; font-size:11px; margin-left:6px; cursor:pointer; transition:all .15s; user-select:none; border:1px solid var(--primary-100); }
+.rq-kp-badge:hover { background:var(--primary); color:#fff; }
+.rq-kp-badge.open { background:var(--primary); color:#fff; }
+.rq-kp-info { display:none; margin-top:8px; padding:12px 16px; background:var(--primary-light); border-radius:var(--radius-sm); border-left:3px solid var(--primary); font-size:13px; line-height:1.6; color:var(--text-secondary); animation:feedbackSlide .3s ease; }
+.rq-kp-info.show { display:block; }
+.rq-kp-info .kp-label { font-weight:600; color:var(--primary); margin-bottom:2px; }
+.rq-kp-info .kp-exam { color:var(--warning); }
+.reader-ans-btn { font-size:13px; }
+.hide-answers .reader-qcard .rq-answer { display:none; }
+.hide-answers .reader-opt-correct { color:inherit; font-weight:inherit; }
+.reader-progress-toast { position:fixed; bottom:80px; right:24px; z-index:39; background:var(--text); color:#fff; padding:8px 16px; border-radius:20px; font-size:13px; animation:feedbackSlide .3s ease; pointer-events:none; }
+
+/* ===== Smart Review ===== */
+.smart-review-header { background:linear-gradient(135deg,var(--purple),var(--purple-hover)); }
+.stats-dashboard { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; }
+.stats-item { text-align:center; padding:12px 8px; background:var(--surface); border-radius:var(--radius-sm); box-shadow:var(--shadow-sm); border:1px solid var(--border); }
+.stats-item .stats-num { font-size:22px; font-weight:700; color:var(--primary); }
+.stats-item .stats-label { font-size:11px; color:var(--text-muted); margin-top:2px; }
+.weak-kp-tag { display:inline-block; margin:2px 4px; padding:4px 12px; background:var(--warning-light); border-radius:12px; font-size:12px; color:var(--warning); cursor:pointer; border:1px solid var(--warning-100); }
+.weak-kp-tag:hover { background:var(--warning-100); }
+
+/* ===== Utility ===== */
 .hidden { display:none !important; }
 .text-center { text-align:center; }
 .mt-12 { margin-top:12px; }
 .mb-12 { margin-bottom:12px; }
+.text-sm { font-size:13px; }
+.text-muted { color:var(--text-muted); }
+.flex-between { display:flex; justify-content:space-between; align-items:center; }
+.gap-8 { gap:8px; }
+.filter-row { display:flex; flex-wrap:wrap; gap:8px; }
 
-/* ===== Exam Paper Mode ===== */
-.exam-header { background:linear-gradient(135deg,#e65100,#bf360c); color:#fff; padding:20px 24px; border-radius:12px; margin-bottom:16px; text-align:center; }
-.exam-header h1 { font-size:22px; margin-bottom:4px; }
-.exam-header p { opacity:0.85; font-size:13px; }
-
-.exam-config-card { background:#fff; border-radius:12px; padding:20px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-.exam-config-card h3 { margin-bottom:8px; }
-.preset-btns { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
-.preset-btns .btn.active-preset { background:#1a73e8; color:#fff; border-color:#1a73e8; }
-.custom-row { display:flex; gap:8px; align-items:center; margin-top:8px; }
-.custom-row input { width:80px; padding:8px 12px; border:2px solid #e0e0e0; border-radius:8px; font-size:15px; text-align:center; }
-.custom-row input:focus { outline:none; border-color:#1a73e8; }
-
-.exam-scorecard { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-.exam-scorecard .big-num { font-size:56px; font-weight:800; }
-.exam-scorecard .big-num.great { color:#0d904f; }
-.exam-scorecard .big-num.good { color:#1a73e8; }
-.exam-scorecard .big-num.fair { color:#e65100; }
-.exam-scorecard .big-num.poor { color:#d93025; }
-.exam-scorecard .score-detail { font-size:14px; color:#666; margin-top:4px; }
-
-.exam-progress-sticky { position:sticky; top:0; z-index:10; background:#f0f2f5; padding:8px 16px; border-radius:8px; margin-bottom:12px; display:flex; align-items:center; gap:10px; font-size:13px; color:#666; }
-.exam-progress-sticky .mini-bar { flex:1; height:6px; background:#e0e0e0; border-radius:3px; overflow:hidden; }
-.exam-progress-sticky .mini-bar-fill { height:100%; background:#1a73e8; border-radius:3px; transition:width .2s; }
-
-.exam-qcard { background:#fff; border-radius:10px; padding:14px 16px; margin-bottom:8px; box-shadow:0 1px 2px rgba(0,0,0,0.05); border-left:4px solid #e0e0e0; transition:border-color .3s; }
-.exam-qcard.submitted.correct { border-left-color:#0d904f; animation: correctPop .4s ease; }
-.exam-qcard.submitted.wrong { border-left-color:#d93025; animation: shake .4s ease; }
-.exam-qcard.submitted.wrong { border-left-color:#d93025; }
-.exam-qcard .eq-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
-.exam-qcard .eq-num { font-weight:700; font-size:14px; color:#1a73e8; }
-.exam-qcard .eq-type-badge { font-size:11px; color:#999; background:#f0f2f5; padding:2px 8px; border-radius:10px; }
-.exam-qcard .eq-result { font-size:12px; font-weight:600; display:none; }
-.exam-qcard.submitted .eq-result { display:inline; }
-.exam-qcard .eq-text { font-size:15px; line-height:1.65; margin-bottom:8px; }
-.exam-qcard .eq-options { display:flex; flex-direction:column; gap:4px; }
-.exam-qcard .eq-opt { padding:7px 10px; border:1.5px solid #e0e0e0; border-radius:8px; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:8px; transition:all .12s; }
-.exam-qcard .eq-opt:hover { border-color:#1a73e8; background:#fafbff; }
-.exam-qcard .eq-opt.picked { border-color:#1a73e8; background:#e8f0fe; }
-.exam-qcard.submitted .eq-opt.correct-ans { border-color:#0d904f; background:#e6f4ea; }
-.exam-qcard.submitted .eq-opt.wrong-pick { border-color:#d93025; background:#fce8e6; }
-.exam-qcard .eq-letter { width:24px; height:24px; border-radius:50%; background:#e8f0fe; color:#1a73e8; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:11px; flex-shrink:0; }
-.exam-qcard.submitted .eq-opt.correct-ans .eq-letter { background:#0d904f; color:#fff; }
-.exam-qcard.submitted .eq-opt.wrong-pick .eq-letter { background:#d93025; color:#fff; }
-.exam-qcard .eq-tf { display:flex; gap:8px; }
-.exam-qcard .eq-tf .eq-btn { flex:1; padding:8px; border:1.5px solid #e0e0e0; border-radius:8px; cursor:pointer; text-align:center; font-size:16px; transition:all .12s; }
-.exam-qcard .eq-tf .eq-btn:hover { border-color:#1a73e8; }
-.exam-qcard .eq-tf .eq-btn.picked { border-color:#1a73e8; background:#e8f0fe; }
-.exam-qcard.submitted .eq-tf .eq-btn.correct-ans { border-color:#0d904f; background:#e6f4ea; }
-.exam-qcard.submitted .eq-tf .eq-btn.wrong-pick { border-color:#d93025; background:#fce8e6; }
-.exam-qcard .eq-input { width:100%; padding:8px 12px; border:1.5px solid #e0e0e0; border-radius:8px; font-size:14px; }
-.exam-qcard .eq-input:focus { outline:none; border-color:#1a73e8; }
-.exam-qcard .eq-answer-show { font-size:13px; color:#0d904f; margin-top:6px; display:none; }
-.exam-qcard.submitted .eq-answer-show { display:block; }
-.exam-qcard .eq-self-btns { display:flex; gap:6px; margin-top:6px; }
-
-.exam-sticky-bottom { position:sticky; bottom:16px; z-index:10; padding-top:8px; }
-.exam-sticky-bottom .btn { box-shadow:0 4px 16px rgba(0,0,0,0.2); width:100%; }
-
-/* ===== Top Tab Bar ===== */
-.tab-bar { display:flex; background:#fff; border-radius:12px; margin-bottom:16px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-.tab-bar .tab-item { flex:1; text-align:center; padding:14px 8px; cursor:pointer; font-size:15px; font-weight:600; color:#666; transition:all .2s; border-bottom:3px solid transparent; }
-.tab-bar .tab-item:hover { color:#1a73e8; background:#f8f9ff; }
-.tab-bar .tab-item.active { color:#1a73e8; border-bottom-color:#1a73e8; background:#e8f0fe; }
-
-/* ===== Review Mode ===== */
-.review-layout { display:flex; gap:12px; }
-.review-sidebar { width:180px; flex-shrink:0; }
-.review-sidebar .kp-nav { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08); position:sticky; top:8px; max-height:calc(100vh - 40px); overflow-y:auto; }
-.review-sidebar .kp-nav-item { display:block; width:100%; text-align:left; padding:10px 14px; border:none; background:transparent; cursor:pointer; font-size:13px; color:#555; border-left:3px solid transparent; transition:all .15s; }
-.review-sidebar .kp-nav-item:hover { background:#f8f9ff; color:#1a73e8; }
-.review-sidebar .kp-nav-item.active { background:#e8f0fe; color:#1a73e8; border-left-color:#1a73e8; font-weight:600; }
-.review-sidebar .kp-nav-item .kp-count { font-size:11px; color:#999; float:right; }
-.review-main { flex:1; min-width:0; }
-.review-kp-section { margin-bottom:20px; }
-.review-kp-header { background:linear-gradient(135deg,#1a73e8,#1557b0); color:#fff; padding:14px 18px; border-radius:10px 10px 0 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
-.review-kp-header h3 { font-size:16px; margin:0; }
-.review-kp-explanation { background:#e8f0fe; padding:14px 18px; font-size:14px; line-height:1.8; color:#333; border-left:4px solid #1a73e8; display:none; }
-.review-kp-explanation.show { display:block; }
-.review-kp-explanation .kp-section-label { font-size:12px; color:#1a73e8; font-weight:600; margin-top:6px; }
-.review-qcard { background:#fff; padding:14px 18px; border-bottom:1px solid #f0f0f0; transition:background .15s; }
-.review-qcard:hover { background:#fafbff; }
-.review-qcard:last-child { border-radius:0 0 10px 10px; }
-.review-qcard .rq-meta { font-size:11px; color:#999; margin-bottom:4px; }
-.review-qcard .rq-text { font-size:15px; line-height:1.7; }
-.review-qcard .rq-answer { display:inline-block; background:#e6f4ea; color:#0d904f; padding:2px 10px; border-radius:4px; font-weight:700; font-size:14px; margin-left:6px; }
-.review-qcard .rq-answer.wrong-ans { background:#fce8e6; color:#d93025; }
-.review-qcard .rq-options { font-size:13px; color:#666; margin-top:4px; padding-left:8px; border-left:2px solid #e0e0e0; }
-.review-qcard .rq-explanation { font-size:13px; color:#666; margin-top:6px; padding:8px 12px; background:#f8f9fa; border-radius:6px; line-height:1.6; }
-
-/* ===== Study Guide ===== */
-.guide-section { background:#fff; border-radius:10px; padding:18px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-.guide-section h3 { margin-bottom:8px; font-size:17px; }
-.guide-section p, .guide-section li { font-size:14px; line-height:1.8; color:#555; }
-.guide-section ol, .guide-section ul { padding-left:20px; }
-.guide-highlight { background:linear-gradient(135deg,#fff3e0,#ffe0b2); padding:14px 18px; border-radius:8px; border-left:4px solid #e65100; margin:10px 0; }
-.guide-highlight.green { background:linear-gradient(135deg,#e8f5e9,#c8e6c9); border-left-color:#0d904f; }
-
-/* ===== KP Explanation in Quiz ===== */
-.kp-hint { font-size:13px; color:#1a73e8; margin-top:8px; padding:10px 14px; background:#e8f0fe; border-radius:8px; line-height:1.6; cursor:pointer; }
-.kp-hint strong { cursor:pointer; }
-.kp-hint .kp-detail { display:none; margin-top:6px; color:#333; font-weight:normal; }
-.kp-hint .kp-detail.show { display:block; }
-
-/* Mobile responsive */
-@media (max-width:640px) {
-  .container { padding:8px; }
-
-  /* Tab bar - compact */
-  .tab-bar { border-radius:8px; margin-bottom:10px; }
-  .tab-bar .tab-item { font-size:13px; padding:10px 4px; }
-
-  /* Review header bar */
-  .review-topbar { flex-wrap:wrap; gap:6px; margin-bottom:8px; }
-  .review-topbar .btn { font-size:13px; padding:7px 12px; }
-  .review-topbar span { font-size:12px; }
-
-  /* Review layout - sidebar on top */
+/* ===== Mobile (<768px) ===== */
+@media (max-width:767px) {
+  .sidebar { display:none; }
+  .main-content { margin-left:0; padding:12px 12px calc(var(--bottombar-h) + 16px); max-width:100%; }
+  .bottombar { display:block; }
+  .hero-card { padding:20px 16px; border-radius:var(--radius); }
+  .hero-card h1 { font-size:20px; }
+  .stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .stat-card { padding:14px 10px; }
+  .stat-card .stat-num { font-size:24px; }
+  .stat-card .stat-icon { font-size:22px; }
+  .actions-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .action-card { padding:16px 12px; }
+  .action-card .ac-icon { font-size:26px; }
+  .action-card .ac-title { font-size:13px; }
+  .question-card { padding:16px; border-radius:var(--radius); }
+  .question-text { font-size:16px; padding:12px 16px; }
+  .option { padding:14px 16px; font-size:15px; line-height:1.6; }
+  .tf-btn { padding:22px; font-size:24px; }
   .review-layout { flex-direction:column; gap:8px; }
   .review-sidebar { width:100%; }
-
-  /* KP nav label - visible on mobile */
-  .kp-nav-label { display:flex!important; align-items:center; gap:4px; font-size:12px; color:#1a73e8; font-weight:600; margin-bottom:4px; padding:0 2px; }
-
-  /* Horizontal scroll nav */
-  .review-sidebar .kp-nav {
-    display:flex; flex-wrap:nowrap; overflow-x:auto;
-    max-height:none; position:static; gap:6px; padding:8px 6px;
-    background:#fff; border-radius:10px;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:thin;
-    /* Gradient fade hint on right */
-    mask-image:linear-gradient(to right, #000 85%, transparent 98%);
-    -webkit-mask-image:linear-gradient(to right, #000 85%, transparent 98%);
-  }
-  .review-sidebar .kp-nav-item {
-    flex-shrink:0; white-space:nowrap; border-left:none;
-    border-bottom:none; border-radius:16px;
-    padding:8px 14px; font-size:13px; font-weight:500;
-    background:#f5f6f8; color:#555;
-    transition:all .15s;
-  }
-  .review-sidebar .kp-nav-item.active {
-    border-left:none; background:#1a73e8; color:#fff;
-    font-weight:600; box-shadow:0 2px 8px rgba(26,115,232,0.3);
-  }
-  .review-sidebar .kp-nav-item .kp-count {
-    font-size:11px; opacity:0.7; margin-left:2px;
-  }
-
-  /* KP dropdown - shown below nav on mobile */
+  .kp-nav-label { display:flex!important; align-items:center; gap:4px; font-size:12px; color:var(--primary); font-weight:600; margin-bottom:4px; padding:0 2px; }
+  .review-sidebar .kp-nav { display:flex; flex-wrap:nowrap; overflow-x:auto; max-height:none; position:static; gap:6px; padding:8px 6px; background:var(--surface); border-radius:var(--radius); -webkit-overflow-scrolling:touch; scrollbar-width:thin; mask-image:linear-gradient(to right, #000 85%, transparent 98%); -webkit-mask-image:linear-gradient(to right, #000 85%, transparent 98%); }
+  .review-sidebar .kp-nav-item { flex-shrink:0; white-space:nowrap; border-left:none; border-radius:16px; padding:8px 14px; font-size:13px; font-weight:500; background:var(--bg); color:var(--text-secondary); }
+  .review-sidebar .kp-nav-item.active { border-left:none; background:var(--primary); color:#fff; font-weight:600; box-shadow:0 2px 8px rgba(37,99,235,0.3); }
   .kp-dropdown-wrap { display:block!important; padding:0 2px; margin-bottom:4px; }
-  .kp-dropdown-wrap select {
-    width:100%; padding:10px 12px; border-radius:8px;
-    border:1.5px solid #d0d5dd; background:#fff;
-    font-size:14px; color:#333; appearance:none;
-    background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E\");
-    background-repeat:no-repeat;
-    background-position:right 12px center;
-    padding-right:36px;
-  }
-
-  /* Review main area */
+  .kp-dropdown-wrap select { width:100%; padding:10px 12px; border-radius:var(--radius-sm); border:1.5px solid var(--border); background:var(--surface); font-size:14px; color:var(--text); appearance:none; font-family:inherit; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; padding-right:36px; }
   .review-main { min-width:0; }
   .review-kp-section { margin-bottom:12px; }
-  .review-kp-header { padding:10px 14px; border-radius:8px 8px 0 0; }
+  .review-kp-header { padding:10px 14px; }
   .review-kp-header h3 { font-size:14px; }
   .review-kp-explanation { padding:10px 14px; font-size:13px; line-height:1.7; }
-
-  /* Review question cards */
   .review-qcard { padding:10px 14px; }
   .review-qcard .rq-meta { font-size:10px; }
   .review-qcard .rq-text { font-size:14px; line-height:1.6; }
   .review-qcard .rq-answer { font-size:13px; padding:2px 8px; }
   .review-qcard .rq-options { font-size:12px; }
   .review-qcard .rq-explanation { font-size:12px; padding:6px 10px; }
-
-  /* Study guide */
-  .guide-section { padding:14px; }
+  .guide-section { padding:14px 16px; }
   .guide-section h3 { font-size:15px; }
-  .guide-section p, .guide-section li { font-size:13px; line-height:1.7; }
-
-  /* Quiz question card */
-  .q-text { font-size:16px; }
-  .q-option { padding:10px 14px; font-size:14px; }
-}
-
-
-/* ===== Reader Mode ===== */
-.reader-sec-title { font-size:22px; font-weight:700; color:#1a73e8; padding:20px 0 10px; margin-top:8px; border-bottom:3px solid #1a73e8; }
-.reader-type-title { font-size:17px; font-weight:600; color:#555; margin:16px 0 8px; padding-left:12px; border-left:4px solid #1a73e8; }
-.reader-qcard { background:#fff; padding:14px 18px; border-bottom:1px solid #f0f0f0; transition:background .15s; }
-.reader-qcard:hover { background:#fafbff; }
-.reader-qcard .rq-meta { font-size:11px; color:#999; margin-bottom:4px; }
-.reader-qcard .rq-text { font-size:15px; line-height:1.7; }
-.reader-qcard .rq-answer { display:inline-block; background:#e6f4ea; color:#0d904f; padding:2px 10px; border-radius:4px; font-weight:700; font-size:14px; margin-left:6px; }
-.reader-qcard .rq-answer.wrong-ans { background:#fce8e6; color:#d93025; }
-.reader-qcard .rq-options { font-size:13px; color:#666; margin-top:4px; padding-left:8px; border-left:2px solid #e0e0e0; }
-.reader-qcard .rq-explanation { font-size:13px; color:#666; margin-top:6px; padding:8px 12px; background:#f8f9fa; border-radius:6px; line-height:1.6; }
-.reader-opt { display:inline; }
-.reader-opt-correct { color:#0d904f; font-weight:700; }
-.reader-back-top { position:fixed; bottom:24px; right:24px; z-index:100; width:44px; height:44px; border-radius:50%; background:#1a73e8; color:#fff; border:none; cursor:pointer; font-size:20px; box-shadow:0 4px 12px rgba(0,0,0,0.2); transition:all .2s; display:none; }
-.reader-back-top:hover { background:#1557b0; transform:translateY(-2px); }
-@media (max-width:640px) {
+  .guide-section p,.guide-section li { font-size:13px; line-height:1.7; }
   .reader-sec-title { font-size:18px; padding:14px 0 8px; }
   .reader-type-title { font-size:15px; }
   .reader-qcard { padding:10px 14px; }
   .reader-qcard .rq-text { font-size:14px; }
-  .reader-back-top { bottom:16px; right:16px; width:40px; height:40px; font-size:18px; }
+  .reader-back-top { bottom:72px; right:16px; width:40px; height:40px; font-size:18px; }
+  .reader-progress-toast { bottom:72px; right:16px; }
+  .exam-scorecard .big-num { font-size:48px; }
+  .exam-header { padding:16px; border-radius:var(--radius); }
+  .quiz-topbar { flex-wrap:wrap; gap:8px; }
 }
 
-/* Reader toolbar */
-.reader-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; padding:10px 14px; background:#fff; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
-.reader-toolbar-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-.reader-search { flex:1; min-width:140px; padding:7px 12px 7px 32px; border:1.5px solid #e0e0e0; border-radius:8px; font-size:14px; outline:none; transition:border-color .2s; background:#f8f9fa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") 10px center no-repeat; }
-.reader-search:focus { border-color:#1a73e8; background-color:#fff; }
-.reader-search-clear { position:absolute; right:8px; top:50%; transform:translateY(-50%); background:none; border:none; color:#999; cursor:pointer; font-size:16px; padding:2px 6px; display:none; }
-.reader-fs-btn { width:32px; height:32px; border-radius:6px; border:1.5px solid #e0e0e0; background:#fff; cursor:pointer; font-weight:700; color:#666; transition:all .15s; font-size:13px; display:flex; align-items:center; justify-content:center; }
-.reader-fs-btn:hover { border-color:#1a73e8; color:#1a73e8; }
-.reader-fs-btn.active { background:#1a73e8; color:#fff; border-color:#1a73e8; }
-.reader-fs-sm .reader-qcard .rq-text { font-size:14px; }
-.reader-fs-lg .reader-qcard .rq-text { font-size:17px; }
-.reader-stats { font-size:12px; color:#999; white-space:nowrap; }
-.reader-search-count { font-size:12px; color:#1a73e8; white-space:nowrap; display:none; }
-.reader-search-count.show { display:inline; }
-
-/* KP badge on reader cards */
-.rq-kp-badge { display:inline-block; background:#e8f0fe; color:#1a73e8; padding:1px 8px; border-radius:10px; font-size:11px; margin-left:6px; cursor:pointer; transition:all .15s; user-select:none; }
-.rq-kp-badge:hover { background:#1a73e8; color:#fff; }
-.rq-kp-badge.open { background:#1a73e8; color:#fff; }
-.rq-kp-info { display:none; margin-top:8px; padding:10px 14px; background:#f0f5ff; border-radius:8px; border-left:3px solid #1a73e8; font-size:13px; line-height:1.6; color:#555; animation:feedbackSlide .3s ease; }
-.rq-kp-info.show { display:block; }
-.rq-kp-info .kp-label { font-weight:600; color:#1a73e8; margin-bottom:2px; }
-.rq-kp-info .kp-exam { color:#e65100; }
-
-/* Answer visibility toggle */
-.reader-ans-btn { font-size:13px; padding:6px 12px; }
-.hide-answers .reader-qcard .rq-answer { display:none; }
-.hide-answers .reader-opt-correct { color:inherit; font-weight:inherit; }
-
-/* Reader progress toast */
-.reader-progress-toast { position:fixed; bottom:80px; right:24px; z-index:99; background:#333; color:#fff; padding:8px 16px; border-radius:20px; font-size:13px; animation:feedbackSlide .3s ease; pointer-events:none; }
-@media (max-width:640px) { .reader-progress-toast { bottom:70px; right:16px; } }
-
-/* Smart Review */
-.smart-review-header { background:linear-gradient(135deg,#7c3aed,#5b21b6); }
-.stats-dashboard { display:grid; grid-template-columns:repeat(auto-fit, minmax(100px,1fr)); gap:8px; }
-.stats-item { text-align:center; padding:10px 8px; background:#fff; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.05); }
-.stats-item .stats-num { font-size:22px; font-weight:700; }
-.stats-item .stats-label { font-size:11px; color:#999; margin-top:2px; }
-.weak-kp-tag { display:inline-block; margin:2px 4px; padding:3px 10px; background:#fff3e0; border-radius:12px; font-size:12px; color:#e65100; cursor:pointer; }
-.weak-kp-tag:hover { background:#ffe0b2; }
-
+/* ===== More Menu (Mobile) ===== */
+.more-menu { position:fixed; bottom:calc(var(--bottombar-h) + 8px); right:16px; z-index:60; background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-lg); border:1px solid var(--border); padding:8px; display:none; min-width:160px; }
+.more-menu.show { display:block; animation:fadeIn .15s ease; }
+.more-menu-item { display:flex; align-items:center; gap:10px; width:100%; padding:12px 16px; border:none; background:transparent; cursor:pointer; font-size:14px; color:var(--text-secondary); border-radius:var(--radius-sm); transition:all .15s; font-family:inherit; text-align:left; }
+.more-menu-item:hover { background:var(--primary-light); color:var(--primary); }
+.more-menu-overlay { position:fixed; inset:0; z-index:55; display:none; }
+.more-menu-overlay.show { display:block; }
 </style>
 </head>
 <body>
-<div class="container" id="app"></div>
+<div class="app-shell">
+<!-- Desktop Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand" onclick="navigateTo('home')">
+    <div class="sidebar-logo">🔥</div>
+    <div class="sidebar-title">热处理刷题</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <button class="sidebar-item active" data-nav="home"><span class="side-icon">🧪</span> 刷题练习</button>
+    <button class="sidebar-item" data-nav="review"><span class="side-icon">📖</span> 复习资料</button>
+    <button class="sidebar-item" data-nav="reader"><span class="side-icon">📜</span> 阅读模式</button>
+    <button class="sidebar-item" data-nav="studyguide"><span class="side-icon">📋</span> 学习建议</button>
+    <button class="sidebar-item" data-nav="mistakes"><span class="side-icon">📝</span> 错题本<span class="side-badge" id="mistakeBadge" style="display:none">0</span></button>
+    <button class="sidebar-item" data-nav="exam-config"><span class="side-icon">📋</span> 模拟考试</button>
+  </nav>
+  <div class="sidebar-stats" id="sidebarStats">题库 715 题 · 26 个知识点</div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content" id="mainContent">
+  <div class="container" id="app"></div>
+</main>
+</div>
+
+<!-- Mobile Bottom Bar -->
+<nav class="bottombar" id="bottombar">
+  <div class="bottombar-inner">
+    <button class="bottombar-item active" data-nav="home"><span class="bb-icon">🧪</span>刷题</button>
+    <button class="bottombar-item" data-nav="review"><span class="bb-icon">📖</span>复习</button>
+    <button class="bottombar-item" data-nav="reader"><span class="bb-icon">📜</span>阅读</button>
+    <button class="bottombar-item" data-nav="more" id="moreBtn"><span class="bb-icon">⋯</span>更多</button>
+  </div>
+</nav>
+
+<!-- More Menu Overlay -->
+<div class="more-menu-overlay" id="moreOverlay" onclick="toggleMoreMenu()"></div>
+<div class="more-menu" id="moreMenu">
+  <button class="more-menu-item" data-nav="studyguide">📋 学习建议</button>
+  <button class="more-menu-item" data-nav="mistakes">📝 错题本</button>
+  <button class="more-menu-item" data-nav="exam-config">📋 模拟考试</button>
+</div>
 
 <script src="questions.js"></script>
 
@@ -424,6 +460,66 @@ let examQuestions = [];
 let examAnswers = {};
 let examSubmitted = false;
 let examTotalCount = 50;
+
+// ========== NAVIGATION ==========
+function navigateTo(target) {
+  if (target === 'mistakes') {
+    screen = 'mistakes'; render(); updateNavActive('mistakes'); return;
+  }
+  if (target === 'exam-config') {
+    screen = 'home'; render(); updateNavActive('home');
+    setTimeout(() => { document.getElementById('examConfigCard')?.scrollIntoView({behavior:'smooth'}); }, 100);
+    return;
+  }
+  if (target === 'home') { screen = 'home'; reviewActiveKP = null; readerActiveSection = null; }
+  else if (target === 'review') { screen = 'review'; reviewActiveKP = null; }
+  else if (target === 'reader') { screen = 'reader'; }
+  else if (target === 'studyguide') { screen = 'studyguide'; }
+  render();
+  updateNavActive(target);
+}
+
+function updateNavActive(target) {
+  if (!target) target = screen;
+  if (target === 'quiz') target = 'home';
+  if (target === 'exam') target = 'exam-config';
+  if (target === 'smartreview') target = 'home';
+  // Update sidebar
+  document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+  const sideItem = document.querySelector(`.sidebar-item[data-nav="${target}"]`);
+  if (sideItem) sideItem.classList.add('active');
+  // Update bottom bar
+  document.querySelectorAll('.bottombar-item').forEach(el => el.classList.remove('active'));
+  const bbItem = document.querySelector(`.bottombar-item[data-nav="${target}"]`);
+  if (bbItem) bbItem.classList.add('active');
+  // Update mistake badge
+  updateMistakeBadge();
+}
+
+function updateMistakeBadge() {
+  const badge = document.getElementById('mistakeBadge');
+  if (!badge) return;
+  const count = Object.keys(state.mistakes).length;
+  if (count > 0) {
+    badge.textContent = count;
+    badge.style.display = '';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function toggleMoreMenu() {
+  const menu = document.getElementById('moreMenu');
+  const overlay = document.getElementById('moreOverlay');
+  const isOpen = menu.classList.contains('show');
+  if (isOpen) {
+    menu.classList.remove('show');
+    overlay.classList.remove('show');
+  } else {
+    menu.classList.add('show');
+    overlay.classList.add('show');
+  }
+}
 
 // ===== SM-2 Spaced Repetition State =====
 // reviewSchedule: { questionId: { n, ef, interval, lastReview, nextReview } }
@@ -542,6 +638,8 @@ function render() {
   else if (screen === 'studyguide') app.innerHTML = renderStudyGuide();
   else if (screen === 'smartreview') app.innerHTML = renderSmartReview();
   else if (screen === 'reader') app.innerHTML = renderReader();
+  updateNavActive(screen);
+  updateMistakeBadge();
   bindEvents();
 }
 
@@ -560,9 +658,9 @@ function renderHome() {
   });
 
   return `
-    <div class="header">
-      <h1>🔥 热处理考试刷题系统</h1>
-      <p>题库 ${totalQ} 题 | 已做 ${totalDone} 题 | 正确率 ${rate}%</p>
+    <div class="hero-card">
+      <h1>🔥 热处理考试刷题</h1>
+      <p>题库 ${totalQ} 题 · 已做 ${totalDone} 题 · 正确率 ${rate}%</p>
     </div>
 
     <div class="tab-bar">
@@ -572,26 +670,46 @@ function renderHome() {
       <div class="tab-item" data-tab="studyguide">📋 学习建议</div>
     </div>
 
-    <div class="stats">
+    <div class="stats-grid">
       <div class="stat-card" data-action="start-random">
-        <div class="num">🎲</div>
-        <div class="label">随机刷题</div>
+        <div class="stat-icon">🎲</div>
+        <div class="stat-num">随机</div>
+        <div class="stat-label">随机刷题</div>
       </div>
       <div class="stat-card" data-action="show-types">
-        <div class="num">${typeCounts.choice||0}</div>
-        <div class="label">选择题</div>
+        <div class="stat-num">${typeCounts.choice||0}</div>
+        <div class="stat-label">选择题</div>
       </div>
       <div class="stat-card" data-action="show-types">
-        <div class="num">${typeCounts.truefalse||0}</div>
-        <div class="label">判断题</div>
+        <div class="stat-num">${typeCounts.truefalse||0}</div>
+        <div class="stat-label">判断题</div>
       </div>
-      <div class="stat-card" data-action="show-types">
-        <div class="num">${typeCounts.fill||0}</div>
-        <div class="label">填空题</div>
+      <div class="stat-card stat-danger" data-action="show-mistakes">
+        <div class="stat-num">${mistakeIds.length}</div>
+        <div class="stat-label">📝 错题本</div>
       </div>
-      <div class="stat-card" data-action="show-mistakes">
-        <div class="num" style="color:#d93025">${mistakeIds.length}</div>
-        <div class="label">📝 错题本</div>
+    </div>
+
+    <div class="actions-grid">
+      <div class="action-card" data-action="start-random">
+        <div class="ac-icon">🎲</div>
+        <div class="ac-title">随机刷题</div>
+        <div class="ac-sub">打乱全部 ${totalQ} 题</div>
+      </div>
+      <div class="action-card" data-action="start-exam">
+        <div class="ac-icon">📋</div>
+        <div class="ac-title">模拟考试</div>
+        <div class="ac-sub">按比例抽题自动判分</div>
+      </div>
+      <div class="action-card" onclick="navigateTo('mistakes')">
+        <div class="ac-icon">📝</div>
+        <div class="ac-title">错题复习</div>
+        <div class="ac-sub">${mistakeIds.length} 道错题待复习</div>
+      </div>
+      <div class="action-card" data-action="start-smart-review">
+        <div class="ac-icon">🎯</div>
+        <div class="ac-title">智能复习</div>
+        <div class="ac-sub">基于遗忘曲线 SM-2</div>
       </div>
     </div>
 
@@ -608,60 +726,60 @@ function renderHome() {
       });
       const topWeakKPs = Object.entries(kpStats).sort((a,b) => b[1]-a[1]).slice(0, 3);
       return `
-    <div class="card" style="background:linear-gradient(135deg,#f0f4ff,#e8f0fe);border-left:4px solid #1a73e8">
-      <h3 style="margin-bottom:10px">📊 学习统计</h3>
+    <div class="card card-compact" style="border-left:4px solid var(--primary)">
+      <div class="card-header"><h3>📊 学习统计</h3></div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px">
         <div style="text-align:center;padding:8px">
-          <div style="font-size:24px;font-weight:700;color:#1a73e8">${dueCards.length}</div>
-          <div style="font-size:11px;color:#666">🎯 待复习</div>
+          <div style="font-size:22px;font-weight:700;color:var(--primary)">${dueCards.length}</div>
+          <div style="font-size:11px;color:var(--text-muted)">🎯 待复习</div>
         </div>
         <div style="text-align:center;padding:8px">
-          <div style="font-size:24px;font-weight:700;color:#0d904f">${streak}</div>
-          <div style="font-size:11px;color:#666">🔥 连续天数</div>
+          <div style="font-size:22px;font-weight:700;color:var(--success)">${streak}</div>
+          <div style="font-size:11px;color:var(--text-muted)">🔥 连续天数</div>
         </div>
         <div style="text-align:center;padding:8px">
-          <div style="font-size:24px;font-weight:700;color:#e65100">${Object.keys(state.mistakes).length}</div>
-          <div style="font-size:11px;color:#666">📝 错题数</div>
+          <div style="font-size:22px;font-weight:700;color:var(--warning)">${Object.keys(state.mistakes).length}</div>
+          <div style="font-size:11px;color:var(--text-muted)">📝 错题数</div>
         </div>
         <div style="text-align:center;padding:8px">
-          <div style="font-size:24px;font-weight:700;color:#1a73e8">${rate}%</div>
-          <div style="font-size:11px;color:#666">✅ 正确率</div>
+          <div style="font-size:22px;font-weight:700;color:var(--primary)">${rate}%</div>
+          <div style="font-size:11px;color:var(--text-muted)">✅ 正确率</div>
         </div>
       </div>
       ${topWeakKPs.length > 0 ? `
-        <div style="margin-top:10px;font-size:13px;color:#666">
+        <div style="margin-top:10px;font-size:13px;color:var(--text-secondary)">
           <strong>⚠️ 薄弱知识点：</strong>
-          ${topWeakKPs.map(([kp, c]) => '<span style="display:inline-block;margin:2px 4px;padding:2px 8px;background:#fff3e0;border-radius:10px;font-size:12px">'+kp+' ('+c+'题)</span>').join('')}
+          ${topWeakKPs.map(([kp, c]) => '<span class="weak-kp-tag">'+kp+' ('+c+'题)</span>').join('')}
         </div>
       ` : ''}
-      ${dueCards.length > 0 ? '<button class="btn btn-primary btn-sm" data-action="start-smart-review" style="width:100%;margin-top:10px">🎯 开始智能复习（'+dueCards.length+'题待复习）</button>' : '<p style="font-size:12px;color:#999;margin-top:8px;text-align:center">✨ 暂无待复习卡片，去刷题吧！</p>'}
+      ${dueCards.length > 0 ? '<button class="btn btn-primary" data-action="start-smart-review" style="width:100%;margin-top:10px;font-size:14px">🎯 开始智能复习（'+dueCards.length+'题待复习）</button>' : '<p style="font-size:12px;color:#999;margin-top:8px;text-align:center">✨ 暂无待复习卡片，去刷题吧！</p>'}
     </div>
     `;
     })()}
 
     <div class="card">
-      <h3 style="margin-bottom:12px">📂 按主题筛选</h3>
-      <div class="filter-row">
-        <button class="btn btn-sm ${currentFilter.topic==='all'?'btn-primary':'btn-outline'}" data-filter-topic="all">全部 (${totalQ})</button>
+      <div class="card-header"><h3>📂 按主题筛选</h3></div>
+      <div class="chip-group">
+        <button class="chip ${currentFilter.topic==='all'?'active':''}" data-filter-topic="all">全部 (${totalQ})</button>
         ${Object.entries(topicCounts).map(([t,c]) =>
-          `<button class="btn btn-sm ${currentFilter.topic===t?'btn-primary':'btn-outline'}" data-filter-topic="${t}">${getTopicShort(t)} (${c})</button>`
+          `<button class="chip ${currentFilter.topic===t?'active':''}" data-filter-topic="${t}">${getTopicShort(t)} (${c})</button>`
         ).join('')}
       </div>
     </div>
 
     <div class="card">
-      <h3 style="margin-bottom:12px">📝 按题型筛选</h3>
-      <div class="filter-row">
-        <button class="btn btn-sm ${currentFilter.type==='all'?'btn-primary':'btn-outline'}" data-filter-type="all">全部</button>
+      <div class="card-header"><h3>📝 按题型筛选</h3></div>
+      <div class="chip-group">
+        <button class="chip ${currentFilter.type==='all'?'active':''}" data-filter-type="all">全部</button>
         ${Object.entries(typeCounts).map(([t,c]) =>
-          `<button class="btn btn-sm ${currentFilter.type===t?'btn-primary':'btn-outline'}" data-filter-type="${t}">${getTypeName(t)} (${c})</button>`
+          `<button class="chip ${currentFilter.type===t?'active':''}" data-filter-type="${t}">${getTypeName(t)} (${c})</button>`
         ).join('')}
       </div>
     </div>
 
-    <div class="exam-config-card">
+    <div class="exam-config-card" id="examConfigCard">
       <h3>📋 模拟考试</h3>
-      <p style="font-size:13px;color:#999;margin-bottom:10px">从题库按比例随机抽题，生成模拟试卷</p>
+      <p class="text-sm text-muted mb-12">从题库按比例随机抽题，生成模拟试卷</p>
       <div class="preset-btns" id="examPresets">
         <button class="btn btn-sm btn-outline" data-exam-count="20">20 题</button>
         <button class="btn btn-sm btn-outline" data-exam-count="50">50 题</button>
@@ -672,12 +790,12 @@ function renderHome() {
         <input type="number" id="examCustomInput" value="${examTotalCount}" min="5" max="${QUESTIONS.length}" placeholder="题数">
         <span style="font-size:13px;color:#999">题（5-${QUESTIONS.length}）</span>
       </div>
-      <button class="btn btn-primary btn-block mt-12" data-action="start-exam" style="background:#e65100;font-size:16px;padding:12px">
+      <button class="btn btn-primary btn-block mt-12" data-action="start-exam" style="background:#ea580c;font-size:15px;padding:12px">
         📋 开始考试
       </button>
     </div>
 
-    <button class="btn btn-primary btn-lg btn-block" data-action="start">🚀 开始刷题</button>
+    <button class="btn btn-primary btn-lg btn-block" data-action="start">🚀 按筛选条件刷题</button>
     ${mistakeIds.length > 0 ? `<button class="btn btn-outline btn-block mt-12" data-action="show-mistakes">📝 复习错题 (${mistakeIds.length}题)</button>` : ''}
   `;
 }
@@ -685,7 +803,7 @@ function renderHome() {
 function renderQuiz() {
   if (currentQuestions.length === 0) {
     return `
-      <div class="header"><h1>无题目</h1></div>
+      <div class="hero-card"><h1>无题目</h1></div>
       <div class="card text-center"><p>当前筛选条件下没有题目，请返回重新选择。</p></div>
       <button class="btn btn-outline btn-block" data-action="back">← 返回首页</button>
     `;
@@ -719,15 +837,15 @@ function renderQuiz() {
   }
 
   return `
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-      <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
-      <span style="font-size:14px;color:#666">${getTopicShort(q.topic)} · ${getTypeName(q.type)}</span>
-      <span style="font-size:14px;color:#666;margin-left:auto">${currentIndex+1}/${currentQuestions.length}</span>
+    <div class="quiz-topbar">
+      <button class="btn btn-sm btn-ghost" data-action="back">← 返回</button>
+      <span class="qt-info">${getTopicShort(q.topic)} · ${getTypeName(q.type)}</span>
+      <span class="qt-count">${currentIndex+1}/${currentQuestions.length}</span>
     </div>
     <div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%"></div></div>
 
     <div class="question-meta">
-      ${isMistake ? '<span style="color:#d93025">⚠ 错题</span> · ' : ''}
+      ${isMistake ? '<span style="color:var(--danger)">⚠ 错题</span> · ' : ''}
       正确率: ${totalDone>0 ? Math.round(correctCount/totalDone*100) : 0}%
     </div>
 
@@ -751,7 +869,7 @@ function renderChoiceQuestion(q) {
   }
   const isMulti = q.answer && q.answer.length > 1;
   return `
-    ${isMulti ? '<div style="font-size:13px;color:#e65100;margin-bottom:8px;font-weight:600;">🔲 多选题 — 点击选项选中/取消，选好后点「提交」</div>' : ''}
+    ${isMulti ? '<div style="font-size:13px;color:var(--warning);margin-bottom:8px;font-weight:600;">🔲 多选题 — 点击选项选中/取消，选好后点「提交」</div>' : ''}
     <div class="options" id="optionsContainer">
       ${q.options.map((opt, i) => {
         const label = q.option_labels && q.option_labels[i] ? q.option_labels[i] : String.fromCharCode(65+i);
@@ -802,7 +920,7 @@ function renderMistakes() {
   const mistakeIds = Object.keys(state.mistakes);
   if (mistakeIds.length === 0) {
     return `
-      <div class="header"><h1>📝 错题本</h1></div>
+      <div class="hero-card"><h1>📝 错题本</h1></div>
       <div class="card text-center">
         <p style="font-size:48px;margin:20px">🎉</p>
         <p>暂无错题，继续加油！</p>
@@ -816,7 +934,7 @@ function renderMistakes() {
   mistakeQs.forEach(q => { typeCounts[q.type] = (typeCounts[q.type]||0) + 1; });
 
   return `
-    <div class="header"><h1>📝 错题本 (${mistakeQs.length}题)</h1></div>
+    <div class="hero-card"><h1>📝 错题本 (${mistakeQs.length}题)</h1></div>
     <div class="card">
       <div class="filter-row">
         <button class="btn btn-sm btn-primary" data-action="redo-all-mistakes">🔄 重做全部错题</button>
@@ -833,7 +951,7 @@ function renderMistakes() {
           <span class="q-type">[${getTypeName(q.type)}]</span>
           <span style="font-size:12px;color:#999">${getTopicShort(q.topic)}</span>
           <div style="margin-top:4px">${dq.substring(0, 80)}${dq.length>80?'...':''}</div>
-          ${q.answer ? `<div style="font-size:13px;color:#0d904f;margin-top:2px">答案: ${q.answer}</div>` : ''}
+          ${q.answer ? `<div style="font-size:13px;color:var(--success);margin-top:2px">答案: ${q.answer}</div>` : ''}
         </div>`;
       }).join('')}
     </div>
@@ -884,7 +1002,7 @@ function renderReview() {
         <span style="font-size:12px;opacity:0.8">点击展开解析 ▼</span>
       </div>
       <div class="review-kp-explanation" id="kpExplanation">
-        <div style="font-weight:600;color:#1a73e8;margin-bottom:4px">📖 知识点解析</div>
+        <div style="font-weight:600;color:var(--primary);margin-bottom:4px">📖 知识点解析</div>
         <div>${kpInfo.explanation}</div>
         ${kpInfo.key_concepts ? `<div class="kp-section-label">🔑 核心概念：${kpInfo.key_concepts.join('、')}</div>` : ''}
         ${kpInfo.exam_focus ? `<div class="kp-section-label">⚠️ 考试重点：${kpInfo.exam_focus}</div>` : ''}
@@ -912,12 +1030,7 @@ function renderReview() {
       <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
       <span style="font-size:14px;color:#666">📖 复习资料 · 按知识点分组</span>
     </div>
-    <div class="tab-bar">
-      <div class="tab-item" data-tab="home">🧪 刷题</div>
-      <div class="tab-item active" data-tab="review">📖 复习资料</div>
-      <div class="tab-item" data-tab="reader">📜 阅读模式</div>
-      <div class="tab-item" data-tab="studyguide">📋 学习建议</div>
-    </div>
+
     <div class="review-layout">
       <div class="review-sidebar">
         <div class="kp-nav-label" style="display:none">📂 知识点导航（左右滑动）</div>
@@ -951,14 +1064,14 @@ function renderReviewQuestion(q) {
       optionsHtml = `<div class="rq-options">${q.options.map((o, i) => {
         const label = q.option_labels && q.option_labels[i] ? q.option_labels[i] : String.fromCharCode(65+i);
         const isCorrect = correctLabels.includes(label);
-        return `<span style="${isCorrect ? 'color:#0d904f;font-weight:700' : ''}">${label}. ${o}</span>`;
+        return `<span style="${isCorrect ? 'color:var(--success);font-weight:700' : ''}">${label}. ${o}</span>`;
       }).join(' &nbsp;|&nbsp; ')}</div>`;
     }
   } else if (q.type === 'truefalse') {
     const isCorrect = q.answer === '√';
     answerHtml = isCorrect ? '<span class="rq-answer">✓ 正确</span>' : '<span class="rq-answer wrong-ans">✗ 错误</span>';
   } else if (q.type === 'fill') {
-    answerHtml = q.answer ? `<span class="rq-answer">${escapeHtml(q.answer)}</span>` : '<span class="rq-answer" style="background:#fff3e0;color:#e65100">答案缺失</span>';
+    answerHtml = q.answer ? `<span class="rq-answer">${escapeHtml(q.answer)}</span>` : '<span class="rq-answer" style="background:var(--warning-light);color:var(--warning)">答案缺失</span>';
   }
 
   // Explanation (for shortanswer/calculation)
@@ -992,7 +1105,7 @@ function renderSmartReview() {
 
   if (smartReviewQuestions.length === 0) {
     return `
-      <div class="header"><h1>✨ 暂无待复习</h1></div>
+      <div class="hero-card" style="background:linear-gradient(135deg,var(--text-muted),var(--text-secondary))"><h1>✨ 暂无待复习</h1></div>
       <div class="card text-center">
         <p style="font-size:16px;color:#666">所有题目都已安排好复习计划！</p>
         <p style="font-size:14px;color:#999;margin-top:8px">继续刷题可以巩固更多知识点。</p>
@@ -1008,10 +1121,10 @@ function renderSmartReview() {
     smartReviewQuestions = [];
     smartReviewIndex = 0;
     return `
-      <div class="header"><h1>🎉 本轮复习完成！</h1></div>
+      <div class="hero-card" style="background:linear-gradient(135deg,var(--success),#15803d)"><h1>🎉 本轮复习完成！</h1></div>
       <div class="card text-center">
-        <p style="font-size:16px;color:#0d904f">当前复习计划已完成。</p>
-        ${remainingDue > 0 ? `<p style="font-size:14px;color:#e65100;margin-top:8px">仍有 ${remainingDue} 张卡片今日待复习</p>` : ''}
+        <p style="font-size:16px;color:var(--success)">当前复习计划已完成。</p>
+        ${remainingDue > 0 ? `<p style="font-size:14px;color:var(--warning);margin-top:8px">仍有 ${remainingDue} 张卡片今日待复习</p>` : ''}
       </div>
       <button class="btn btn-primary btn-block" data-action="back">← 返回首页</button>
     `;
@@ -1022,15 +1135,15 @@ function renderSmartReview() {
   const progress = Math.round(smartReviewIndex / smartReviewQuestions.length * 100);
 
   return `
-    <div class="header" style="background:linear-gradient(135deg,#7c3aed,#5b21b6)">
+    <div class="hero-card smart-review-header">
       <h1>🎯 智能复习</h1>
       <p>基于遗忘曲线的间隔重复 · SM-2 算法</p>
     </div>
-    <div class="quiz-progress">
+    <div class="quiz-topbar">
       <span>第 ${smartReviewIndex+1}/${smartReviewQuestions.length} 题</span>
-      <span style="font-size:12px;color:#7c3aed">${card ? '间隔: '+card.interval+'天 · 容易度: '+card.ef.toFixed(1) : '新卡片'}</span>
+      <span class="qt-info" style="color:var(--purple)">${card ? '间隔: '+card.interval+'天 · 容易度: '+card.ef.toFixed(1) : '新卡片'}</span>
     </div>
-    <div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%;background:#7c3aed"></div></div>
+    <div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%;background:var(--purple)"></div></div>
     ${q.type === 'choice' ? renderChoiceQuestion(q) : ''}
     ${q.type === 'truefalse' ? renderTrueFalseQuestion(q) : ''}
     ${q.type === 'fill' ? renderFillQuestion(q) : ''}
@@ -1145,12 +1258,7 @@ function renderReader() {
       <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
       <span style="font-size:14px;color:#666">📜 阅读模式 · 按章节顺序从头到尾浏览</span>
     </div>
-    <div class="tab-bar">
-      <div class="tab-item" data-tab="home">🧪 刷题</div>
-      <div class="tab-item" data-tab="review">📖 复习资料</div>
-      <div class="tab-item active" data-tab="reader">📜 阅读模式</div>
-      <div class="tab-item" data-tab="studyguide">📋 学习建议</div>
-    </div>
+
     <div class="reader-toolbar">
       <div class="reader-toolbar-row" style="flex:1;min-width:0">
         <input type="text" class="reader-search" id="readerSearch" placeholder="搜索题目关键词..." value="${escapeHtml(readerSearchTerm)}" autocomplete="off">
@@ -1197,7 +1305,7 @@ function renderReaderQCard(q, num) {
   if (q.type === 'choice') {
     answerHtml = q.answer
       ? `<span class="rq-answer">${escapeHtml(q.answer)}</span>`
-      : '<span class="rq-answer" style="background:#fff3e0;color:#e65100">?</span>';
+      : '<span class="rq-answer" style="background:var(--warning-light);color:var(--warning)">?</span>';
     if (q.options && q.options.length > 0) {
       const correctLabels = q.answer ? q.answer.split('') : [];
       const isMulti = correctLabels.length > 1;
@@ -1214,7 +1322,7 @@ function renderReaderQCard(q, num) {
   } else if (q.type === 'fill') {
     answerHtml = q.answer
       ? `<span class="rq-answer">${escapeHtml(q.answer)}</span>`
-      : '<span class="rq-answer" style="background:#fff3e0;color:#e65100">答案缺失</span>';
+      : '<span class="rq-answer" style="background:var(--warning-light);color:var(--warning)">答案缺失</span>';
   } else {
     // shortanswer / calculation
     if (q.explanation) {
@@ -1308,12 +1416,7 @@ function renderStudyGuide() {
       <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
       <span style="font-size:14px;color:#666">📋 学习建议</span>
     </div>
-    <div class="tab-bar">
-      <div class="tab-item" data-tab="home">🧪 刷题</div>
-      <div class="tab-item" data-tab="review">📖 复习资料</div>
-      <div class="tab-item" data-tab="reader">📜 阅读模式</div>
-      <div class="tab-item active" data-tab="studyguide">📋 学习建议</div>
-    </div>
+
 
     <div class="guide-section">
       <h3>🎯 总体情况</h3>
@@ -1340,8 +1443,8 @@ function renderStudyGuide() {
           const barW = Math.max(pct * 8, 2);
           return `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px">
             <span style="width:130px;text-align:right;flex-shrink:0">${name}</span>
-            <div style="flex:1;background:#e8f0fe;border-radius:4px;height:18px;position:relative">
-              <div style="background:linear-gradient(90deg,#1a73e8,#4a9af5);height:100%;border-radius:4px;width:${barW}px;min-width:${count>0?'2px':'0'}"></div>
+            <div style="flex:1;background:var(--primary-light);border-radius:4px;height:18px;position:relative">
+              <div style="background:linear-gradient(90deg,var(--primary),#60a5fa);height:100%;border-radius:4px;width:${barW}px;min-width:${count>0?'2px':'0'}"></div>
             </div>
             <span style="width:40px;text-align:right;flex-shrink:0;font-weight:600">${count}</span>
           </div>`;
@@ -1354,8 +1457,8 @@ function renderStudyGuide() {
       <h3>⚠️ 薄弱环节（错题按知识点统计）</h3>
       <p style="font-size:13px;color:#999;margin-bottom:8px">以下知识点错题较多，建议优先复习：</p>
       ${sortedMistakeKP.map(([name, count]) => `
-        <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;margin:4px 0;background:#fff3e0;border-radius:6px;font-size:14px">
-          <span style="color:#e65100;font-weight:600">${count}题</span>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;margin:4px 0;background:var(--warning-light);border-radius:6px;font-size:14px">
+          <span style="color:var(--warning);font-weight:600">${count}题</span>
           <span>${name}</span>
           <button class="btn btn-sm btn-outline" data-action="review-kp" data-kp="${escapeHtml(name)}" style="margin-left:auto;font-size:11px;padding:4px 10px">去复习 →</button>
         </div>
@@ -1367,7 +1470,7 @@ function renderStudyGuide() {
     </div>`}
 
     <div class="guide-highlight">
-      <h4 style="color:#e65100;margin-bottom:6px">💡 高分技巧</h4>
+      <h4 style="color:var(--warning);margin-bottom:6px">💡 高分技巧</h4>
       <ul>
         <li><strong>判断题要追问"为什么错"</strong>：不能只看✓/✗，要理解错误表述错在哪里</li>
         <li><strong>选择题要理解每个选项</strong>：为什么选A不选B？干扰项为什么错？</li>
@@ -1378,7 +1481,7 @@ function renderStudyGuide() {
     </div>
 
     <div class="guide-highlight green">
-      <h4 style="color:#0d904f;margin-bottom:6px">📈 目标：100分</h4>
+      <h4 style="color:var(--success);margin-bottom:6px">📈 目标：100分</h4>
       <ul>
         <li>选择题+判断题（共524题，占77%）：基础分，力争全对</li>
         <li>填空题（120题）：关键词准确，60%模糊匹配即可得分</li>
@@ -1533,14 +1636,29 @@ function bindReaderAnswerToggle() {
 
 // ========== EVENT BINDING ==========
 function bindEvents() {
-  // Tab bar
-  document.querySelectorAll('[data-tab]').forEach(el => {
+  // Sidebar navigation
+  document.querySelectorAll('.sidebar-item').forEach(el => {
     el.addEventListener('click', function() {
-      const tab = this.dataset.tab;
-      if (tab === 'home') { screen = 'home'; render(); }
-      else if (tab === 'review') { screen = 'review'; reviewActiveKP = null; render(); }
-      else if (tab === 'reader') { screen = 'reader'; render(); }
-      else if (tab === 'studyguide') { screen = 'studyguide'; render(); }
+      navigateTo(this.dataset.nav);
+    });
+  });
+
+  // Bottom bar navigation
+  document.querySelectorAll('.bottombar-item').forEach(el => {
+    el.addEventListener('click', function() {
+      if (this.dataset.nav === 'more') {
+        toggleMoreMenu();
+      } else {
+        navigateTo(this.dataset.nav);
+      }
+    });
+  });
+
+  // More menu items
+  document.querySelectorAll('.more-menu-item').forEach(el => {
+    el.addEventListener('click', function() {
+      toggleMoreMenu();
+      navigateTo(this.dataset.nav);
     });
   });
 
@@ -1577,7 +1695,7 @@ function bindEvents() {
                 <span style="font-size:12px;opacity:0.8">点击展开解析 ▼</span>
               </div>
               <div class="review-kp-explanation" id="kpExplanation">
-                <div style="font-weight:600;color:#1a73e8;margin-bottom:4px">📖 知识点解析</div>
+                <div style="font-weight:600;color:var(--primary);margin-bottom:4px">📖 知识点解析</div>
                 <div>${kpInfo.explanation}</div>
                 ${kpInfo.key_concepts ? `<div class="kp-section-label">🔑 核心概念：${kpInfo.key_concepts.join('、')}</div>` : ''}
                 ${kpInfo.exam_focus ? `<div class="kp-section-label">⚠️ 考试重点：${kpInfo.exam_focus}</div>` : ''}
@@ -1691,8 +1809,9 @@ function bindEvents() {
         screen = 'mistakes';
         render();
       } else if (action === 'show-types') {
-        // Scroll to type filter
-        document.querySelector('.card:nth-child(4)')?.scrollIntoView({ behavior:'smooth' });
+        // Scroll to type filter chip group
+        const chipGroup = document.querySelector('.chip-group');
+        if (chipGroup) chipGroup.scrollIntoView({ behavior:'smooth' });
       } else if (action === 'back') {
         screen = 'home';
         render();
@@ -1946,6 +2065,16 @@ function bindEvents() {
     });
   });
 
+  // Smart review handler
+  document.querySelectorAll('[data-action="start-smart-review"]').forEach(el => {
+    el.addEventListener('click', function() {
+      smartReviewQuestions = [];
+      smartReviewIndex = 0;
+      screen = 'smartreview';
+      render();
+    });
+  });
+
   // ===== Exam Mode Handlers =====
   // Start exam
   document.querySelectorAll('[data-action="start-exam"]').forEach(el => {
@@ -2096,7 +2225,7 @@ function bindEvents() {
       if (selfDiv) {
         selfDiv.querySelectorAll('button').forEach(b => b.disabled = true);
         const label = value === 'correct' ? '✓ 已标记: 正确' : '✗ 已标记: 错误';
-        const color = value === 'correct' ? '#0d904f' : '#d93025';
+        const color = value === 'correct' ? 'var(--success)' : 'var(--danger)';
         const span = document.createElement('span');
         span.style.cssText = `font-size:13px;margin-left:8px;color:${color}`;
         span.textContent = label;
@@ -2289,8 +2418,8 @@ function renderExamPaper() {
     let resultHtml = '';
     if (examSubmitted) {
       resultHtml = isCorrect
-        ? '<span class="eq-result" style="color:#0d904f">✓ 正确</span>'
-        : `<span class="eq-result" style="color:#d93025">✗ 错误${q.answer ? ' (答案: '+q.answer+')' : ''}</span>`;
+        ? '<span class="eq-result" style="color:var(--success)">✓ 正确</span>'
+        : `<span class="eq-result" style="color:var(--danger)">✗ 错误${q.answer ? ' (答案: '+q.answer+')' : ''}</span>`;
     }
 
     let answerHtml = '';
@@ -2330,7 +2459,7 @@ function renderExamPaper() {
     ${qcardsHtml}
     ${examSubmitted ? '' : `
     <div class="exam-sticky-bottom">
-      <button class="btn btn-lg" style="background:#e65100;color:#fff" data-action="submit-exam">
+      <button class="btn btn-lg" style="background:#ea580c;color:#fff" data-action="submit-exam">
         📋 交卷 (${answeredCount}/${totalCount} 已答)
       </button>
     </div>`}
@@ -2350,7 +2479,7 @@ function renderExamChoice(q, idx, userAnswer) {
   const userPicks = userAnswer ? userAnswer.split('') : [];
   const correctLabels = q.answer ? q.answer.split('') : [];
   return `
-    ${isMulti ? '<div style="font-size:12px;color:#e65100;margin-bottom:4px;font-weight:600;">🔲 多选题（点击选项选中/取消）</div>' : ''}
+    ${isMulti ? '<div style="font-size:12px;color:var(--warning);margin-bottom:4px;font-weight:600;">🔲 多选题（点击选项选中/取消）</div>' : ''}
     <div class="eq-options">
       ${q.options.map((opt, i) => {
         const label = q.option_labels && q.option_labels[i] ? q.option_labels[i] : String.fromCharCode(65+i);
@@ -2409,7 +2538,7 @@ function renderExamOpen(q, idx, userAnswer) {
       <div class="eq-self-btns" id="selfBtns-${q.id}" style="display:none">
         <button class="btn btn-sm btn-success" data-qid="${q.id}" data-type="self" data-value="correct" ${isSelfChecked && userAnswer === 'correct' ? 'disabled' : ''}>✓ 答对了</button>
         <button class="btn btn-sm btn-danger" data-qid="${q.id}" data-type="self" data-value="wrong" ${isSelfChecked && userAnswer === 'wrong' ? 'disabled' : ''}>✗ 答错了</button>
-        ${isSelfChecked ? `<span style="font-size:13px;margin-left:8px;color:${userAnswer==='correct'?'#0d904f':'#d93025'}">已标记: ${userAnswer==='correct'?'正确':'错误'}</span>` : ''}
+        ${isSelfChecked ? `<span style="font-size:13px;margin-left:8px;color:${userAnswer==='correct'?'var(--success)':'var(--danger)'}">已标记: ${userAnswer==='correct'?'正确':'错误'}</span>` : ''}
       </div>`}
     ` : `<p style="color:#999;font-size:13px">（暂无解析，请自行对照教材）</p>`}
     ${examSubmitted ? `<div class="eq-answer-show" style="display:${userAnswer ? 'block' : 'none'}"><strong>自评：</strong>${userAnswer==='correct' ? '✓ 正确' : userAnswer==='wrong' ? '✗ 错误' : '未作答'}</div>` : ''}`;
@@ -2520,7 +2649,7 @@ function bindReviewHeader() {
 // ========== INIT ==========
 if (QUESTIONS.length === 0) {
   document.getElementById('app').innerHTML = `
-    <div class="header"><h1>⚠ 题库加载失败</h1></div>
+    <div class="hero-card" style="background:linear-gradient(135deg,var(--danger),#b91c1c)"><h1>⚠ 题库加载失败</h1></div>
     <div class="card text-center">
       <p>请确保 <code>questions.js</code> 文件与本页面在同一目录下。</p>
       <p style="margin-top:8px">或运行 <code>python parse_all.py</code> 重新生成题库文件。</p>
