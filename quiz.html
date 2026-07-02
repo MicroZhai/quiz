@@ -349,6 +349,39 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft Ya
   .reader-back-top { bottom:16px; right:16px; width:40px; height:40px; font-size:18px; }
 }
 
+/* Reader toolbar */
+.reader-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; padding:10px 14px; background:#fff; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+.reader-toolbar-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.reader-search { flex:1; min-width:140px; padding:7px 12px 7px 32px; border:1.5px solid #e0e0e0; border-radius:8px; font-size:14px; outline:none; transition:border-color .2s; background:#f8f9fa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") 10px center no-repeat; }
+.reader-search:focus { border-color:#1a73e8; background-color:#fff; }
+.reader-search-clear { position:absolute; right:8px; top:50%; transform:translateY(-50%); background:none; border:none; color:#999; cursor:pointer; font-size:16px; padding:2px 6px; display:none; }
+.reader-fs-btn { width:32px; height:32px; border-radius:6px; border:1.5px solid #e0e0e0; background:#fff; cursor:pointer; font-weight:700; color:#666; transition:all .15s; font-size:13px; display:flex; align-items:center; justify-content:center; }
+.reader-fs-btn:hover { border-color:#1a73e8; color:#1a73e8; }
+.reader-fs-btn.active { background:#1a73e8; color:#fff; border-color:#1a73e8; }
+.reader-fs-sm .reader-qcard .rq-text { font-size:14px; }
+.reader-fs-lg .reader-qcard .rq-text { font-size:17px; }
+.reader-stats { font-size:12px; color:#999; white-space:nowrap; }
+.reader-search-count { font-size:12px; color:#1a73e8; white-space:nowrap; display:none; }
+.reader-search-count.show { display:inline; }
+
+/* KP badge on reader cards */
+.rq-kp-badge { display:inline-block; background:#e8f0fe; color:#1a73e8; padding:1px 8px; border-radius:10px; font-size:11px; margin-left:6px; cursor:pointer; transition:all .15s; user-select:none; }
+.rq-kp-badge:hover { background:#1a73e8; color:#fff; }
+.rq-kp-badge.open { background:#1a73e8; color:#fff; }
+.rq-kp-info { display:none; margin-top:8px; padding:10px 14px; background:#f0f5ff; border-radius:8px; border-left:3px solid #1a73e8; font-size:13px; line-height:1.6; color:#555; animation:feedbackSlide .3s ease; }
+.rq-kp-info.show { display:block; }
+.rq-kp-info .kp-label { font-weight:600; color:#1a73e8; margin-bottom:2px; }
+.rq-kp-info .kp-exam { color:#e65100; }
+
+/* Answer visibility toggle */
+.reader-ans-btn { font-size:13px; padding:6px 12px; }
+.hide-answers .reader-qcard .rq-answer { display:none; }
+.hide-answers .reader-opt-correct { color:inherit; font-weight:inherit; }
+
+/* Reader progress toast */
+.reader-progress-toast { position:fixed; bottom:80px; right:24px; z-index:99; background:#333; color:#fff; padding:8px 16px; border-radius:20px; font-size:13px; animation:feedbackSlide .3s ease; pointer-events:none; }
+@media (max-width:640px) { .reader-progress-toast { bottom:70px; right:16px; } }
+
 /* Smart Review */
 .smart-review-header { background:linear-gradient(135deg,#7c3aed,#5b21b6); }
 .stats-dashboard { display:grid; grid-template-columns:repeat(auto-fit, minmax(100px,1fr)); gap:8px; }
@@ -1008,6 +1041,25 @@ function renderSmartReview() {
 // ========== READER MODE ==========
 // Linear reading mode: browse all questions in chapter order, like a book
 let readerActiveSection = null;
+let readerShowAnswers = localStorage.getItem('readerShowAnswers') !== 'false'; // default true
+let readerFontSize = localStorage.getItem('readerFontSize') || 'md';
+let readerSearchTerm = '';
+let readerSearchTimeout = null;
+function getReaderViewedIds() {
+  try { return new Set(JSON.parse(localStorage.getItem('readerViewedIds') || '[]')); }
+  catch(e) { return new Set(); }
+}
+function saveReaderViewedIds(ids) {
+  localStorage.setItem('readerViewedIds', JSON.stringify([...ids]));
+}
+function markReaderSectionViewed(section) {
+  const viewed = getReaderViewedIds();
+  const qs = QUESTIONS.filter(q => (q.topic || '') === section);
+  let added = 0;
+  qs.forEach(q => { if (!viewed.has(q.id)) { viewed.add(q.id); added++; } });
+  if (added > 0) saveReaderViewedIds(viewed);
+}
+function getReaderViewedCount() { return getReaderViewedIds().size; }
 
 const READER_SECTIONS = ['热处理基础知识', '热处理设备与工艺', '质量管理', '仪表知识', '综合复习'];
 const READER_TITLES = {
@@ -1024,6 +1076,12 @@ const READER_TYPE_NAMES = {
 };
 
 function renderReader() {
+  // Restore saved section on first entry
+  if (!readerActiveSection) {
+    const saved = localStorage.getItem('readerLastSection');
+    if (saved && READER_SECTIONS.includes(saved)) readerActiveSection = saved;
+  }
+
   // Group questions by topic → type
   const groups = {};
   for (const sec of READER_SECTIONS) {
@@ -1074,6 +1132,14 @@ function renderReader() {
     return `<option value="${sec}"${sel}>${READER_TITLES[sec]} (${total}题)</option>`;
   }).join('');
 
+  // Font size state
+  const fsLabel = readerFontSize === 'sm' ? '小' : readerFontSize === 'lg' ? '大' : '中';
+  const ansBtnText = readerShowAnswers ? '👁️ 隐藏答案' : '👁️ 显示答案';
+  const viewedCount = getReaderViewedCount();
+  const viewedPct = QUESTIONS.length > 0 ? Math.round(viewedCount / QUESTIONS.length * 100) : 0;
+  const hideAnsCls = readerShowAnswers ? '' : ' hide-answers';
+  const fsCls = readerFontSize === 'sm' ? ' reader-fs-sm' : readerFontSize === 'lg' ? ' reader-fs-lg' : '';
+
   return `
     <div class="review-topbar" style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
       <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
@@ -1085,7 +1151,23 @@ function renderReader() {
       <div class="tab-item active" data-tab="reader">📜 阅读模式</div>
       <div class="tab-item" data-tab="studyguide">📋 学习建议</div>
     </div>
-    <div class="review-layout">
+    <div class="reader-toolbar">
+      <div class="reader-toolbar-row" style="flex:1;min-width:0">
+        <input type="text" class="reader-search" id="readerSearch" placeholder="搜索题目关键词..." value="${escapeHtml(readerSearchTerm)}" autocomplete="off">
+        <span class="reader-search-count" id="readerSearchCount"></span>
+      </div>
+      <div class="reader-toolbar-row">
+        <span style="font-size:12px;color:#999">字号</span>
+        <button class="reader-fs-btn${readerFontSize==='sm'?' active':''}" data-fs="sm" title="小号">A⁻</button>
+        <button class="reader-fs-btn${readerFontSize==='md'?' active':''}" data-fs="md" title="中号">A</button>
+        <button class="reader-fs-btn${readerFontSize==='lg'?' active':''}" data-fs="lg" title="大号">A⁺</button>
+      </div>
+      <div class="reader-toolbar-row">
+        <button class="btn btn-sm btn-outline reader-ans-btn" id="readerAnsToggle">${ansBtnText}</button>
+        <span class="reader-stats">📊 ${viewedCount}/${QUESTIONS.length} (${viewedPct}%)</span>
+      </div>
+    </div>
+    <div class="review-layout${hideAnsCls}${fsCls}" id="readerLayout">
       <div class="review-sidebar">
         <div class="kp-nav-label" style="display:none">📂 章节导航（左右滑动）</div>
         <div class="kp-dropdown-wrap" style="display:none">
@@ -1142,18 +1224,29 @@ function renderReaderQCard(q, num) {
     }
   }
 
+  // Knowledge point badge + inline explanation
+  const kpName = q.knowledge_point || '';
+  let kpBadgeHtml = '';
+  if (kpName) {
+    kpBadgeHtml = `<span class="rq-kp-badge" data-kp="${escapeHtml(kpName)}" onclick="event.stopPropagation();toggleReaderKP(this)">🔖 ${escapeHtml(kpName)}</span>
+    <div class="rq-kp-info" id="kpinfo-${q.id}"></div>`;
+  }
+
   const typeBadge = getTypeName(q.type);
 
   return `
     <div class="reader-qcard" id="rq-${q.id}">
-      <div class="rq-meta">${num}. [${typeBadge}] ${answerHtml}</div>
+      <div class="rq-meta">${num}. [${typeBadge}] ${answerHtml}${kpBadgeHtml}</div>
       <div class="rq-text">${escapeHtml(dq)}</div>
       ${extraHtml}
     </div>`;
 }
 
 function jumpToReaderSection(secName) {
+  // Mark previous section as viewed before switching
+  if (readerActiveSection) markReaderSectionViewed(readerActiveSection);
   readerActiveSection = secName;
+  localStorage.setItem('readerLastSection', secName);
   const mainDiv = document.getElementById('readerMain');
   if (!mainDiv) { render(); return; }
   // Hide all sections, show selected
@@ -1164,6 +1257,9 @@ function jumpToReaderSection(secName) {
   document.querySelectorAll('[data-reader-sec]').forEach(item => {
     item.classList.toggle('active', item.dataset.readerSec === secName);
   });
+  // Update dropdown
+  const dropdown = document.getElementById('readerSelect');
+  if (dropdown) dropdown.value = secName;
   // Scroll to top of section
   const target = document.getElementById('reader-' + secName);
   if (target) target.scrollIntoView({ behavior: 'smooth' });
@@ -1172,6 +1268,10 @@ function jumpToReaderSection(secName) {
     const navItem = document.querySelector(`[data-reader-sec="${secName}"]`);
     if (navItem) navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  // Update stats
+  updateReaderStats();
+  // Mark new section as viewed after a short delay (let DOM render)
+  setTimeout(() => markReaderSectionViewed(secName), 500);
 }
 
 // ========== STUDY GUIDE ==========
@@ -1289,6 +1389,148 @@ function renderStudyGuide() {
   `;
 }
 
+// ========== READER HELPERS ==========
+function toggleReaderKP(el) {
+  const qid = el.closest('.reader-qcard').id.replace('rq-', '');
+  const infoPanel = document.getElementById('kpinfo-' + qid);
+  if (!infoPanel) return;
+  const isOpen = infoPanel.classList.contains('show');
+  // Close all other open panels
+  document.querySelectorAll('.rq-kp-info.show').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.rq-kp-badge.open').forEach(b => b.classList.remove('open'));
+  if (!isOpen) {
+    const kpName = el.dataset.kp;
+    // Look up KP info from global KNOWLEDGE_POINTS
+    let kpInfo = null;
+    for (const kp of KNOWLEDGE_POINTS) {
+      if (kp.name === kpName) { kpInfo = kp; break; }
+    }
+    let html = `<div class="kp-label">📌 ${escapeHtml(kpName)}</div>`;
+    if (kpInfo) {
+      html += `<div>📖 ${escapeHtml(kpInfo.explanation)}</div>`;
+      if (kpInfo.key_concepts && kpInfo.key_concepts.length > 0) {
+        html += `<div style="margin-top:4px">🔑 核心概念：${kpInfo.key_concepts.map(escapeHtml).join('、')}</div>`;
+      }
+      if (kpInfo.exam_focus) {
+        html += `<div class="kp-exam" style="margin-top:4px">⚠️ 考试重点：${escapeHtml(kpInfo.exam_focus)}</div>`;
+      }
+    }
+    infoPanel.innerHTML = html;
+    infoPanel.classList.add('show');
+    el.classList.add('open');
+  }
+}
+
+function updateReaderStats() {
+  const statsEl = document.querySelector('.reader-stats');
+  if (!statsEl) return;
+  const count = getReaderViewedCount();
+  const pct = QUESTIONS.length > 0 ? Math.round(count / QUESTIONS.length * 100) : 0;
+  statsEl.textContent = '📊 ' + count + '/' + QUESTIONS.length + ' (' + pct + '%)';
+}
+
+function applyReaderSearch(term) {
+  readerSearchTerm = term;
+  const countEl = document.getElementById('readerSearchCount');
+  const sections = document.querySelectorAll('.reader-section');
+  let totalVisible = 0;
+  let totalCards = 0;
+
+  if (!term.trim()) {
+    // No search: restore normal display - show active section, hide others
+    const activeSection = readerActiveSection || READER_SECTIONS[0];
+    sections.forEach(sec => {
+      const isActive = sec.id === 'reader-' + activeSection;
+      sec.style.display = isActive ? '' : 'none';
+      sec.querySelectorAll('.reader-type-title').forEach(t => t.style.display = '');
+      sec.querySelectorAll('.reader-qcard').forEach(c => c.style.display = '');
+    });
+    if (countEl) countEl.classList.remove('show');
+    return;
+  }
+
+  // Search mode: show all sections, hide non-matching cards and empty type titles
+  const lower = term.toLowerCase();
+  sections.forEach(sec => {
+    sec.style.display = ''; // show all sections
+    const typeTitles = sec.querySelectorAll('.reader-type-title');
+    const cards = sec.querySelectorAll('.reader-qcard');
+    totalCards += cards.length;
+    // Filter cards
+    cards.forEach(card => {
+      const text = (card.querySelector('.rq-text')?.textContent || '') + ' ' + (card.querySelector('.rq-meta')?.textContent || '');
+      const match = text.toLowerCase().includes(lower);
+      card.style.display = match ? '' : 'none';
+      if (match) totalVisible++;
+    });
+    // Hide type titles that have no visible cards after filtering
+    typeTitles.forEach(title => {
+      let next = title.nextElementSibling;
+      let hasVisible = false;
+      while (next && !next.classList.contains('reader-type-title') && !next.classList.contains('reader-sec-title')) {
+        if (next.classList.contains('reader-qcard') && next.style.display !== 'none') {
+          hasVisible = true;
+          break;
+        }
+        next = next.nextElementSibling;
+      }
+      title.style.display = hasVisible ? '' : 'none';
+    });
+  });
+
+  if (countEl) {
+    countEl.textContent = '找到 ' + totalVisible + '/' + totalCards + ' 题';
+    countEl.classList.add('show');
+  }
+}
+
+function bindReaderSearch() {
+  const input = document.getElementById('readerSearch');
+  if (!input) return;
+  input.addEventListener('input', function() {
+    clearTimeout(readerSearchTimeout);
+    readerSearchTimeout = setTimeout(() => applyReaderSearch(this.value), 250);
+  });
+  // Apply saved search term on load
+  if (readerSearchTerm) {
+    input.value = readerSearchTerm;
+    setTimeout(() => applyReaderSearch(readerSearchTerm), 100);
+  }
+}
+
+function bindReaderFontSize() {
+  document.querySelectorAll('.reader-fs-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      readerFontSize = this.dataset.fs;
+      localStorage.setItem('readerFontSize', readerFontSize);
+      const layout = document.getElementById('readerLayout');
+      if (layout) {
+        layout.classList.remove('reader-fs-sm', 'reader-fs-md', 'reader-fs-lg');
+        if (readerFontSize === 'sm') layout.classList.add('reader-fs-sm');
+        else if (readerFontSize === 'lg') layout.classList.add('reader-fs-lg');
+      }
+      // Update active state
+      document.querySelectorAll('.reader-fs-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+}
+
+function bindReaderAnswerToggle() {
+  const btn = document.getElementById('readerAnsToggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    readerShowAnswers = !readerShowAnswers;
+    localStorage.setItem('readerShowAnswers', readerShowAnswers);
+    const layout = document.getElementById('readerLayout');
+    if (layout) {
+      if (readerShowAnswers) layout.classList.remove('hide-answers');
+      else layout.classList.add('hide-answers');
+    }
+    this.textContent = readerShowAnswers ? '👁️ 隐藏答案' : '👁️ 显示答案';
+  });
+}
+
 // ========== EVENT BINDING ==========
 function bindEvents() {
   // Tab bar
@@ -1297,7 +1539,7 @@ function bindEvents() {
       const tab = this.dataset.tab;
       if (tab === 'home') { screen = 'home'; render(); }
       else if (tab === 'review') { screen = 'review'; reviewActiveKP = null; render(); }
-      else if (tab === 'reader') { screen = 'reader'; readerActiveSection = null; render(); }
+      else if (tab === 'reader') { screen = 'reader'; render(); }
       else if (tab === 'studyguide') { screen = 'studyguide'; render(); }
     });
   });
@@ -1381,9 +1623,36 @@ function bindEvents() {
     window._readerScrollHandler = () => {
       const btn = document.getElementById('readerBackTop');
       if (btn) btn.style.display = window.scrollY > 400 ? 'block' : 'none';
+      // Debounced scroll position save
+      if (window._readerScrollSaveTimeout) clearTimeout(window._readerScrollSaveTimeout);
+      window._readerScrollSaveTimeout = setTimeout(() => {
+        if (readerActiveSection && window.scrollY > 0) {
+          localStorage.setItem('readerScrollPos_' + readerActiveSection, window.scrollY);
+        }
+      }, 500);
     };
     window.addEventListener('scroll', window._readerScrollHandler);
     window._readerScrollHandler();
+  }
+
+  // Reader search input
+  bindReaderSearch();
+
+  // Reader font size buttons
+  bindReaderFontSize();
+
+  // Reader answer toggle
+  bindReaderAnswerToggle();
+
+  // Reader: restore scroll position for active section
+  if (screen === 'reader' && readerActiveSection) {
+    const savedScroll = localStorage.getItem('readerScrollPos_' + readerActiveSection);
+    if (savedScroll) {
+      setTimeout(() => window.scrollTo({ top: parseInt(savedScroll), behavior: 'smooth' }), 200);
+    }
+    // Mark section as viewed
+    setTimeout(() => markReaderSectionViewed(readerActiveSection), 600);
+    setTimeout(() => updateReaderStats(), 800);
   }
 
   // KP explanation toggle in review
