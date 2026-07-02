@@ -141,12 +141,17 @@ for section in SECTION_ORDER:
                         opts_parts.append(f'{label}、{opt}')
                     lines.append('')
                     lines.append(' '.join(opts_parts))
+                if explanation:
+                    lines.append('')
+                    lines.append(f'   > 💡 {explanation}')
                 lines.append('')
 
             elif t == 'truefalse':
                 # Format: (√) 1、题目内容
                 marker = f'({answer})' if answer in ('√', '×') else '( )'
                 lines.append(f'{marker} {i+1}、{question}')
+                if explanation:
+                    lines.append(f'   > 💡 {explanation}')
                 lines.append('')
 
             elif t == 'fill':
@@ -157,6 +162,8 @@ for section in SECTION_ORDER:
                     lines.append(f'   答：{answer}')
                 else:
                     lines.append(f'   答：（答案缺失）')
+                if explanation:
+                    lines.append(f'   > 💡 {explanation}')
                 lines.append('')
 
             elif t == 'shortanswer':
