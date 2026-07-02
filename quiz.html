@@ -8,60 +8,74 @@
 <style>
 /* ===== Design Tokens ===== */
 :root {
-  --primary:#2563eb; --primary-hover:#1d4ed8; --primary-light:#eff3ff; --primary-100:#dbeafe;
-  --success:#16a34a; --success-light:#f0fdf4; --success-100:#dcfce7;
-  --warning:#d97706; --warning-light:#fffbeb; --warning-100:#fef3c7;
-  --danger:#dc2626; --danger-light:#fef2f2; --danger-100:#fee2e2;
-  --purple:#7c3aed; --purple-hover:#6d28d9;
-  --bg:#f1f5f9; --surface:#ffffff; --surface-hover:#f8fafc;
-  --text:#0f172a; --text-secondary:#475569; --text-muted:#94a3b8;
-  --border:#e2e8f0; --border-light:#f1f5f9;
-  --radius-sm:8px; --radius:12px; --radius-lg:16px; --radius-xl:20px;
-  --shadow-sm:0 1px 2px rgba(0,0,0,0.04);
-  --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md:0 4px 12px rgba(0,0,0,0.06),0 2px 4px rgba(0,0,0,0.04);
-  --shadow-lg:0 10px 25px rgba(0,0,0,0.08),0 4px 10px rgba(0,0,0,0.04);
+  /* Accent — academic indigo */
+  --primary:#2c3e6b; --primary-hover:#1e2a4a; --primary-light:#eef1f7; --primary-100:#dce2ef;
+  /* Semantic */
+  --success:#3a7d5a; --success-light:#eef5f0; --success-100:#dce8e0;
+  --warning:#a67c3d; --warning-light:#faf6ef; --warning-100:#f5ecd8;
+  --danger:#b5454a; --danger-light:#faf0f1; --danger-100:#f5e0e1;
+  /* Surfaces — warm paper */
+  --bg:#f5f5f0; --surface:#ffffff; --surface-hover:#fafaf7; --surface-elevated:#fafaf7;
+  /* Text */
+  --text:#1a1a1a; --text-secondary:#5c5c5c; --text-muted:#999;
+  /* Borders */
+  --border:#e0e0d8; --border-light:#f0f0ea;
+  /* Radii */
+  --radius-sm:6px; --radius:10px; --radius-lg:14px; --radius-xl:18px;
+  /* Shadows — subtle layered */
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.03);
+  --shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.05),0 2px 4px rgba(0,0,0,0.03);
+  --shadow-lg:0 10px 25px rgba(0,0,0,0.06),0 4px 10px rgba(0,0,0,0.03);
+  /* Typography scale */
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+  --text-xs:12px; --text-sm:13px; --text-base:14px; --text-md:15px;
+  --text-lg:16px; --text-xl:18px; --text-2xl:20px; --text-3xl:24px; --text-4xl:32px;
+  --leading-relaxed:1.75; --leading-normal:1.6;
+  /* Layout */
   --sidebar-w:240px; --bottombar-h:64px;
 }
 
 /* ===== Dark Theme (system preference) ===== */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --primary:#3b82f6; --primary-hover:#60a5fa; --primary-light:#1e3a5f; --primary-100:#1e3a5f;
-    --success:#22c55e; --success-light:#0f2d1f; --success-100:#0f2d1f;
-    --warning:#f59e0b; --warning-light:#2d1f0f; --warning-100:#2d1f0f;
-    --danger:#ef4444; --danger-light:#2d0f0f; --danger-100:#2d0f0f;
-    --purple:#8b5cf6; --purple-hover:#a78bfa;
-    --bg:#000; --surface:#0d0d0d; --surface-hover:#1a1a1a;
-    --text:#f1f5f9; --text-secondary:#94a3b8; --text-muted:#64748b;
-    --border:#262626; --border-light:#1a1a1a;
-    --shadow-sm:0 1px 2px rgba(0,0,0,0.5);
-    --shadow:0 1px 3px rgba(0,0,0,0.6),0 1px 2px rgba(0,0,0,0.4);
-    --shadow-md:0 4px 12px rgba(0,0,0,0.7),0 2px 4px rgba(0,0,0,0.5);
-    --shadow-lg:0 10px 25px rgba(0,0,0,0.8),0 4px 10px rgba(0,0,0,0.5);
+    --primary:#5b8def; --primary-hover:#7ba5f5; --primary-light:#1c2840; --primary-100:#1a2a45;
+    --success:#4a9d6e; --success-light:#0f2418; --success-100:#0f2418;
+    --warning:#c4923d; --warning-light:#241e10; --warning-100:#241e10;
+    --danger:#c96b70; --danger-light:#241515; --danger-100:#241515;
+    --bg:#1c1c1e; --surface:#252527; --surface-hover:#2c2c2e; --surface-elevated:#2c2c2e;
+    --text:#e8e8e8; --text-secondary:#a0a0a0; --text-muted:#6a6a6a;
+    --border:#38383a; --border-light:#2c2c2e;
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+    --shadow:0 1px 3px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:0 4px 12px rgba(0,0,0,0.5),0 2px 4px rgba(0,0,0,0.3);
+    --shadow-lg:0 10px 25px rgba(0,0,0,0.6),0 4px 10px rgba(0,0,0,0.3);
   }
 }
 
 /* ===== Dark Theme (manual override) ===== */
 :root[data-theme="dark"] {
-  --primary:#3b82f6; --primary-hover:#60a5fa; --primary-light:#1e3a5f; --primary-100:#1e3a5f;
-  --success:#22c55e; --success-light:#0f2d1f; --success-100:#0f2d1f;
-  --warning:#f59e0b; --warning-light:#2d1f0f; --warning-100:#2d1f0f;
-  --danger:#ef4444; --danger-light:#2d0f0f; --danger-100:#2d0f0f;
-  --purple:#8b5cf6; --purple-hover:#a78bfa;
-  --bg:#000; --surface:#0d0d0d; --surface-hover:#1a1a1a;
-  --text:#f1f5f9; --text-secondary:#94a3b8; --text-muted:#64748b;
-  --border:#262626; --border-light:#1a1a1a;
-  --shadow-sm:0 1px 2px rgba(0,0,0,0.5);
-  --shadow:0 1px 3px rgba(0,0,0,0.6),0 1px 2px rgba(0,0,0,0.4);
-  --shadow-md:0 4px 12px rgba(0,0,0,0.7),0 2px 4px rgba(0,0,0,0.5);
-  --shadow-lg:0 10px 25px rgba(0,0,0,0.8),0 4px 10px rgba(0,0,0,0.5);
+  --primary:#5b8def; --primary-hover:#7ba5f5; --primary-light:#1c2840; --primary-100:#1a2a45;
+  --success:#4a9d6e; --success-light:#0f2418; --success-100:#0f2418;
+  --warning:#c4923d; --warning-light:#241e10; --warning-100:#241e10;
+  --danger:#c96b70; --danger-light:#241515; --danger-100:#241515;
+  --bg:#1c1c1e; --surface:#252527; --surface-hover:#2c2c2e; --surface-elevated:#2c2c2e;
+  --text:#e8e8e8; --text-secondary:#a0a0a0; --text-muted:#6a6a6a;
+  --border:#38383a; --border-light:#2c2c2e;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+  --shadow:0 1px 3px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.5),0 2px 4px rgba(0,0,0,0.3);
+  --shadow-lg:0 10px 25px rgba(0,0,0,0.6),0 4px 10px rgba(0,0,0,0.3);
 }
 
 /* ===== Reset & Base ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif; background:var(--bg); color:var(--text); min-height:100vh; -webkit-tap-highlight-color:transparent; }
+body { font-family:var(--font-sans); background:var(--bg); color:var(--text); min-height:100vh; -webkit-tap-highlight-color:transparent; line-height:var(--leading-relaxed); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  html { scroll-behavior:auto; }
+}
 
 /* ===== App Shell ===== */
 .app-shell { display:flex; min-height:100vh; }
@@ -69,41 +83,46 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 /* ===== Sidebar (Desktop) ===== */
 .sidebar { width:var(--sidebar-w); background:var(--surface); border-right:1px solid var(--border); display:flex; flex-direction:column; position:fixed; top:0; left:0; bottom:0; z-index:50; overflow-y:auto; }
 .sidebar-brand { padding:24px 20px 20px; cursor:pointer; display:flex; align-items:center; gap:10px; border-bottom:1px solid var(--border-light); }
-.sidebar-logo { width:40px; height:40px; background:linear-gradient(135deg,var(--primary),var(--purple)); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:20px; }
+.sidebar-logo { width:40px; height:40px; background:var(--primary); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:20px; }
 .sidebar-title { font-size:17px; font-weight:700; color:var(--text); }
 .sidebar-nav { flex:1; padding:12px 10px; display:flex; flex-direction:column; gap:2px; }
-.sidebar-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:var(--radius-sm); border:none; background:transparent; cursor:pointer; font-size:14px; color:var(--text-secondary); transition:all .15s; text-align:left; width:100%; font-family:inherit; }
+.sidebar-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:var(--radius-sm); border:none; background:transparent; cursor:pointer; font-size:14px; color:var(--text-secondary); transition:all .15s; text-align:left; width:100%; font-family:inherit; position:relative; }
 .sidebar-item:hover { background:var(--primary-light); color:var(--primary); }
 .sidebar-item.active { background:var(--primary-light); color:var(--primary); font-weight:600; }
+.sidebar-item.active::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:3px; background:var(--primary); border-radius:0 3px 3px 0; }
 .sidebar-item .side-icon { font-size:18px; width:24px; text-align:center; flex-shrink:0; }
 .sidebar-item .side-badge { margin-left:auto; background:var(--danger); color:#fff; font-size:11px; padding:2px 8px; border-radius:10px; min-width:20px; text-align:center; }
 .sidebar-stats { padding:16px 20px; border-top:1px solid var(--border-light); font-size:12px; color:var(--text-muted); }
+.theme-toggle { display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:16px; border:1.5px solid var(--border); background:var(--surface); cursor:pointer; font-size:13px; color:var(--text-secondary); transition:all .15s; font-family:inherit; width:100%; justify-content:center; }
+.theme-toggle:hover { background:var(--surface-hover); border-color:var(--primary); }
 
 /* ===== Main Content ===== */
 .main-content { flex:1; margin-left:var(--sidebar-w); padding:20px 24px 24px; }
-.main-content .container { max-width:1100px; margin:0 auto; }
+.main-content .container { max-width:1100px; margin:0 auto; animation:pageIn .2s ease both; }
+@keyframes pageIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 
 /* Quiz reading-width constraint */
-.quiz-width-wrap { max-width:760px; }
+.quiz-width-wrap { max-width:720px; margin:0 auto; }
+@media (max-width:767px) { .quiz-width-wrap { max-width:100%; } }
 
 /* ===== Bottom Bar (Mobile) ===== */
 .bottombar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:50; height:var(--bottombar-h); background:var(--surface); border-top:1px solid var(--border); padding:6px 8px env(safe-area-inset-bottom,8px); }
 .bottombar-inner { display:flex; height:100%; max-width:500px; margin:0 auto; }
-.bottombar-item { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; border:none; background:transparent; cursor:pointer; font-size:11px; color:var(--text-muted); transition:all .15s; border-radius:var(--radius-sm); padding:4px 0; font-family:inherit; }
+.bottombar-item { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; border:none; background:transparent; cursor:pointer; font-size:11px; color:var(--text-muted); transition:all .15s; border-radius:var(--radius-sm); padding:4px 0; font-family:inherit; position:relative; }
+.bottombar-item.active::before { content:''; position:absolute; top:0; left:25%; right:25%; height:2px; background:var(--primary); border-radius:0 0 2px 2px; }
 .bottombar-item .bb-icon { font-size:22px; }
 .bottombar-item.active { color:var(--primary); font-weight:600; }
 
 /* ===== Cards ===== */
-.card { background:var(--surface); border-radius:var(--radius-lg); padding:20px 24px; margin-bottom:16px; box-shadow:var(--shadow); border:1px solid var(--border); transition:box-shadow .2s,transform .2s; }
-.card:hover { box-shadow:var(--shadow-md); }
+.card { background:var(--surface); border-radius:var(--radius-lg); padding:20px 24px; margin-bottom:16px; box-shadow:var(--shadow-sm); border:1px solid var(--border); transition:box-shadow .2s,transform .2s; }
+@media (hover: hover) { .card:hover { box-shadow:var(--shadow-md); transform:translateY(-1px); } }
 .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
 .card-header h3 { font-size:17px; font-weight:600; }
 
 /* ===== Header Cards ===== */
-.hero-card { background:linear-gradient(135deg,var(--primary),#4f46e5); color:#fff; border-radius:var(--radius-lg); padding:28px 24px; margin-bottom:20px; box-shadow:var(--shadow-md); border:none; position:relative; overflow:hidden; }
-.hero-card::after { content:''; position:absolute; top:-50%; right:-20%; width:200px; height:200px; background:rgba(255,255,255,0.06); border-radius:50%; pointer-events:none; }
-.hero-card h1 { font-size:26px; margin-bottom:4px; position:relative; z-index:1; }
-.hero-card p { opacity:0.85; font-size:14px; position:relative; z-index:1; }
+.hero-card { background:var(--surface-elevated); color:var(--text); border-radius:var(--radius-lg); padding:28px 24px; margin-bottom:20px; box-shadow:var(--shadow-sm); border:1px solid var(--border); border-left:4px solid var(--primary); position:relative; }
+.hero-card h1 { font-size:26px; margin-bottom:4px; color:var(--primary); }
+.hero-card p { color:var(--text-secondary); font-size:14px; }
 
 /* ===== Buttons ===== */
 .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:10px 20px; border-radius:var(--radius-sm); border:none; cursor:pointer; font-size:14px; font-weight:500; transition:all .15s; text-decoration:none; white-space:nowrap; font-family:inherit; }
@@ -118,6 +137,8 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 .btn-danger:hover { opacity:.9; }
 .btn-ghost { background:transparent; color:var(--text-secondary); }
 .btn-ghost:hover { background:var(--bg); color:var(--text); }
+.btn-accent { background:var(--primary); color:#fff; font-size:16px; padding:12px 24px; }
+.btn-accent:hover { background:var(--primary-hover); }
 .btn-lg { padding:14px 28px; font-size:16px; border-radius:var(--radius); }
 .btn-sm { padding:6px 14px; font-size:13px; border-radius:6px; }
 .btn-block { display:flex; width:100%; }
@@ -126,45 +147,45 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 /* ===== Action Cards (2x2 grid) ===== */
 .actions-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:20px; }
 .action-card { background:var(--surface); border-radius:var(--radius); padding:22px 18px; border:1px solid var(--border); cursor:pointer; transition:all .2s; text-align:center; box-shadow:var(--shadow-sm); }
-.action-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:var(--primary-100); }
+@media (hover: hover) { .action-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:var(--primary-100); } }
 .action-card .ac-icon { font-size:32px; margin-bottom:8px; }
 .action-card .ac-title { font-size:15px; font-weight:600; color:var(--text); }
 .action-card .ac-sub { font-size:12px; color:var(--text-muted); margin-top:2px; }
 
 /* ===== Filter Chips ===== */
 .chip-group { display:flex; flex-wrap:wrap; gap:6px; }
-.chip { padding:6px 14px; border-radius:20px; border:1.5px solid var(--border); background:var(--surface); cursor:pointer; font-size:13px; color:var(--text-secondary); transition:all .15s; font-family:inherit; }
-.chip:hover { border-color:var(--primary); color:var(--primary); }
+.chip { padding:7px 16px; border-radius:20px; border:1.5px solid var(--border); background:var(--surface); cursor:pointer; font-size:var(--text-sm); color:var(--text-secondary); transition:all .15s; font-family:inherit; line-height:1.4; }
+.chip:hover { border-color:var(--primary); color:var(--primary); background:var(--primary-light); }
 .chip.active { background:var(--primary); color:#fff; border-color:var(--primary); }
 
 /* ===== Quiz Area ===== */
 .quiz-topbar { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
 .quiz-topbar .qt-info { font-size:13px; color:var(--text-muted); }
 .quiz-topbar .qt-count { margin-left:auto; font-size:13px; color:var(--text-secondary); font-weight:500; }
-.progress-bar { height:3px; background:var(--border); border-radius:2px; margin-bottom:20px; overflow:hidden; }
-.progress-bar-fill { height:100%; background:linear-gradient(90deg,var(--primary),#4f46e5); border-radius:2px; transition:width .3s; }
+.progress-bar { height:5px; background:var(--border); border-radius:3px; margin-bottom:20px; overflow:hidden; }
+.progress-bar-fill { height:100%; background:var(--primary); border-radius:3px; transition:width .4s cubic-bezier(0.4, 0, 0.2, 1); }
 
 .question-card { background:var(--surface); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow); border:1px solid var(--border); margin-bottom:16px; }
 .question-card.correct-glow { animation:cardGlowGreen .6s ease; }
 .question-card.wrong-glow { animation:cardGlowRed .6s ease; }
 .question-meta { display:flex; align-items:center; gap:8px; margin-bottom:16px; font-size:13px; color:var(--text-muted); }
 .question-meta .q-type-badge { background:var(--primary-light); color:var(--primary); padding:3px 10px; border-radius:12px; font-weight:500; font-size:12px; }
-.question-text { font-size:17px; line-height:1.8; margin-bottom:24px; padding:16px 20px; background:var(--bg); border-radius:var(--radius); border-left:4px solid var(--primary); }
+.question-text { font-size:17px; line-height:var(--leading-relaxed); margin-bottom:24px; padding:16px 20px; background:var(--bg); border-radius:var(--radius); border-left:3px solid var(--primary); }
 
 /* Options */
 .options { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
-.option { padding:16px 20px; border:2px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .18s; font-size:16px; line-height:1.7; display:block; width:100%; background:var(--surface); position:relative; }
-.option:hover { border-color:var(--primary); background:var(--primary-light); transform:translateX(3px); }
+.option { padding:14px 18px; border:1.5px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .15s; font-size:var(--text-md); line-height:var(--leading-normal); display:flex; align-items:center; width:100%; background:var(--surface); text-align:left; font-family:inherit; }
+.option:hover { border-color:var(--primary); background:var(--primary-light); }
 .option.selected { border-color:var(--primary); background:var(--primary-light); box-shadow:0 0 0 1px var(--primary); }
 .option.correct { border-color:var(--success); background:var(--success-light); animation:correctPop .45s ease; }
 .option.wrong { border-color:var(--danger); background:var(--danger-light); animation:shake .45s ease; }
-.option .letter { width:36px; height:36px; border-radius:50%; background:var(--primary-light); color:var(--primary); display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0; transition:all .3s; margin-right:12px; vertical-align:middle; }
+.option .letter { width:32px; height:32px; border-radius:50%; background:var(--primary-light); color:var(--primary); display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex-shrink:0; transition:all .3s; margin-right:10px; }
 .option.correct .letter { background:var(--success); color:#fff; animation:letterPop .3s ease .15s both; }
 .option.wrong .letter { background:var(--danger); color:#fff; }
 
 /* True/False */
 .tf-buttons { display:flex; gap:12px; margin-bottom:24px; }
-.tf-btn { flex:1; padding:28px; border:2px solid var(--border); border-radius:var(--radius); cursor:pointer; font-size:28px; text-align:center; transition:all .15s; background:var(--surface); font-weight:600; }
+.tf-btn { flex:1; padding:22px 16px; border:1.5px solid var(--border); border-radius:var(--radius); cursor:pointer; font-size:24px; text-align:center; transition:all .15s; background:var(--surface); font-weight:600; font-family:inherit; }
 .tf-btn:hover { border-color:var(--primary); background:var(--primary-light); }
 .tf-btn.correct { border-color:var(--success); background:var(--success-light); color:var(--success); }
 .tf-btn.wrong { border-color:var(--danger); background:var(--danger-light); color:var(--danger); }
@@ -177,7 +198,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 /* Feedback */
 .answer-reveal { padding:16px 20px; background:var(--success-light); border-radius:var(--radius); margin:12px 0; font-size:14px; line-height:1.7; border:1px solid var(--success-100); }
 .answer-reveal strong { color:var(--success); }
-.feedback { padding:14px 18px; border-radius:var(--radius); margin:16px 0; font-size:15px; font-weight:600; }
+.feedback { padding:12px 16px; border-radius:var(--radius-sm); margin:14px 0; font-size:var(--text-base); font-weight:500; }
 .feedback.correct { background:var(--success-light); color:var(--success); border:1px solid var(--success-100); }
 .feedback.wrong { background:var(--danger-light); color:var(--danger); border:1px solid var(--danger-100); }
 .feedback.animate-in { animation:feedbackSlide .35s ease both; }
@@ -195,9 +216,9 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 @keyframes fadeIn { 0%{opacity:0} 100%{opacity:1} }
 
 /* ===== Exam Paper Mode ===== */
-.exam-header { background:linear-gradient(135deg,#e65100,#bf360c); color:#fff; padding:20px 24px; border-radius:12px; margin-bottom:16px; text-align:center; }
-.exam-header h1 { font-size:22px; margin-bottom:4px; }
-.exam-header p { opacity:0.85; font-size:13px; }
+.exam-header { background:var(--surface-elevated); color:var(--text); padding:20px 24px; border-radius:var(--radius-lg); margin-bottom:16px; text-align:center; border:1px solid var(--border); border-left:4px solid var(--primary); }
+.exam-header h1 { font-size:22px; margin-bottom:4px; color:var(--primary); }
+.exam-header p { color:var(--text-secondary); font-size:13px; }
 
 .exam-config-card { background:var(--surface); border-radius:12px; padding:20px; margin-bottom:12px; box-shadow:var(--shadow-sm); border:1px solid var(--border); }
 .exam-config-card h3 { margin-bottom:8px; }
@@ -209,10 +230,10 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 
 .exam-scorecard { background:var(--surface); border-radius:12px; padding:20px; margin-bottom:16px; text-align:center; box-shadow:var(--shadow-md); }
 .exam-scorecard .big-num { font-size:56px; font-weight:800; }
-.exam-scorecard .big-num.great { color:#0d904f; }
+.exam-scorecard .big-num.great { color:var(--success); }
 .exam-scorecard .big-num.good { color:var(--primary); }
-.exam-scorecard .big-num.fair { color:#e65100; }
-.exam-scorecard .big-num.poor { color:#d93025; }
+.exam-scorecard .big-num.fair { color:var(--warning); }
+.exam-scorecard .big-num.poor { color:var(--danger); }
 .exam-scorecard .score-detail { font-size:14px; color:var(--text-secondary); margin-top:4px; }
 
 .exam-progress-sticky { position:sticky; top:0; z-index:10; background:var(--bg); padding:8px 16px; border-radius:8px; margin-bottom:12px; display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-secondary); border:1px solid var(--border); }
@@ -220,8 +241,8 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 .exam-progress-sticky .mini-bar-fill { height:100%; background:var(--primary); border-radius:3px; transition:width .2s; }
 
 .exam-qcard { background:var(--surface); border-radius:10px; padding:14px 16px; margin-bottom:8px; box-shadow:var(--shadow-sm); border-left:4px solid var(--border); transition:border-color .3s; }
-.exam-qcard.submitted.correct { border-left-color:#0d904f; animation:correctPop .4s ease; }
-.exam-qcard.submitted.wrong { border-left-color:#d93025; animation:shake .4s ease; }
+.exam-qcard.submitted.correct { border-left-color:var(--success); animation:correctPop .4s ease; }
+.exam-qcard.submitted.wrong { border-left-color:var(--danger); animation:shake .4s ease; }
 .exam-qcard .eq-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
 .exam-qcard .eq-num { font-weight:700; font-size:14px; color:var(--primary); }
 .exam-qcard .eq-type-badge { font-size:11px; color:var(--text-muted); background:var(--bg); padding:2px 8px; border-radius:10px; }
@@ -232,17 +253,17 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 .exam-qcard .eq-opt { padding:7px 10px; border:1.5px solid var(--border); border-radius:8px; cursor:pointer; font-size:14px; display:flex; align-items:center; gap:8px; transition:all .12s; }
 .exam-qcard .eq-opt:hover { border-color:var(--primary); background:var(--primary-light); }
 .exam-qcard .eq-opt.picked { border-color:var(--primary); background:var(--primary-light); }
-.exam-qcard.submitted .eq-opt.correct-ans { border-color:#0d904f; background:var(--success-light); }
-.exam-qcard.submitted .eq-opt.wrong-pick { border-color:#d93025; background:var(--danger-light); }
+.exam-qcard.submitted .eq-opt.correct-ans { border-color:var(--success); background:var(--success-light); }
+.exam-qcard.submitted .eq-opt.wrong-pick { border-color:var(--danger); background:var(--danger-light); }
 .exam-qcard .eq-letter { width:24px; height:24px; border-radius:50%; background:var(--primary-light); color:var(--primary); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:11px; flex-shrink:0; }
-.exam-qcard.submitted .eq-opt.correct-ans .eq-letter { background:#0d904f; color:#fff; }
-.exam-qcard.submitted .eq-opt.wrong-pick .eq-letter { background:#d93025; color:#fff; }
+.exam-qcard.submitted .eq-opt.correct-ans .eq-letter { background:var(--success); color:#fff; }
+.exam-qcard.submitted .eq-opt.wrong-pick .eq-letter { background:var(--danger); color:#fff; }
 .exam-qcard .eq-tf { display:flex; gap:8px; }
 .exam-qcard .eq-tf .eq-btn { flex:1; padding:8px; border:1.5px solid var(--border); border-radius:8px; cursor:pointer; text-align:center; font-size:16px; transition:all .12s; }
 .exam-qcard .eq-tf .eq-btn:hover { border-color:var(--primary); }
 .exam-qcard .eq-tf .eq-btn.picked { border-color:var(--primary); background:var(--primary-light); }
-.exam-qcard.submitted .eq-tf .eq-btn.correct-ans { border-color:#0d904f; background:var(--success-light); }
-.exam-qcard.submitted .eq-tf .eq-btn.wrong-pick { border-color:#d93025; background:var(--danger-light); }
+.exam-qcard.submitted .eq-tf .eq-btn.correct-ans { border-color:var(--success); background:var(--success-light); }
+.exam-qcard.submitted .eq-tf .eq-btn.wrong-pick { border-color:var(--danger); background:var(--danger-light); }
 .exam-qcard .eq-input { width:100%; padding:8px 12px; border:1.5px solid var(--border); border-radius:8px; font-size:14px; background:var(--surface); color:var(--text); }
 .exam-qcard .eq-input:focus { outline:none; border-color:var(--primary); }
 .exam-qcard .eq-answer-show { font-size:13px; color:var(--success); margin-top:6px; display:none; }
@@ -254,8 +275,9 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 
 @media (max-width:767px) {
   .exam-scorecard .big-num { font-size:40px; }
-  .exam-header { padding:14px 18px; }
+  .exam-header { padding:14px 18px; border-radius:var(--radius); }
   .exam-header h1 { font-size:18px; }
+  .stats-dashboard { grid-template-columns:1fr 1fr; }
 }
 
 /* ===== Mistake List ===== */
@@ -280,7 +302,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 .review-sidebar .kp-nav-item .kp-count { font-size:11px; color:var(--text-muted); float:right; }
 .review-main { flex:1; min-width:0; }
 .review-kp-section { margin-bottom:20px; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border); }
-.review-kp-header { background:linear-gradient(135deg,var(--primary),var(--primary-hover)); color:#fff; padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+.review-kp-header { background:var(--primary); color:#fff; padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
 .review-kp-header h3 { font-size:15px; margin:0; }
 .review-kp-explanation { background:var(--primary-light); padding:14px 18px; font-size:14px; line-height:1.8; color:var(--text); display:none; border-left:4px solid var(--primary); }
 .review-kp-explanation.show { display:block; }
@@ -350,7 +372,9 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 .reader-progress-toast { position:fixed; bottom:80px; right:24px; z-index:39; background:var(--text); color:#fff; padding:8px 16px; border-radius:20px; font-size:13px; animation:feedbackSlide .3s ease; pointer-events:none; }
 
 /* ===== Smart Review ===== */
-.smart-review-header { background:linear-gradient(135deg,var(--purple),var(--purple-hover)); }
+.smart-review-header { background:var(--surface-elevated); color:var(--text); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:var(--radius-lg); padding:28px 24px; margin-bottom:20px; }
+.smart-review-header h1 { color:var(--primary); }
+.smart-review-header p { color:var(--text-secondary); }
 .stats-dashboard { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; }
 .stats-item { text-align:center; padding:12px 8px; background:var(--surface); border-radius:var(--radius-sm); box-shadow:var(--shadow-sm); border:1px solid var(--border); }
 .stats-item .stats-num { font-size:22px; font-weight:700; color:var(--primary); }
@@ -369,7 +393,26 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
 .gap-8 { gap:8px; }
 .filter-row { display:flex; flex-wrap:wrap; gap:8px; }
 
-/* ===== Mobile (<768px) ===== */
+/* ===== Responsive: Tablet (md: 768-1023px) — icon-only sidebar ===== */
+@media (min-width:768px) and (max-width:1023px) {
+  :root { --sidebar-w:56px; }
+  .sidebar-title,
+  .sidebar-item .side-icon + *,
+  .sidebar-stats,
+  .sidebar #themeToggle span,
+  .sidebar-brand { justify-content:center; padding:16px 8px 12px; }
+  .sidebar-item { justify-content:center; padding:12px 8px; }
+  .sidebar-item .side-icon { margin:0; font-size:20px; }
+  .sidebar-nav { padding:8px 6px; }
+  .sidebar #themeToggle { justify-content:center; padding:6px; min-width:0; }
+  .main-content { padding:16px 20px 20px; }
+  .actions-grid { grid-template-columns:1fr 1fr; gap:10px; }
+}
+/* ===== Responsive: Phone landscape (sm: 640-767px) ===== */
+@media (max-width:767px) {
+  :root { --sidebar-w:0px; }
+}
+/* ===== Responsive: Mobile — bottom bar layout ===== */
 @media (max-width:767px) {
   .sidebar { display:none; }
   .main-content { margin-left:0; padding:12px 12px calc(var(--bottombar-h) + 16px); max-width:100%; }
@@ -390,7 +433,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
   .kp-nav-label { display:flex!important; align-items:center; gap:4px; font-size:12px; color:var(--primary); font-weight:600; margin-bottom:4px; padding:0 2px; }
   .review-sidebar .kp-nav { display:flex; flex-wrap:nowrap; overflow-x:auto; max-height:none; position:static; gap:6px; padding:8px 6px; background:var(--surface); border-radius:var(--radius); -webkit-overflow-scrolling:touch; scrollbar-width:thin; mask-image:linear-gradient(to right, #000 85%, transparent 98%); -webkit-mask-image:linear-gradient(to right, #000 85%, transparent 98%); }
   .review-sidebar .kp-nav-item { flex-shrink:0; white-space:nowrap; border-left:none; border-radius:16px; padding:8px 14px; font-size:13px; font-weight:500; background:var(--bg); color:var(--text-secondary); }
-  .review-sidebar .kp-nav-item.active { border-left:none; background:var(--primary); color:#fff; font-weight:600; box-shadow:0 2px 8px rgba(37,99,235,0.3); }
+  .review-sidebar .kp-nav-item.active { border-left:none; background:var(--primary); color:#fff; font-weight:600; box-shadow:0 2px 8px rgba(44,62,107,0.25); }
   .kp-dropdown-wrap { display:block!important; padding:0 2px; margin-bottom:4px; }
   .kp-dropdown-wrap select { width:100%; padding:10px 12px; border-radius:var(--radius-sm); border:1.5px solid var(--border); background:var(--surface); font-size:14px; color:var(--text); appearance:none; font-family:inherit; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; padding-right:36px; }
   .review-main { min-width:0; }
@@ -416,14 +459,6 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
   .reader-progress-toast { bottom:72px; right:16px; }
   .quiz-topbar { flex-wrap:wrap; gap:8px; }
 }
-
-/* ===== More Menu (Mobile) ===== */
-.more-menu { position:fixed; bottom:calc(var(--bottombar-h) + 8px); right:16px; z-index:60; background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-lg); border:1px solid var(--border); padding:8px; display:none; min-width:160px; }
-.more-menu.show { display:block; animation:fadeIn .15s ease; }
-.more-menu-item { display:flex; align-items:center; gap:10px; width:100%; padding:12px 16px; border:none; background:transparent; cursor:pointer; font-size:14px; color:var(--text-secondary); border-radius:var(--radius-sm); transition:all .15s; font-family:inherit; text-align:left; }
-.more-menu-item:hover { background:var(--primary-light); color:var(--primary); }
-.more-menu-overlay { position:fixed; inset:0; z-index:55; display:none; }
-.more-menu-overlay.show { display:block; }
 </style>
 </head>
 <body>
@@ -438,13 +473,11 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
     <button class="sidebar-item active" data-nav="home"><span class="side-icon">🧪</span> 刷题练习</button>
     <button class="sidebar-item" data-nav="review"><span class="side-icon">📖</span> 复习资料</button>
     <button class="sidebar-item" data-nav="reader"><span class="side-icon">📜</span> 阅读模式</button>
-    <button class="sidebar-item" data-nav="studyguide"><span class="side-icon">📋</span> 学习建议</button>
     <button class="sidebar-item" data-nav="mistakes"><span class="side-icon">📝</span> 错题本<span class="side-badge" id="mistakeBadge" style="display:none">0</span></button>
-
   </nav>
-  <div class="sidebar-stats" id="sidebarStats">题库 715 题 · 26 个知识点</div>
+  <div class="sidebar-stats" id="sidebarStats">题库 715 题 · 26 个知识点 · <a href="#" onclick="navigateTo('studyguide');return false" style="color:var(--primary);text-decoration:none">学习建议 →</a></div>
   <div style="padding:8px 20px 16px;display:flex;align-items:center;gap:8px;">
-    <button id="themeToggle" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:16px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all .15s;font-family:inherit;width:100%;justify-content:center;" title="切换深色/浅色模式">
+    <button id="themeToggle" class="theme-toggle" title="切换深色/浅色模式">
       <span id="themeIcon">🌓</span> <span id="themeLabel">自动</span>
     </button>
   </div>
@@ -462,17 +495,10 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei"
     <button class="bottombar-item active" data-nav="home"><span class="bb-icon">🧪</span>刷题</button>
     <button class="bottombar-item" data-nav="review"><span class="bb-icon">📖</span>复习</button>
     <button class="bottombar-item" data-nav="reader"><span class="bb-icon">📜</span>阅读</button>
-    <button class="bottombar-item" data-nav="more" id="moreBtn"><span class="bb-icon">⋯</span>更多</button>
+    <button class="bottombar-item" data-nav="mistakes"><span class="bb-icon">📝</span>错题</button>
   </div>
 </nav>
 
-<!-- More Menu Overlay -->
-<div class="more-menu-overlay" id="moreOverlay" onclick="toggleMoreMenu()"></div>
-<div class="more-menu" id="moreMenu">
-  <button class="more-menu-item" data-nav="studyguide">📋 学习建议</button>
-  <button class="more-menu-item" data-nav="mistakes">📝 错题本</button>
-
-</div>
 
 <script src="questions.js"></script>
 
@@ -543,19 +569,6 @@ function updateMistakeBadge() {
     badge.style.display = '';
   } else {
     badge.style.display = 'none';
-  }
-}
-
-function toggleMoreMenu() {
-  const menu = document.getElementById('moreMenu');
-  const overlay = document.getElementById('moreOverlay');
-  const isOpen = menu.classList.contains('show');
-  if (isOpen) {
-    menu.classList.remove('show');
-    overlay.classList.remove('show');
-  } else {
-    menu.classList.add('show');
-    overlay.classList.add('show');
   }
 }
 
@@ -732,7 +745,7 @@ function renderHome() {
         <input type="number" id="examCustomInput" value="${examTotalCount}" min="5" max="${QUESTIONS.length}" placeholder="题数">
         <span style="font-size:13px;color:var(--text-muted)">题（5-${QUESTIONS.length}）</span>
       </div>
-      <button class="btn btn-block mt-12" data-action="start-exam" style="background:#e65100;color:#fff;font-size:16px;padding:12px">
+      <button class="btn btn-accent btn-block mt-12" data-action="start-exam">
         📋 开始考试
       </button>
     </div>
@@ -788,7 +801,7 @@ function renderHome() {
           ${topWeakKPs.map(([kp, c]) => '<span class="weak-kp-tag">'+kp+' ('+c+'题)</span>').join('')}
         </div>
       ` : ''}
-      ${dueCards.length > 0 ? '<button class="btn btn-primary" data-action="start-smart-review" style="width:100%;margin-top:10px;font-size:14px">🎯 开始智能复习（'+dueCards.length+'题待复习）</button>' : '<p style="font-size:12px;color:#999;margin-top:8px;text-align:center">✨ 暂无待复习卡片，去刷题吧！</p>'}
+      ${dueCards.length > 0 ? '<button class="btn btn-primary" data-action="start-smart-review" style="width:100%;margin-top:10px;font-size:14px">🎯 开始智能复习（'+dueCards.length+'题待复习）</button>' : '<p style="font-size:12px;color:var(--text-muted);margin-top:8px;text-align:center">✨ 暂无待复习卡片，去刷题吧！</p>'}
     </div>
     `;
     })()}
@@ -859,7 +872,7 @@ function renderQuiz() {
 
 function renderChoiceQuestion(q) {
   if (!q.options || q.options.length === 0) {
-    return `<p style="color:#999">选项解析失败，请查看答案</p>`;
+    return `<p style="color:var(--text-muted)">选项解析失败，请查看答案</p>`;
   }
   const isMulti = q.answer && q.answer.length > 1;
   return `
@@ -908,7 +921,7 @@ function renderOpenQuestion(q) {
         <button class="btn btn-sm btn-success" data-self="correct">✓ 我答对了</button>
         <button class="btn btn-sm btn-danger" data-self="wrong">✗ 我答错了</button>
       </div>
-    ` : `<p style="color:#999">暂无解析</p>`}
+    ` : `<p style="color:var(--text-muted)">暂无解析</p>`}
   `;
 }
 
@@ -943,7 +956,7 @@ function renderMistakes() {
         return `
         <div class="mistake-item" data-question-id="${q.id}">
           <span class="q-type">[${getTypeName(q.type)}]</span>
-          <span style="font-size:12px;color:#999">${getTopicShort(q.topic)}</span>
+          <span style="font-size:12px;color:var(--text-muted)">${getTopicShort(q.topic)}</span>
           <div style="margin-top:4px">${dq.substring(0, 80)}${dq.length>80?'...':''}</div>
           ${q.answer ? `<div style="font-size:13px;color:var(--success);margin-top:2px">答案: ${q.answer}</div>` : ''}
         </div>`;
@@ -1022,7 +1035,7 @@ function renderReview() {
   return `
     <div class="review-topbar" style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
       <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
-      <span style="font-size:14px;color:#666">📖 复习资料 · 按知识点分组</span>
+      <span style="font-size:14px;color:var(--text-secondary)">📖 复习资料 · 按知识点分组</span>
     </div>
 
     <div class="review-layout">
@@ -1095,10 +1108,10 @@ function renderSmartReview() {
 
   if (smartReviewQuestions.length === 0) {
     return `
-      <div class="hero-card" style="background:linear-gradient(135deg,var(--text-muted),var(--text-secondary))"><h1>✨ 暂无待复习</h1></div>
+      <div class="hero-card"><h1>✨ 暂无待复习</h1></div>
       <div class="card text-center">
-        <p style="font-size:16px;color:#666">所有题目都已安排好复习计划！</p>
-        <p style="font-size:14px;color:#999;margin-top:8px">继续刷题可以巩固更多知识点。</p>
+        <p style="font-size:16px;color:var(--text-secondary)">所有题目都已安排好复习计划！</p>
+        <p style="font-size:14px;color:var(--text-muted);margin-top:8px">继续刷题可以巩固更多知识点。</p>
       </div>
       <button class="btn btn-primary btn-block" data-action="back">← 返回首页</button>
     `;
@@ -1111,7 +1124,7 @@ function renderSmartReview() {
     smartReviewQuestions = [];
     smartReviewIndex = 0;
     return `
-      <div class="hero-card" style="background:linear-gradient(135deg,var(--success),#15803d)"><h1>🎉 本轮复习完成！</h1></div>
+      <div class="hero-card" style="border-left-color:var(--success)"><h1 style="color:var(--success)">🎉 本轮复习完成！</h1></div>
       <div class="card text-center">
         <p style="font-size:16px;color:var(--success)">当前复习计划已完成。</p>
         ${remainingDue > 0 ? `<p style="font-size:14px;color:var(--warning);margin-top:8px">仍有 ${remainingDue} 张卡片今日待复习</p>` : ''}
@@ -1131,9 +1144,9 @@ function renderSmartReview() {
     </div>
     <div class="quiz-topbar">
       <span>第 ${smartReviewIndex+1}/${smartReviewQuestions.length} 题</span>
-      <span class="qt-info" style="color:var(--purple)">${card ? '间隔: '+card.interval+'天 · 容易度: '+card.ef.toFixed(1) : '新卡片'}</span>
+      <span class="qt-info" style="color:var(--primary)">${card ? '间隔: '+card.interval+'天 · 容易度: '+card.ef.toFixed(1) : '新卡片'}</span>
     </div>
-    <div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%;background:var(--purple)"></div></div>
+    <div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%"></div></div>
     ${q.type === 'choice' ? renderChoiceQuestion(q) : ''}
     ${q.type === 'truefalse' ? renderTrueFalseQuestion(q) : ''}
     ${q.type === 'fill' ? renderFillQuestion(q) : ''}
@@ -1246,7 +1259,7 @@ function renderReader() {
   return `
     <div class="review-topbar" style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
       <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
-      <span style="font-size:14px;color:#666">📜 阅读模式 · 按章节顺序从头到尾浏览</span>
+      <span style="font-size:14px;color:var(--text-secondary)">📜 阅读模式 · 按章节顺序从头到尾浏览</span>
     </div>
 
     <div class="reader-toolbar">
@@ -1255,7 +1268,7 @@ function renderReader() {
         <span class="reader-search-count" id="readerSearchCount"></span>
       </div>
       <div class="reader-toolbar-row">
-        <span style="font-size:12px;color:#999">字号</span>
+        <span style="font-size:12px;color:var(--text-muted)">字号</span>
         <button class="reader-fs-btn${readerFontSize==='sm'?' active':''}" data-fs="sm" title="小号">A⁻</button>
         <button class="reader-fs-btn${readerFontSize==='md'?' active':''}" data-fs="md" title="中号">A</button>
         <button class="reader-fs-btn${readerFontSize==='lg'?' active':''}" data-fs="lg" title="大号">A⁺</button>
@@ -1402,7 +1415,7 @@ function renderStudyGuide() {
   return `
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
       <button class="btn btn-sm btn-outline" data-action="back">← 返回</button>
-      <span style="font-size:14px;color:#666">📋 学习建议</span>
+      <span style="font-size:14px;color:var(--text-secondary)">📋 学习建议</span>
     </div>
 
 
@@ -1431,7 +1444,7 @@ function renderStudyGuide() {
           return `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px">
             <span style="width:110px;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${name}">${name}</span>
             <div style="flex:1;background:var(--primary-light);border-radius:4px;height:18px;overflow:hidden">
-              <div style="background:linear-gradient(90deg,var(--primary),#60a5fa);height:100%;border-radius:4px;width:${Math.min(pct, 100)}%"></div>
+              <div style="background:var(--primary);height:100%;border-radius:4px;width:${Math.min(pct, 100)}%"></div>
             </div>
             <span style="width:36px;text-align:right;flex-shrink:0;font-weight:600;font-size:12px">${count}</span>
           </div>`;
@@ -1442,7 +1455,7 @@ function renderStudyGuide() {
     ${sortedMistakeKP.length > 0 ? `
     <div class="guide-section">
       <h3>⚠️ 薄弱环节（错题按知识点统计）</h3>
-      <p style="font-size:13px;color:#999;margin-bottom:8px">以下知识点错题较多，建议优先复习：</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">以下知识点错题较多，建议优先复习：</p>
       ${sortedMistakeKP.map(([name, count]) => `
         <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;margin:4px 0;background:var(--warning-light);border-radius:6px;font-size:14px">
           <span style="color:var(--warning);font-weight:600">${count}题</span>
@@ -1617,18 +1630,6 @@ function bindEvents() {
     // Bottom bar navigation
     document.querySelectorAll('.bottombar-item').forEach(el => {
       el.addEventListener('click', function() {
-        if (this.dataset.nav === 'more') {
-          toggleMoreMenu();
-        } else {
-          navigateTo(this.dataset.nav);
-        }
-      });
-    });
-
-    // More menu items
-    document.querySelectorAll('.more-menu-item').forEach(el => {
-      el.addEventListener('click', function() {
-        toggleMoreMenu();
         navigateTo(this.dataset.nav);
       });
     });
@@ -2187,7 +2188,7 @@ function bindEvents() {
       if (btnsDiv) {
         btnsDiv.querySelectorAll('button').forEach(b => b.disabled = true);
         const label = value === 'correct' ? '✓ 已标记: 正确' : '✗ 已标记: 错误';
-        const color = value === 'correct' ? '#0d904f' : '#d93025';
+        const color = value === 'correct' ? 'var(--success)' : 'var(--danger)';
         const existing = btnsDiv.querySelector('.self-label');
         if (existing) existing.remove();
         const span = document.createElement('span');
@@ -2413,8 +2414,8 @@ function renderExamPaper() {
     let resultHtml = '';
     if (examSubmitted) {
       resultHtml = isCorrect
-        ? '<span class="eq-result" style="color:#0d904f">✓ 正确</span>'
-        : `<span class="eq-result" style="color:#d93025">✗ 错误${q.answer ? ' (答案: '+q.answer+')' : ''}</span>`;
+        ? '<span class="eq-result" style="color:var(--success)">✓ 正确</span>'
+        : `<span class="eq-result" style="color:var(--danger)">✗ 错误${q.answer ? ' (答案: '+q.answer+')' : ''}</span>`;
     }
 
     let answerHtml = '';
@@ -2449,7 +2450,7 @@ function renderExamPaper() {
     ${qcardsHtml}
     ${examSubmitted ? '' : `
     <div class="exam-sticky-bottom">
-      <button class="btn btn-lg" style="background:#e65100;color:#fff" data-action="submit-exam">
+      <button class="btn btn-accent btn-lg btn-block" data-action="submit-exam">
         📋 交卷 (${answeredCount}/${totalCount} 已答)
       </button>
     </div>`}
@@ -2469,7 +2470,7 @@ function renderExamChoice(q, idx, userAnswer) {
   const userPicks = userAnswer ? userAnswer.split('') : [];
   const correctLabels = q.answer ? q.answer.split('') : [];
   return `
-    ${isMulti ? '<div style="font-size:12px;color:#e65100;margin-bottom:4px;font-weight:600;">🔲 多选题（点击选项选中/取消）</div>' : ''}
+    ${isMulti ? '<div style="font-size:12px;color:var(--warning);margin-bottom:4px;font-weight:600;">🔲 多选题（点击选项选中/取消）</div>' : ''}
     <div class="eq-options">
       ${q.options.map((opt, i) => {
         const label = q.option_labels && q.option_labels[i] ? q.option_labels[i] : String.fromCharCode(65+i);
@@ -2528,7 +2529,7 @@ function renderExamOpen(q, idx, userAnswer) {
       <div class="eq-self-btns" id="selfBtns-${q.id}" style="display:none">
         <button class="btn btn-sm btn-success" data-qid="${q.id}" data-type="self" data-value="correct" ${isSelfChecked && userAnswer === 'correct' ? 'disabled' : ''}>✓ 答对了</button>
         <button class="btn btn-sm btn-danger" data-qid="${q.id}" data-type="self" data-value="wrong" ${isSelfChecked && userAnswer === 'wrong' ? 'disabled' : ''}>✗ 答错了</button>
-        ${isSelfChecked ? `<span style="font-size:13px;margin-left:8px;color:${userAnswer==='correct'?'#0d904f':'#d93025'}">已标记: ${userAnswer==='correct'?'正确':'错误'}</span>` : ''}
+        ${isSelfChecked ? `<span style="font-size:13px;margin-left:8px;color:var(--${userAnswer==='correct'?'success':'danger'})">已标记: ${userAnswer==='correct'?'正确':'错误'}</span>` : ''}
       </div>`}
     ` : `<p style="color:var(--text-muted);font-size:13px">（暂无解析，请自行对照教材）</p>`}
     ${examSubmitted ? `<div class="eq-answer-show" style="display:${userAnswer ? 'block' : 'none'}"><strong>自评：</strong>${userAnswer==='correct' ? '✓ 正确' : userAnswer==='wrong' ? '✗ 错误' : '未作答'}</div>` : ''}`;
@@ -2702,7 +2703,7 @@ listenSystemTheme();
 // ========== INIT ==========
 if (QUESTIONS.length === 0) {
   document.getElementById('app').innerHTML = `
-    <div class="hero-card" style="background:linear-gradient(135deg,var(--danger),#b91c1c)"><h1>⚠ 题库加载失败</h1></div>
+    <div class="hero-card" style="border-left-color:var(--danger)"><h1 style="color:var(--danger)">⚠ 题库加载失败</h1></div>
     <div class="card text-center">
       <p>请确保 <code>questions.js</code> 文件与本页面在同一目录下。</p>
       <p style="margin-top:8px">或运行 <code>python parse_all.py</code> 重新生成题库文件。</p>
