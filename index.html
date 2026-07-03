@@ -203,7 +203,7 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
 .feedback.wrong { background:var(--danger-light); color:var(--danger); border:1px solid var(--danger-100); }
 .feedback.animate-in { animation:feedbackSlide .35s ease both; }
 .self-check { display:flex; gap:10px; margin-top:12px; align-items:center; }
-.nav-buttons { display:flex; gap:10px; justify-content:space-between; margin-top:20px; }
+.nav-buttons { display:flex; gap:10px; justify-content:space-between; margin-top:20px; flex-wrap:wrap; }
 
 /* ===== Animations ===== */
 @keyframes correctPop { 0%{transform:scale(1)} 30%{transform:scale(1.03)} 60%{transform:scale(.99)} 100%{transform:scale(1)} }
@@ -862,6 +862,7 @@ function renderQuiz() {
 
     <div class="nav-buttons">
       <button class="btn btn-outline" data-action="prev" ${currentIndex===0?'disabled':''}>◀ 上一题</button>
+      ${mistakeIds.length > 0 ? `<button class="btn btn-outline" data-action="show-mistakes" style="color:var(--danger);border-color:var(--danger)">📝 复习错题 (${mistakeIds.length})</button>` : ''}
       <button class="btn btn-primary" data-action="next">${currentIndex >= currentQuestions.length-1 ? '完成 ✓' : '下一题 ▶'}</button>
     </div>
     </div>
@@ -1155,8 +1156,8 @@ function renderSmartReview() {
 // ========== READER MODE ==========
 // Linear reading mode: browse all questions in chapter order, like a book
 let readerActiveSection = null;
-let readerShowAnswers = localStorage.getItem('readerShowAnswers') !== 'false'; // default true
-let readerShowExplanations = localStorage.getItem('readerShowExplanations') !== 'false'; // default true
+let readerShowAnswers = localStorage.getItem('readerShowAnswers') !== 'false'; // default true — controls both answers & explanations
+let readerShowExplanations = readerShowAnswers; // synced with answers
 let readerFontSize = localStorage.getItem('readerFontSize') || 'md';
 let readerSearchTerm = '';
 let readerSearchTimeout = null;
@@ -1249,13 +1250,12 @@ function renderReader() {
 
   // Font size state
   const fsLabel = readerFontSize === 'sm' ? '小' : readerFontSize === 'lg' ? '大' : '中';
-  const ansBtnText = readerShowAnswers ? '👁️ 隐藏答案' : '👁️ 显示答案';
+  const detailBtnText = readerShowAnswers ? '👁️ 隐藏答案与解析' : '👁️ 显示答案与解析';
   const viewedCount = getReaderViewedCount();
   const viewedPct = QUESTIONS.length > 0 ? Math.round(viewedCount / QUESTIONS.length * 100) : 0;
   const hideAnsCls = readerShowAnswers ? '' : ' hide-answers';
   const fsCls = readerFontSize === 'sm' ? ' reader-fs-sm' : readerFontSize === 'lg' ? ' reader-fs-lg' : '';
-  const explBtnText = readerShowExplanations ? '📝 隐藏解析' : '📝 显示解析';
-  const hideExplCls = readerShowExplanations ? '' : ' hide-explanations';
+  const hideExplCls = readerShowAnswers ? '' : ' hide-explanations';
 
   return `
     <div class="review-topbar" style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
@@ -1273,8 +1273,7 @@ function renderReader() {
         <button class="reader-fs-btn${readerFontSize==='sm'?' active':''}" data-fs="sm" title="小号">A⁻</button>
         <button class="reader-fs-btn${readerFontSize==='md'?' active':''}" data-fs="md" title="中号">A</button>
         <button class="reader-fs-btn${readerFontSize==='lg'?' active':''}" data-fs="lg" title="大号">A⁺</button>
-        <button class="btn btn-sm btn-outline reader-ans-btn" id="readerAnsToggle">${ansBtnText}</button>
-        <button class="btn btn-sm btn-outline reader-ans-btn" id="readerExplToggle">${explBtnText}</button>
+        <button class="btn btn-sm btn-outline reader-ans-btn" id="readerDetailToggle">${detailBtnText}</button>
         <span class="reader-stats">📊 ${viewedCount}/${QUESTIONS.length} (${viewedPct}%)</span>
       </div>
     </div>
@@ -1599,33 +1598,19 @@ function bindReaderFontSize() {
   });
 }
 
-function bindReaderAnswerToggle() {
-  const btn = document.getElementById('readerAnsToggle');
+function bindReaderDetailToggle() {
+  const btn = document.getElementById('readerDetailToggle');
   if (!btn) return;
   btn.addEventListener('click', function() {
     readerShowAnswers = !readerShowAnswers;
+    readerShowExplanations = readerShowAnswers;
     localStorage.setItem('readerShowAnswers', readerShowAnswers);
     const layout = document.getElementById('readerLayout');
     if (layout) {
-      if (readerShowAnswers) layout.classList.remove('hide-answers');
-      else layout.classList.add('hide-answers');
+      if (readerShowAnswers) { layout.classList.remove('hide-answers', 'hide-explanations'); }
+      else { layout.classList.add('hide-answers', 'hide-explanations'); }
     }
-    this.textContent = readerShowAnswers ? '👁️ 隐藏答案' : '👁️ 显示答案';
-  });
-}
-
-function bindReaderExplanationToggle() {
-  const btn = document.getElementById('readerExplToggle');
-  if (!btn) return;
-  btn.addEventListener('click', function() {
-    readerShowExplanations = !readerShowExplanations;
-    localStorage.setItem('readerShowExplanations', readerShowExplanations);
-    const layout = document.getElementById('readerLayout');
-    if (layout) {
-      if (readerShowExplanations) layout.classList.remove('hide-explanations');
-      else layout.classList.add('hide-explanations');
-    }
-    this.textContent = readerShowExplanations ? '📝 隐藏解析' : '📝 显示解析';
+    this.textContent = readerShowAnswers ? '👁️ 隐藏答案与解析' : '👁️ 显示答案与解析';
   });
 }
 
@@ -1753,11 +1738,8 @@ function bindEvents() {
   // Reader font size buttons
   bindReaderFontSize();
 
-  // Reader answer toggle
-  bindReaderAnswerToggle();
-
-  // Reader explanation toggle
-  bindReaderExplanationToggle();
+  // Reader answer & explanation toggle (combined)
+  bindReaderDetailToggle();
 
   // Reader: restore scroll position for active section
   if (screen === 'reader' && readerActiveSection) {
