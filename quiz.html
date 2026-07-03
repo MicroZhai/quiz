@@ -1221,12 +1221,10 @@ function renderReader() {
   }).join('');
 
   // Build main content - show all sections on one scrollable page
-  const activeSection = readerActiveSection || READER_SECTIONS[0];
   let mainHtml = '';
   let globalNum = 0;
   for (const sec of READER_SECTIONS) {
-    const isActive = sec === activeSection;
-    mainHtml += `<div class="reader-section" id="reader-${sec}" style="${isActive ? '' : 'display:none'}">
+    mainHtml += `<div class="reader-section" id="reader-${sec}">
       <div class="reader-sec-title">${READER_TITLES[sec]}</div>`;
 
     for (const t of READER_TYPE_ORDER) {
@@ -1355,12 +1353,6 @@ function jumpToReaderSection(secName) {
   if (readerActiveSection) markReaderSectionViewed(readerActiveSection);
   readerActiveSection = secName;
   localStorage.setItem('readerLastSection', secName);
-  const mainDiv = document.getElementById('readerMain');
-  if (!mainDiv) { render(); return; }
-  // Hide all sections, show selected
-  mainDiv.querySelectorAll('.reader-section').forEach(el => {
-    el.style.display = el.id === 'reader-' + secName ? '' : 'none';
-  });
   // Update nav active state
   document.querySelectorAll('[data-reader-sec]').forEach(item => {
     item.classList.toggle('active', item.dataset.readerSec === secName);
@@ -1519,11 +1511,8 @@ function applyReaderSearch(term) {
   let totalCards = 0;
 
   if (!term.trim()) {
-    // No search: restore normal display - show active section, hide others
-    const activeSection = readerActiveSection || READER_SECTIONS[0];
+    // No search: restore all cards to visible
     sections.forEach(sec => {
-      const isActive = sec.id === 'reader-' + activeSection;
-      sec.style.display = isActive ? '' : 'none';
       sec.querySelectorAll('.reader-type-title').forEach(t => t.style.display = '');
       sec.querySelectorAll('.reader-qcard').forEach(c => c.style.display = '');
     });
@@ -1531,10 +1520,9 @@ function applyReaderSearch(term) {
     return;
   }
 
-  // Search mode: show all sections, hide non-matching cards and empty type titles
+  // Search mode: hide non-matching cards and empty type titles
   const lower = term.toLowerCase();
   sections.forEach(sec => {
-    sec.style.display = ''; // show all sections
     const typeTitles = sec.querySelectorAll('.reader-type-title');
     const cards = sec.querySelectorAll('.reader-qcard');
     totalCards += cards.length;
