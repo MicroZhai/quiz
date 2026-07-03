@@ -145,7 +145,7 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
 .btn:disabled { opacity:.4; cursor:not-allowed; pointer-events:none; }
 
 /* ===== Action Cards (2x2 grid) ===== */
-.actions-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:20px; }
+.actions-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-bottom:20px; max-width:480px; }
 .action-card { background:var(--surface); border-radius:var(--radius); padding:22px 18px; border:1px solid var(--border); cursor:pointer; transition:all .2s; text-align:center; box-shadow:var(--shadow-sm); }
 @media (hover: hover) { .action-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:var(--primary-100); } }
 .action-card .ac-icon { font-size:32px; margin-bottom:8px; }
@@ -277,7 +277,6 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
   .exam-scorecard .big-num { font-size:40px; }
   .exam-header { padding:14px 18px; border-radius:var(--radius); }
   .exam-header h1 { font-size:18px; }
-  .stats-dashboard { grid-template-columns:1fr 1fr; }
 }
 
 /* ===== Mistake List ===== */
@@ -360,7 +359,6 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
 .reader-fs-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
 .reader-fs-sm .reader-qcard .rq-text { font-size:14px; }
 .reader-fs-lg .reader-qcard .rq-text { font-size:17px; }
-.reader-stats { font-size:12px; color:var(--text-muted); white-space:nowrap; }
 .reader-search-count { font-size:12px; color:var(--primary); white-space:nowrap; display:none; }
 .reader-search-count.show { display:inline; }
 .rq-kp-badge { display:inline-block; background:var(--primary-light); color:var(--primary); padding:2px 10px; border-radius:10px; font-size:11px; margin-left:6px; cursor:pointer; transition:all .15s; user-select:none; border:1px solid var(--primary-100); }
@@ -376,14 +374,6 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
 .hide-explanations .reader-qcard .rq-explanation { display:none; }
 .reader-progress-toast { position:fixed; bottom:80px; right:24px; z-index:39; background:var(--text); color:#fff; padding:8px 16px; border-radius:20px; font-size:13px; animation:feedbackSlide .3s ease; pointer-events:none; }
 
-/* ===== Smart Review ===== */
-.smart-review-header { background:var(--surface-elevated); color:var(--text); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:var(--radius-lg); padding:28px 24px; margin-bottom:20px; }
-.smart-review-header h1 { color:var(--primary); }
-.smart-review-header p { color:var(--text-secondary); }
-.stats-dashboard { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; }
-.stats-item { text-align:center; padding:12px 8px; background:var(--surface); border-radius:var(--radius-sm); box-shadow:var(--shadow-sm); border:1px solid var(--border); }
-.stats-item .stats-num { font-size:22px; font-weight:700; color:var(--primary); }
-.stats-item .stats-label { font-size:11px; color:var(--text-muted); margin-top:2px; }
 .weak-kp-tag { display:inline-block; margin:2px 4px; padding:4px 12px; background:var(--warning-light); border-radius:12px; font-size:12px; color:var(--warning); cursor:pointer; border:1px solid var(--warning-100); }
 .weak-kp-tag:hover { background:var(--warning-100); }
 
@@ -528,7 +518,7 @@ let currentFilter = { topic: 'all', type: 'all' };
 let currentQuestions = [];
 let currentIndex = 0;
 let answered = false;
-let screen = 'home'; // home | quiz | mistakes | review | studyguide | smartreview | reader | exam
+let screen = 'home'; // home | quiz | mistakes | review | studyguide | reader | exam
 let examQuestions = [];
 let examAnswers = {};
 let examSubmitted = false;
@@ -536,7 +526,7 @@ let examTotalCount = 50;
 
 // ========== NAVIGATION ==========
 const NAV_MAP = {
-  quiz: 'home', smartreview: 'home', exam: 'home',
+  quiz: 'home', exam: 'home',
   home: 'home', review: 'review', reader: 'reader',
   studyguide: 'studyguide', mistakes: 'mistakes'
 };
@@ -577,58 +567,6 @@ function updateMistakeBadge() {
   }
 }
 
-// ===== SM-2 Spaced Repetition State =====
-// reviewSchedule: { questionId: { n, ef, interval, lastReview, nextReview } }
-// n = repetition count, ef = ease factor (>=1.3), interval = days
-function getSchedule() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY + '_sm2');
-    return raw ? JSON.parse(raw) : {};
-  } catch(e) { return {}; }
-}
-function saveSchedule(sched) {
-  localStorage.setItem(STORAGE_KEY + '_sm2', JSON.stringify(sched));
-}
-
-// SM-2 Algorithm: grade 0-5 (0=complete blackout, 5=perfect recall)
-function sm2Grade(questionId, grade) {
-  const sched = getSchedule();
-  let card = sched[questionId] || { n: 0, ef: 2.5, interval: 0 };
-  if (grade >= 3) {
-    if (card.n === 0) card.interval = 1;
-    else if (card.n === 1) card.interval = 6;
-    else card.interval = Math.round(card.interval * card.ef);
-    card.n++;
-  } else {
-    card.n = 0;
-    card.interval = 1;
-  }
-  card.ef = Math.max(1.3, card.ef + (0.1 - (5-grade) * (0.08 + (5-grade) * 0.02)));
-  const today = new Date().toISOString().split('T')[0];
-  card.lastReview = today;
-  card.nextReview = new Date(Date.now() + card.interval * 86400000).toISOString().split('T')[0];
-  sched[questionId] = card;
-  saveSchedule(sched);
-  return card;
-}
-
-// Get cards due for review today
-function getDueCards() {
-  const sched = getSchedule();
-  const today = new Date().toISOString().split('T')[0];
-  const due = [];
-  // Cards scheduled for review today or earlier
-  for (const [qid, card] of Object.entries(sched)) {
-    if (card.nextReview <= today) due.push(parseInt(qid));
-  }
-  // Cards that have been answered but never scheduled (from mistakes)
-  const scheduledIds = new Set(Object.keys(sched).map(Number));
-  const mistakeIds = Object.keys(state.mistakes).map(Number);
-  for (const qid of mistakeIds) {
-    if (!scheduledIds.has(qid)) due.push(qid);
-  }
-  return [...new Set(due)]; // dedup
-}
 
 // Get study streak (consecutive days with activity)
 function getStreak() {
@@ -691,7 +629,6 @@ function render() {
   else if (screen === 'mistakes') app.innerHTML = renderMistakes();
   else if (screen === 'review') app.innerHTML = renderReview();
   else if (screen === 'studyguide') app.innerHTML = renderStudyGuide();
-  else if (screen === 'smartreview') app.innerHTML = renderSmartReview();
   else if (screen === 'reader') app.innerHTML = renderReader();
   else if (screen === 'exam') app.innerHTML = renderExamPaper();
   updateNavActive(screen);
@@ -730,11 +667,6 @@ function renderHome() {
         <div class="ac-title">错题复习</div>
         <div class="ac-sub">${mistakeIds.length} 道错题待复习</div>
       </div>
-      <div class="action-card" data-action="start-smart-review">
-        <div class="ac-icon">🎯</div>
-        <div class="ac-title">智能复习</div>
-        <div class="ac-sub">基于遗忘曲线 SM-2</div>
-      </div>
     </div>
 
     <div class="exam-config-card">
@@ -768,7 +700,6 @@ function renderHome() {
     </div>
 
     ${(() => {
-      const dueCards = getDueCards();
       const streak = getStreak();
       const kpStats = {};
       Object.keys(state.mistakes).forEach(id => {
@@ -780,13 +711,9 @@ function renderHome() {
       });
       const topWeakKPs = Object.entries(kpStats).sort((a,b) => b[1]-a[1]).slice(0, 3);
       return `
-    <div class="card card-compact" style="border-left:4px solid var(--primary)">
+    <div class="card" style="border-left:4px solid var(--primary)">
       <div class="card-header"><h3>📊 学习统计</h3></div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px">
-        <div style="text-align:center;padding:8px">
-          <div style="font-size:22px;font-weight:700;color:var(--primary)">${dueCards.length}</div>
-          <div style="font-size:11px;color:var(--text-muted)">🎯 待复习</div>
-        </div>
         <div style="text-align:center;padding:8px">
           <div style="font-size:22px;font-weight:700;color:var(--success)">${streak}</div>
           <div style="font-size:11px;color:var(--text-muted)">🔥 连续天数</div>
@@ -806,7 +733,6 @@ function renderHome() {
           ${topWeakKPs.map(([kp, c]) => '<span class="weak-kp-tag">'+kp+' ('+c+'题)</span>').join('')}
         </div>
       ` : ''}
-      ${dueCards.length > 0 ? '<button class="btn btn-primary" data-action="start-smart-review" style="width:100%;margin-top:10px;font-size:14px">🎯 开始智能复习（'+dueCards.length+'题待复习）</button>' : '<p style="font-size:12px;color:var(--text-muted);margin-top:8px;text-align:center">✨ 暂无待复习卡片，去刷题吧！</p>'}
     </div>
     `;
     })()}
@@ -948,6 +874,39 @@ function renderMistakes() {
   const typeCounts = {};
   mistakeQs.forEach(q => { typeCounts[q.type] = (typeCounts[q.type]||0) + 1; });
 
+  // Weak areas analysis: group mistakes by knowledge point
+  const kpMistakes = {};
+  mistakeQs.forEach(q => {
+    const kp = q.knowledge_point || '综合/未分类';
+    kpMistakes[kp] = (kpMistakes[kp] || 0) + 1;
+  });
+  const sortedWeakKP = Object.entries(kpMistakes).sort((a, b) => b[1] - a[1]);
+  const maxMistake = sortedWeakKP.length > 0 ? sortedWeakKP[0][1] : 1;
+
+  // Build weak areas HTML
+  let weakHtml = '';
+  if (sortedWeakKP.length > 0) {
+    weakHtml = `
+    <div class="card">
+      <h3 style="margin-bottom:12px;font-size:16px">🎯 薄弱环节分析</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        ${sortedWeakKP.map(([kp, count]) => {
+          const pct = Math.round(count / maxMistake * 100);
+          const barColor = count >= 5 ? 'var(--danger)' : count >= 3 ? 'var(--warning)' : 'var(--primary)';
+          return `
+          <div style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:6px 0;border-bottom:1px solid var(--border-light)" onclick="reviewActiveKP='${escapeHtml(kp).replace(/'/g, "\\'")}';navigateTo('review')">
+            <span style="flex:1;font-size:13px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${kp}</span>
+            <span style="font-weight:700;font-size:14px;color:${barColor};flex-shrink:0">${count}题</span>
+            <div style="width:60px;height:6px;background:var(--border);border-radius:3px;overflow:hidden;flex-shrink:0">
+              <div style="height:100%;width:${pct}%;background:${barColor};border-radius:3px;transition:width .3s"></div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:8px">💡 点击知识点可跳转到复习资料查看解析</p>
+    </div>`;
+  }
+
   return `
     <div class="hero-card"><h1>📝 错题本 (${mistakeQs.length}题)</h1></div>
     <div class="card">
@@ -956,6 +915,7 @@ function renderMistakes() {
         <button class="btn btn-sm btn-danger" data-action="clear-mistakes">🗑 清空错题本</button>
       </div>
     </div>
+    ${weakHtml}
     <div class="card">
       ${mistakeQs.map(q => {
         const dq = cleanQuestionText(q);
@@ -1101,70 +1061,10 @@ function renderReviewQuestion(q) {
   `;
 }
 
-// ========== SMART REVIEW (SM-2) ==========
-let smartReviewQuestions = [];
-let smartReviewIndex = 0;
-
-function renderSmartReview() {
-  if (smartReviewQuestions.length === 0) {
-    const dueIds = getDueCards();
-    smartReviewQuestions = dueIds.map(id => QUESTIONS.find(q => q.id === id)).filter(Boolean);
-    smartReviewIndex = 0;
-  }
-
-  if (smartReviewQuestions.length === 0) {
-    return `
-      <div class="hero-card"><h1>✨ 暂无待复习</h1></div>
-      <div class="card text-center">
-        <p style="font-size:16px;color:var(--text-secondary)">所有题目都已安排好复习计划！</p>
-        <p style="font-size:14px;color:var(--text-muted);margin-top:8px">继续刷题可以巩固更多知识点。</p>
-      </div>
-      <button class="btn btn-primary btn-block" data-action="back">← 返回首页</button>
-    `;
-  }
-
-  if (smartReviewIndex >= smartReviewQuestions.length) {
-    // Review session complete
-    const sched = getSchedule();
-    const remainingDue = Object.values(sched).filter(c => c.nextReview <= new Date().toISOString().split('T')[0]).length;
-    smartReviewQuestions = [];
-    smartReviewIndex = 0;
-    return `
-      <div class="hero-card" style="border-left-color:var(--success)"><h1 style="color:var(--success)">🎉 本轮复习完成！</h1></div>
-      <div class="card text-center">
-        <p style="font-size:16px;color:var(--success)">当前复习计划已完成。</p>
-        ${remainingDue > 0 ? `<p style="font-size:14px;color:var(--warning);margin-top:8px">仍有 ${remainingDue} 张卡片今日待复习</p>` : ''}
-      </div>
-      <button class="btn btn-primary btn-block" data-action="back">← 返回首页</button>
-    `;
-  }
-
-  const q = smartReviewQuestions[smartReviewIndex];
-  const card = getSchedule()[q.id];
-  const progress = Math.round(smartReviewIndex / smartReviewQuestions.length * 100);
-
-  return `
-    <div class="hero-card smart-review-header">
-      <h1>🎯 智能复习</h1>
-      <p>基于遗忘曲线的间隔重复 · SM-2 算法</p>
-    </div>
-    <div class="quiz-topbar">
-      <span>第 ${smartReviewIndex+1}/${smartReviewQuestions.length} 题</span>
-      <span class="qt-info" style="color:var(--primary)">${card ? '间隔: '+card.interval+'天 · 容易度: '+card.ef.toFixed(1) : '新卡片'}</span>
-    </div>
-    <div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%"></div></div>
-    ${q.type === 'choice' ? renderChoiceQuestion(q) : ''}
-    ${q.type === 'truefalse' ? renderTrueFalseQuestion(q) : ''}
-    ${q.type === 'fill' ? renderFillQuestion(q) : ''}
-    ${q.type === 'shortanswer' || q.type === 'calculation' ? renderOpenQuestion(q) : ''}
-  `;
-}
-
 // ========== READER MODE ==========
 // Linear reading mode: browse all questions in chapter order, like a book
 let readerActiveSection = null;
 let readerShowAnswers = localStorage.getItem('readerShowAnswers') !== 'false'; // default true — controls both answers & explanations
-let readerShowExplanations = readerShowAnswers; // synced with answers
 let readerFontSize = localStorage.getItem('readerFontSize') || 'md';
 let readerSearchTerm = '';
 let readerSearchTimeout = null;
@@ -1182,7 +1082,6 @@ function markReaderSectionViewed(section) {
   qs.forEach(q => { if (!viewed.has(q.id)) { viewed.add(q.id); added++; } });
   if (added > 0) saveReaderViewedIds(viewed);
 }
-function getReaderViewedCount() { return getReaderViewedIds().size; }
 
 const READER_SECTIONS = ['热处理基础知识', '热处理设备与工艺', '质量管理', '仪表知识', '综合复习'];
 const READER_TITLES = {
@@ -1256,8 +1155,6 @@ function renderReader() {
   // Font size state
   const fsLabel = readerFontSize === 'sm' ? '小' : readerFontSize === 'lg' ? '大' : '中';
   const detailBtnText = readerShowAnswers ? '👁️ 隐藏答案与解析' : '👁️ 显示答案与解析';
-  const viewedCount = getReaderViewedCount();
-  const viewedPct = QUESTIONS.length > 0 ? Math.round(viewedCount / QUESTIONS.length * 100) : 0;
   const hideAnsCls = readerShowAnswers ? '' : ' hide-answers';
   const fsCls = readerFontSize === 'sm' ? ' reader-fs-sm' : readerFontSize === 'lg' ? ' reader-fs-lg' : '';
   const hideExplCls = readerShowAnswers ? '' : ' hide-explanations';
@@ -1279,7 +1176,6 @@ function renderReader() {
         <button class="reader-fs-btn${readerFontSize==='md'?' active':''}" data-fs="md" title="中号">A</button>
         <button class="reader-fs-btn${readerFontSize==='lg'?' active':''}" data-fs="lg" title="大号">A⁺</button>
         <button class="btn btn-sm btn-outline reader-ans-btn" id="readerDetailToggle">${detailBtnText}</button>
-        <span class="reader-stats">📊 ${viewedCount}/${QUESTIONS.length} (${viewedPct}%)</span>
       </div>
     </div>
     <div class="review-layout${hideAnsCls}${hideExplCls}${fsCls}" id="readerLayout">
@@ -1375,8 +1271,6 @@ function jumpToReaderSection(secName) {
     const navItem = document.querySelector(`[data-reader-sec="${secName}"]`);
     if (navItem) navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
-  // Update stats
-  updateReaderStats();
   // Mark new section as viewed after a short delay (let DOM render)
   setTimeout(() => markReaderSectionViewed(secName), 500);
 }
@@ -1502,14 +1396,6 @@ function toggleReaderKP(el) {
   }
 }
 
-function updateReaderStats() {
-  const statsEl = document.querySelector('.reader-stats');
-  if (!statsEl) return;
-  const count = getReaderViewedCount();
-  const pct = QUESTIONS.length > 0 ? Math.round(count / QUESTIONS.length * 100) : 0;
-  statsEl.textContent = '📊 ' + count + '/' + QUESTIONS.length + ' (' + pct + '%)';
-}
-
 function applyReaderSearch(term) {
   readerSearchTerm = term;
   const countEl = document.getElementById('readerSearchCount');
@@ -1598,7 +1484,6 @@ function bindReaderDetailToggle() {
   if (!btn) return;
   btn.addEventListener('click', function() {
     readerShowAnswers = !readerShowAnswers;
-    readerShowExplanations = readerShowAnswers;
     localStorage.setItem('readerShowAnswers', readerShowAnswers);
     const layout = document.getElementById('readerLayout');
     if (layout) {
@@ -1744,7 +1629,6 @@ function bindEvents() {
     }
     // Mark section as viewed
     setTimeout(() => markReaderSectionViewed(readerActiveSection), 600);
-    setTimeout(() => updateReaderStats(), 800);
   }
 
   // KP explanation toggle in review
@@ -2027,16 +1911,6 @@ function bindEvents() {
     });
   });
 
-  // Smart review handler
-  document.querySelectorAll('[data-action="start-smart-review"]').forEach(el => {
-    el.addEventListener('click', function() {
-      smartReviewQuestions = [];
-      smartReviewIndex = 0;
-      screen = 'smartreview';
-      render();
-    });
-  });
-
   // ===== Exam Mode Handlers =====
   // Start exam
   document.querySelectorAll('[data-action="start-exam"]').forEach(el => {
@@ -2204,27 +2078,23 @@ function bindQuizKeyboard() {
   if (window._quizKeyBound) return;
   window._quizKeyBound = true;
   document.addEventListener('keydown', function(e) {
-    if (screen !== 'quiz' && screen !== 'smartreview') return;
+    if (screen !== 'quiz') return;
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     const key = e.key;
-    const q = (screen === 'quiz') ? currentQuestions[currentIndex] : smartReviewQuestions[smartReviewIndex];
+    const q = currentQuestions[currentIndex];
 
     // ArrowRight / Space: next question
     if (key === 'ArrowRight' || key === ' ') {
       e.preventDefault();
-      if (screen === 'quiz' && currentIndex < currentQuestions.length - 1) {
+      if (currentIndex < currentQuestions.length - 1) {
         currentIndex++; answered = false; render();
-      } else if (screen === 'smartreview' && smartReviewIndex < smartReviewQuestions.length - 1) {
-        smartReviewIndex++; answered = false; render();
       }
     }
     // ArrowLeft: previous question
     else if (key === 'ArrowLeft') {
       e.preventDefault();
-      if (screen === 'quiz' && currentIndex > 0) {
+      if (currentIndex > 0) {
         currentIndex--; answered = false; render();
-      } else if (screen === 'smartreview' && smartReviewIndex > 0) {
-        smartReviewIndex--; answered = false; render();
       }
     }
     // Number keys 1-4 for choice options
@@ -2283,10 +2153,8 @@ function recordAnswer(q, correct) {
   if (correct) {
     state.stats.correct = (state.stats.correct || 0) + 1;
     delete state.mistakes[q.id];
-    sm2Grade(q.id, 4); // SM-2: correct = good recall
   } else {
     state.mistakes[q.id] = true;
-    sm2Grade(q.id, 2); // SM-2: wrong = failed recall
   }
   recordActivity();
   state.history.push({ id: q.id, correct, time: new Date().toISOString() });
