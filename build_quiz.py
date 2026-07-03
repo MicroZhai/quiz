@@ -26,6 +26,9 @@ with open(BASE / 'questions.json', 'r', encoding='utf-8') as f:
 with open(BASE / 'knowledge_points.json', 'r', encoding='utf-8') as f:
     kp_list = json.load(f)
 
+with open(BASE / 'knowledge_system.json', 'r', encoding='utf-8') as f:
+    ks_data = json.load(f)
+
 # ============================================================
 # 2. 构建 KP_MAP（按 key 索引的知识点字典）
 # ============================================================
@@ -52,6 +55,11 @@ kp_json = json.dumps(kp_list, ensure_ascii=False, indent=2)
 js_lines.append(f'const KNOWLEDGE_POINTS = {kp_json};')
 js_lines.append('')
 
+# --- 知识体系数据 ---
+ks_json = json.dumps(ks_data, ensure_ascii=False, indent=2)
+js_lines.append(f'window.KNOWLEDGE_SYSTEM = {ks_json};')
+js_lines.append('')
+
 # --- 知识点查找表 ---
 js_lines.append('const KP_MAP = {};')
 js_lines.extend(kp_map_entries)
@@ -74,7 +82,7 @@ js_content = '\n'.join(js_lines)
 with open(BASE / 'questions.js', 'w', encoding='utf-8') as f:
     f.write(js_content)
 
-print(f'[OK] Generated questions.js ({len(js_content):,} chars, {len(questions)} questions, {len(kp_list)} KPs)')
+print(f'[OK] Generated questions.js ({len(js_content):,} chars, {len(questions)} questions, {len(kp_list)} KPs, {len(ks_data.get("parts", []))} parts)')
 
 # ============================================================
 # 4. 复制 quiz.html -> index.html

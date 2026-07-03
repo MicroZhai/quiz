@@ -454,6 +454,96 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
   .reader-toolbar .reader-toolbar-row { width:100%; justify-content:space-between; }
   .reader-search { flex:1; min-width:0; }
 }
+
+/* ===== Knowledge System ===== */
+.ks-container { display:flex; gap:16px; min-height:70vh; }
+.ks-tree { width:240px; flex-shrink:0; background:var(--surface); border-radius:var(--radius-lg); border:1px solid var(--border); overflow:hidden; position:sticky; top:80px; align-self:flex-start; max-height:calc(100vh - 100px); overflow-y:auto; }
+.ks-tree-title { padding:14px 18px; font-weight:700; font-size:15px; border-bottom:1px solid var(--border-light); color:var(--primary); position:sticky; top:0; background:var(--surface); z-index:2; }
+.ks-tree-part { border-bottom:1px solid var(--border-light); }
+.ks-tree-part:last-child { border-bottom:none; }
+.ks-part-header { display:flex; align-items:center; gap:8px; padding:11px 18px; cursor:pointer; font-size:13px; font-weight:600; color:var(--text); transition:background .15s; user-select:none; }
+.ks-part-header:hover { background:var(--surface-hover); }
+.ks-part-header .part-icon { font-size:16px; flex-shrink:0; }
+.ks-part-header .part-arrow { margin-left:auto; font-size:10px; transition:transform .2s; color:var(--text-muted); }
+.ks-part-header.collapsed .part-arrow { transform:rotate(-90deg); }
+.ks-part-chapters { overflow:hidden; transition:max-height .3s ease; }
+.ks-part-chapters.collapsed { max-height:0 !important; }
+.ks-chapter-item { display:flex; align-items:center; gap:8px; padding:8px 18px 8px 38px; cursor:pointer; font-size:13px; color:var(--text-secondary); transition:all .15s; border-left:3px solid transparent; }
+.ks-chapter-item:hover { background:var(--primary-light); color:var(--primary); }
+.ks-chapter-item.active { background:var(--primary-light); color:var(--primary); font-weight:600; border-left-color:var(--primary); }
+.ks-chapter-item .ch-count { margin-left:auto; font-size:11px; color:var(--text-muted); background:var(--bg); padding:2px 7px; border-radius:10px; white-space:nowrap; }
+.ks-chapter-item.active .ch-count { background:var(--primary-100); color:var(--primary); }
+.ks-detail { flex:1; min-width:0; }
+.ks-detail-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:300px; color:var(--text-muted); gap:12px; background:var(--surface); border-radius:var(--radius-lg); border:1px solid var(--border); }
+.ks-detail-empty .ks-empty-icon { font-size:56px; }
+.ks-detail-empty p { font-size:14px; }
+.ks-chapter-detail { background:var(--surface); border-radius:var(--radius-lg); border:1px solid var(--border); overflow:hidden; }
+.ks-ch-header { padding:20px 24px; border-bottom:1px solid var(--border-light); }
+.ks-ch-header .ks-ch-part { font-size:12px; color:var(--text-muted); margin-bottom:4px; }
+.ks-ch-header h2 { font-size:22px; font-weight:700; margin:0; color:var(--text); }
+.ks-ch-header .ks-ch-stats { display:flex; gap:16px; margin-top:8px; font-size:13px; color:var(--text-secondary); }
+.ks-ch-body { padding:20px 24px; }
+.ks-ch-body h3 { font-size:15px; font-weight:600; margin:20px 0 10px; color:var(--primary); }
+.ks-ch-body h3:first-child { margin-top:0; }
+/* Mermaid diagram wrapper */
+.ks-diagram-wrap { margin:16px 0; padding:20px; background:var(--bg); border-radius:var(--radius); border:1px solid var(--border-light); overflow-x:auto; text-align:center; }
+.ks-diagram-wrap .mermaid { display:inline-block; }
+.ks-diagram-wrap .ks-diagram-title { font-size:12px; color:var(--text-muted); margin-bottom:10px; }
+/* Image diagram */
+.ks-image-wrap { margin:16px 0; text-align:center; }
+.ks-image-wrap img { max-width:100%; border-radius:var(--radius); border:1px solid var(--border); }
+.ks-image-wrap .ks-image-caption { font-size:12px; color:var(--text-muted); margin-top:8px; }
+/* Key points */
+.ks-keypoints { list-style:none; padding:0; margin:0; }
+.ks-keypoints li { padding:8px 0 8px 28px; position:relative; font-size:14px; line-height:1.7; color:var(--text-secondary); border-bottom:1px solid var(--border-light); }
+.ks-keypoints li:last-child { border-bottom:none; }
+.ks-keypoints li::before { content:'▸'; position:absolute; left:8px; color:var(--primary); font-size:12px; top:10px; }
+/* Concept relations */
+.ks-relations { display:flex; flex-wrap:wrap; gap:8px; }
+.ks-rel-tag { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; font-size:12px; background:var(--primary-light); color:var(--primary); border-radius:20px; cursor:pointer; transition:all .15s; border:1px solid transparent; }
+.ks-rel-tag:hover { background:var(--primary-100); border-color:var(--primary); }
+.ks-rel-tag .rel-arrow { font-size:10px; opacity:0.6; }
+/* Formula cards */
+.ks-formula-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:16px; margin-top:12px; }
+.ks-formula-card { background:var(--surface); border-radius:var(--radius-lg); border:1px solid var(--border); overflow:hidden; }
+.ks-formula-card .formula-header { padding:14px 18px; font-weight:600; font-size:14px; color:var(--primary); border-bottom:1px solid var(--border-light); display:flex; align-items:center; gap:8px; }
+.ks-formula-card .formula-body { padding:16px 18px; }
+.ks-formula-card .formula-expr { font-size:18px; font-weight:700; text-align:center; padding:14px; background:var(--bg); border-radius:var(--radius); margin-bottom:12px; font-family:'Courier New',monospace; color:var(--text); }
+.ks-formula-card .formula-vars { font-size:12px; color:var(--text-secondary); margin-bottom:12px; line-height:1.7; }
+.ks-formula-card .formula-example { font-size:12px; color:var(--text-muted); margin-bottom:12px; padding:8px 12px; background:var(--warning-light); border-radius:var(--radius-sm); }
+.ks-formula-card .formula-example strong { color:var(--warning); }
+.ks-formula-card .formula-calc { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.ks-formula-card .formula-calc input { width:80px; padding:6px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:13px; text-align:center; }
+.ks-formula-card .formula-calc .calc-label { font-size:12px; color:var(--text-muted); }
+.ks-formula-card .formula-calc .calc-result { font-size:15px; font-weight:700; color:var(--primary); margin-left:8px; padding:4px 12px; background:var(--primary-light); border-radius:var(--radius-sm); min-width:60px; text-align:center; }
+/* Learning path */
+.ks-learning-path { counter-reset:ks-step; list-style:none; padding:0; }
+.ks-learning-path li { counter-increment:ks-step; padding:12px 0 12px 48px; position:relative; border-left:2px solid var(--border); margin-left:14px; }
+.ks-learning-path li::before { content:counter(ks-step); position:absolute; left:-15px; top:12px; width:28px; height:28px; border-radius:50%; background:var(--primary); color:#fff; text-align:center; line-height:28px; font-size:13px; font-weight:700; }
+.ks-learning-path li .lp-title { font-weight:600; font-size:14px; color:var(--text); }
+.ks-learning-path li .lp-duration { font-size:11px; color:var(--text-muted); margin-left:8px; }
+.ks-learning-path li .lp-desc { font-size:13px; color:var(--text-secondary); margin-top:4px; line-height:1.6; }
+/* Overview stats */
+.ks-overview-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
+.ks-stat-card { text-align:center; padding:16px 12px; background:var(--surface); border-radius:var(--radius); border:1px solid var(--border); }
+.ks-stat-card .ks-stat-num { font-size:28px; font-weight:700; color:var(--primary); }
+.ks-stat-card .ks-stat-label { font-size:12px; color:var(--text-muted); margin-top:4px; }
+
+@media (max-width:767px) {
+  .ks-container { flex-direction:column; }
+  .ks-tree { width:100%; position:static; max-height:none; display:flex; overflow-x:auto; padding:8px; gap:4px; flex-wrap:nowrap; }
+  .ks-tree-title { display:none; }
+  .ks-tree-part { border-bottom:none; flex-shrink:0; }
+  .ks-part-header { padding:8px 12px; font-size:12px; white-space:nowrap; border-radius:var(--radius-sm); border:1px solid var(--border); }
+  .ks-part-header:hover { background:var(--primary-light); }
+  .ks-part-header .part-arrow { display:none; }
+  .ks-part-chapters { display:none !important; position:absolute; top:100%; left:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow-md); z-index:10; min-width:180px; }
+  .ks-tree-part:hover .ks-part-chapters { display:block !important; }
+  .ks-chapter-item { padding:8px 14px; white-space:nowrap; border-left:none; }
+  .ks-overview-stats { grid-template-columns:repeat(2,1fr); }
+  .ks-formula-grid { grid-template-columns:1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -468,9 +558,10 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
     <button class="sidebar-item active" data-nav="home"><span class="side-icon">🧪</span> 刷题练习</button>
     <button class="sidebar-item" data-nav="review"><span class="side-icon">📖</span> 复习资料</button>
     <button class="sidebar-item" data-nav="reader"><span class="side-icon">📜</span> 阅读模式</button>
+    <button class="sidebar-item" data-nav="knowledgesystem"><span class="side-icon">📐</span> 知识体系</button>
     <button class="sidebar-item" data-nav="mistakes"><span class="side-icon">📝</span> 错题本<span class="side-badge" id="mistakeBadge" style="display:none">0</span></button>
   </nav>
-  <div class="sidebar-stats" id="sidebarStats">题库 715 题 · 26 个知识点 · <a href="#" onclick="navigateTo('studyguide');return false" style="color:var(--primary);text-decoration:none">学习建议 →</a></div>
+  <div class="sidebar-stats" id="sidebarStats">题库 715 题 · 5篇26章 知识体系 · <a href="#" onclick="navigateTo('knowledgesystem');return false" style="color:var(--primary);text-decoration:none">📐 知识体系 →</a></div>
   <div style="padding:8px 20px 16px;display:flex;align-items:center;gap:8px;">
     <button id="themeToggle" class="theme-toggle" title="切换深色/浅色模式">
       <span id="themeIcon">🌓</span> <span id="themeLabel">自动</span>
@@ -490,6 +581,7 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
     <button class="bottombar-item active" data-nav="home"><span class="bb-icon">🧪</span>刷题</button>
     <button class="bottombar-item" data-nav="review"><span class="bb-icon">📖</span>复习</button>
     <button class="bottombar-item" data-nav="reader"><span class="bb-icon">📜</span>阅读</button>
+    <button class="bottombar-item" data-nav="knowledgesystem"><span class="bb-icon">📐</span>体系</button>
     <button class="bottombar-item" data-nav="mistakes"><span class="bb-icon">📝</span>错题</button>
   </div>
 </nav>
@@ -518,7 +610,7 @@ let currentFilter = { topic: 'all', type: 'all' };
 let currentQuestions = [];
 let currentIndex = 0;
 let answered = false;
-let screen = 'home'; // home | quiz | mistakes | review | studyguide | reader | exam
+let screen = 'home'; // home | quiz | mistakes | review | studyguide | reader | exam | knowledgesystem
 let examQuestions = [];
 let examAnswers = {};
 let examSubmitted = false;
@@ -528,7 +620,8 @@ let examTotalCount = 50;
 const NAV_MAP = {
   quiz: 'home', exam: 'home',
   home: 'home', review: 'review', reader: 'reader',
-  studyguide: 'studyguide', mistakes: 'mistakes'
+  studyguide: 'studyguide', mistakes: 'mistakes',
+  knowledgesystem: 'knowledgesystem'
 };
 
 function navigateTo(target) {
@@ -536,8 +629,9 @@ function navigateTo(target) {
     screen = 'mistakes'; render(); updateNavActive('mistakes'); return;
   }
   // Reset state for screen changes
-  if (target === 'home') { reviewActiveKP = null; readerActiveSection = null; }
+  if (target === 'home') { reviewActiveKP = null; readerActiveSection = null; ksActiveChapter = null; }
   else if (target === 'review') { reviewActiveKP = null; }
+  else if (target === 'knowledgesystem') { ksActiveChapter = null; }
   screen = target;
   render();
   updateNavActive(target);
@@ -631,9 +725,11 @@ function render() {
   else if (screen === 'studyguide') app.innerHTML = renderStudyGuide();
   else if (screen === 'reader') app.innerHTML = renderReader();
   else if (screen === 'exam') app.innerHTML = renderExamPaper();
+  else if (screen === 'knowledgesystem') { app.innerHTML = renderKnowledgeSystem(); }
   updateNavActive(screen);
   updateMistakeBadge();
   bindEvents();
+  if (screen === 'knowledgesystem') { setTimeout(function() { bindKSEvents(); renderMermaidDiagrams(); }, 100); }
 }
 
 function renderHome() {
@@ -935,6 +1031,7 @@ function renderMistakes() {
 
 // ========== REVIEW MODE ==========
 let reviewActiveKP = null;
+let ksActiveChapter = null;
 
 function renderReview() {
   // Group questions by knowledge point
@@ -2562,6 +2659,378 @@ function listenSystemTheme() {
 // Initialize theme
 applyTheme(getThemePref());
 listenSystemTheme();
+
+// ========== KNOWLEDGE SYSTEM ==========
+const KS_DATA = window.KNOWLEDGE_SYSTEM || null;
+
+function getChapterById(id) {
+  if (!KS_DATA) return null;
+  for (const p of KS_DATA.parts) {
+    for (const ch of p.chapters) {
+      if (ch.id === id) return { part: p, chapter: ch };
+    }
+  }
+  return null;
+}
+
+function getKPForChapter(chapter) {
+  if (!chapter.kp_key) return null;
+  for (const kp of KNOWLEDGE_POINTS) {
+    if (kp.key === chapter.kp_key) return kp;
+  }
+  return null;
+}
+
+function getChapterQuestionCount(chapter) {
+  let count = 0;
+  for (const q of QUESTIONS) {
+    if (q.knowledge_point_key === chapter.kp_key) count++;
+  }
+  return count;
+}
+
+// Dynamic Mermaid loader
+let mermaidLoaded = false;
+let mermaidLoading = false;
+
+function loadMermaid(callback) {
+  if (mermaidLoaded) { callback(); return; }
+  if (mermaidLoading) {
+    // Poll until loaded
+    const check = setInterval(function() { if (mermaidLoaded) { clearInterval(check); callback(); } }, 200);
+    return;
+  }
+  mermaidLoading = true;
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+  script.onload = function() {
+    mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
+    mermaidLoaded = true;
+    callback();
+  };
+  script.onerror = function() {
+    mermaidLoaded = true; // Prevent retry loops
+    mermaidLoading = false;
+    callback(); // Continue without diagrams
+  };
+  document.head.appendChild(script);
+}
+
+// ========== RENDER KNOWLEDGE SYSTEM ==========
+function renderKnowledgeSystem() {
+  if (!KS_DATA) {
+    return '<div class="hero-card" style="border-left-color:var(--danger)"><h1>⚠ 知识体系数据未加载</h1><p>请运行 build_quiz.py 重新生成 questions.js</p></div>';
+  }
+
+  // Default to overview if no chapter selected
+  if (!ksActiveChapter) {
+    return renderKSOverview() + '<div class="ks-container">' + renderKSTree(null) + '<div class="ks-detail">' + renderKSEmpty() + '</div></div>';
+  }
+
+  // Formulas panel
+  if (ksActiveChapter === '__formulas__') {
+    return renderKSOverview() + '<div class="ks-container">' + renderKSTree(null) + '<div class="ks-detail">' + renderFormulasPanel() + '</div></div>';
+  }
+
+  const info = getChapterById(ksActiveChapter);
+  if (!info) { ksActiveChapter = null; return renderKnowledgeSystem(); }
+
+  return '<div class="ks-container">' + renderKSTree(info.chapter) + '<div class="ks-detail">' + renderKSChapter(info.part, info.chapter) + '</div></div>';
+}
+
+function renderKSOverview() {
+  const totalChapters = KS_DATA.parts.reduce(function(s, p) { return s + p.chapters.length; }, 0);
+  const totalQParts = KS_DATA.parts.reduce(function(s, p) {
+    return s + p.chapters.reduce(function(ss, ch) { return ss + getChapterQuestionCount(ch); }, 0);
+  }, 0);
+
+  return '<div class="ks-overview-stats">' +
+    '<div class="ks-stat-card"><div class="ks-stat-num">' + KS_DATA.parts.length + '</div><div class="ks-stat-label">知识篇</div></div>' +
+    '<div class="ks-stat-card"><div class="ks-stat-num">' + totalChapters + '</div><div class="ks-stat-label">章节</div></div>' +
+    '<div class="ks-stat-card"><div class="ks-stat-num">' + totalQParts + '</div><div class="ks-stat-label">关联题目</div></div>' +
+    '<div class="ks-stat-card"><div class="ks-stat-num">' + KS_DATA.formulas.length + '</div><div class="ks-stat-label">核心公式</div></div>' +
+    '</div>';
+}
+
+function renderKSTree(activeChapter) {
+  let html = '<div class="ks-tree"><div class="ks-tree-title">📐 知识导航</div>';
+  for (const part of KS_DATA.parts) {
+    const isExpanded = true; // Default expanded
+    const totalChQ = part.chapters.reduce(function(s, ch) { return s + getChapterQuestionCount(ch); }, 0);
+    html += '<div class="ks-tree-part">' +
+      '<div class="ks-part-header" data-ks-toggle-part="' + part.id + '">' +
+        '<span class="part-icon">' + part.icon + '</span>' +
+        '<span>' + escapeHtml(part.title) + '</span>' +
+        '<span style="font-size:11px;color:var(--text-muted);margin-left:4px">' + part.chapters.length + '章</span>' +
+        '<span class="part-arrow">▾</span>' +
+      '</div>' +
+      '<div class="ks-part-chapters" data-ks-part-body="' + part.id + '">';
+    for (const ch of part.chapters) {
+      const qCount = getChapterQuestionCount(ch);
+      const activeCls = activeChapter && activeChapter.id === ch.id ? ' active' : '';
+      html += '<div class="ks-chapter-item' + activeCls + '" data-ks-chapter="' + ch.id + '">' +
+        '<span>' + escapeHtml(ch.title) + '</span>' +
+        (qCount > 0 ? '<span class="ch-count">' + qCount + '题</span>' : '<span class="ch-count" style="opacity:0.5">扩展</span>') +
+      '</div>';
+    }
+    html += '</div></div>';
+  }
+
+  // Formula quick link
+  if (KS_DATA.formulas && KS_DATA.formulas.length > 0) {
+    html += '<div class="ks-tree-part">' +
+      '<div class="ks-chapter-item" data-ks-chapter="__formulas__" style="padding-left:18px;font-weight:600">' +
+        '<span>🧮 公式速查</span>' +
+        '<span class="ch-count">' + KS_DATA.formulas.length + '个</span>' +
+      '</div></div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
+function renderKSEmpty() {
+  const totalChapters = KS_DATA.parts.reduce(function(s, p) { return s + p.chapters.length; }, 0);
+  return '<div class="ks-detail-empty">' +
+    '<div class="ks-empty-icon">📐</div>' +
+    '<p style="font-size:16px;font-weight:600;color:var(--text)">热处理知识体系</p>' +
+    '<p>' + KS_DATA.parts.length + ' 篇 · ' + totalChapters + ' 章 · 从 715 道考题反推构建</p>' +
+    '<p style="font-size:13px;max-width:400px;text-align:center;line-height:1.7">左侧导航选择一个章节，查看完整知识解析。<br>包含相图、工艺流程图、公式速查、知识关系图谱等。</p>' +
+    '</div>';
+}
+
+function renderKSChapter(part, chapter) {
+  const kp = getKPForChapter(chapter);
+  const qCount = getChapterQuestionCount(chapter);
+
+  let html = '<div class="ks-chapter-detail">';
+
+  // Header
+  html += '<div class="ks-ch-header">' +
+    '<div class="ks-ch-part">' + part.icon + ' ' + escapeHtml(part.title) + '</div>' +
+    '<h2>' + escapeHtml(chapter.title) + '</h2>' +
+    '<div class="ks-ch-stats">' +
+      '<span>📝 ' + qCount + ' 道关联题目</span>' +
+      (kp ? '<span>🏷 ' + kp.key_concepts.length + ' 个核心概念</span>' : '') +
+      '<span>📖 ' + (chapter.key_points ? chapter.key_points.length : 0) + ' 个关键知识点</span>' +
+    '</div>' +
+    '</div>';
+
+  html += '<div class="ks-ch-body">';
+
+  // Image diagram (for iron-carbon etc)
+  if (chapter.image_url) {
+    html += '<div class="ks-image-wrap">' +
+      '<img src="' + chapter.image_url + '" alt="' + escapeHtml(chapter.title) + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">' +
+      (chapter.image_caption ? '<div class="ks-image-caption">' + escapeHtml(chapter.image_caption) + '</div>' : '') +
+      '</div>';
+  }
+
+  // Mermaid diagram
+  if (chapter.mermaid) {
+    html += '<div class="ks-diagram-wrap" id="mermaid-' + chapter.id + '">' +
+      '<div class="ks-diagram-title">📊 ' + escapeHtml(chapter.title) + ' — 关系图</div>' +
+      '<div class="mermaid">' + chapter.mermaid + '</div>' +
+      '</div>';
+  }
+
+  // Knowledge point explanation (from existing data)
+  if (kp && kp.explanation) {
+    html += '<h3>📖 知识点解析</h3>';
+    html += '<div style="font-size:14px;line-height:1.8;color:var(--text-secondary)">' + escapeHtml(kp.explanation).replace(/\n/g, '<br>') + '</div>';
+  }
+
+  // Key concepts
+  if (kp && kp.key_concepts && kp.key_concepts.length > 0) {
+    html += '<h3>🏷 核心概念</h3>';
+    html += '<div class="ks-relations">';
+    for (const c of kp.key_concepts) {
+      html += '<span class="ks-rel-tag" style="cursor:default">' + escapeHtml(c) + '</span>';
+    }
+    html += '</div>';
+  }
+
+  // Key points
+  if (chapter.key_points && chapter.key_points.length > 0) {
+    html += '<h3>🔑 关键知识点</h3>';
+    html += '<ul class="ks-keypoints">';
+    for (const pt of chapter.key_points) {
+      html += '<li>' + escapeHtml(pt) + '</li>';
+    }
+    html += '</ul>';
+  }
+
+  // Exam focus
+  if (kp && kp.exam_focus) {
+    html += '<h3>🎯 考试重点</h3>';
+    html += '<div style="font-size:14px;line-height:1.8;color:var(--warning);padding:10px 14px;background:var(--warning-light);border-radius:var(--radius)">' + escapeHtml(kp.exam_focus) + '</div>';
+  }
+
+  // Related chapters
+  const related = [];
+  for (const r of KS_DATA.concept_relations) {
+    if (r.from === chapter.id) {
+      const info = getChapterById(r.to);
+      if (info) related.push({ id: r.to, title: info.chapter.title, relation: r.relation, partTitle: info.part.title });
+    }
+    if (r.to === chapter.id) {
+      const info = getChapterById(r.from);
+      if (info) related.push({ id: r.from, title: info.chapter.title, relation: r.relation, partTitle: info.part.title });
+    }
+  }
+  if (related.length > 0) {
+    html += '<h3>🔗 关联知识</h3>';
+    html += '<div class="ks-relations">';
+    const seen = {};
+    for (const r of related) {
+      if (seen[r.id]) continue;
+      seen[r.id] = true;
+      html += '<span class="ks-rel-tag" data-ks-chapter="' + r.id + '" title="' + escapeHtml(r.relation) + '">' +
+        escapeHtml(r.title) + ' <span class="rel-arrow">→</span> ' + escapeHtml(r.partTitle) + '</span>';
+    }
+    html += '</div>';
+  }
+
+  html += '</div>'; // ks-ch-body
+  html += '</div>'; // ks-chapter-detail
+  return html;
+}
+
+// ========== FORMULAS PANEL ==========
+function renderFormulasPanel() {
+  if (!KS_DATA || !KS_DATA.formulas) return '';
+
+  let html = '<div class="ks-chapter-detail"><div class="ks-ch-header">' +
+    '<div class="ks-ch-part">📐 知识体系</div>' +
+    '<h2>🧮 公式速查 & 计算器</h2>' +
+    '<div class="ks-ch-stats"><span>' + KS_DATA.formulas.length + ' 个核心公式</span></div>' +
+    '</div><div class="ks-ch-body">';
+
+  html += '<div class="ks-formula-grid">';
+  for (const f of KS_DATA.formulas) {
+    html += '<div class="ks-formula-card" id="formula-' + f.id + '">' +
+      '<div class="formula-header">📐 ' + escapeHtml(f.name);
+    if (f.related_chapter) {
+      const info = getChapterById(f.related_chapter);
+      if (info) html += '<span style="font-size:11px;color:var(--text-muted);font-weight:400;margin-left:auto;cursor:pointer" data-ks-chapter="' + f.related_chapter + '">📖 ' + escapeHtml(info.chapter.title) + '</span>';
+    }
+    html += '</div>' +
+      '<div class="formula-body">' +
+        '<div class="formula-expr">' + escapeHtml(f.expression) + '</div>' +
+        '<div class="formula-vars">' + escapeHtml(f.variables) + '</div>';
+
+    if (f.example) {
+      html += '<div class="formula-example"><strong>📝 例题：</strong>' + escapeHtml(f.example) + '<br><strong>解：</strong>' + escapeHtml(f.solution || '') + '</div>';
+    }
+
+    // Interactive calculator for simple formulas
+    if (f.id === 'f1') {
+      // d = K√t —渗碳层深度
+      html += '<div class="formula-calc" data-calc="f1">' +
+        '<span class="calc-label">K=</span><input type="number" step="0.01" value="0.35" data-var="K">' +
+        '<span class="calc-label">t=</span><input type="number" step="0.1" value="4" data-var="t"><span class="calc-label">h</span>' +
+        '<button class="btn btn-sm btn-primary" data-calc-btn="f1">计算</button>' +
+        '<span class="calc-result" data-calc-result="f1">—</span>' +
+        '</div>';
+    } else if (f.id === 'f2') {
+      // t = α·K·D —保温时间
+      html += '<div class="formula-calc" data-calc="f2">' +
+        '<span class="calc-label">α=</span><input type="number" step="0.1" value="1.2" data-var="alpha">' +
+        '<span class="calc-label">K=</span><input type="number" step="0.1" value="1" data-var="Kf">' +
+        '<span class="calc-label">D=</span><input type="number" step="1" value="30" data-var="D"><span class="calc-label">mm</span>' +
+        '<button class="btn btn-sm btn-primary" data-calc-btn="f2">计算</button>' +
+        '<span class="calc-result" data-calc-result="f2">—</span>' +
+        '</div>';
+    } else if (f.id === 'f3') {
+      // Lever rule — more complex, just show example
+      html += '<div style="font-size:12px;color:var(--text-muted)">使用杠杆定律，请在纸上手动计算或参考例题。</div>';
+    }
+
+    html += '</div></div>';
+  }
+  html += '</div>';
+
+  html += '</div></div>';
+  return html;
+}
+
+// ========== MERMAID RENDERING ==========
+function renderMermaidDiagrams() {
+  if (!ksActiveChapter) return;
+  const info = getChapterById(ksActiveChapter);
+  if (!info || !info.chapter.mermaid) return;
+
+  const container = document.getElementById('mermaid-' + info.chapter.id);
+  if (!container) return;
+
+  loadMermaid(function() {
+    if (typeof mermaid !== 'undefined') {
+      try {
+        // Mermaid will find .mermaid elements automatically
+        mermaid.run({ querySelector: '#mermaid-' + info.chapter.id + ' .mermaid' });
+      } catch(e) {
+        container.innerHTML = '<div style="color:var(--text-muted);font-size:13px;text-align:center;padding:20px">图表渲染失败</div>';
+      }
+    }
+  });
+}
+
+// ========== KS EVENT BINDINGS ==========
+function bindKSEvents() {
+  // Tree chapter clicks
+  document.querySelectorAll('[data-ks-chapter]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      const chId = this.getAttribute('data-ks-chapter');
+      if (chId === '__formulas__') {
+        ksActiveChapter = '__formulas__';
+      } else {
+        ksActiveChapter = chId;
+      }
+      render();
+      updateNavActive('knowledgesystem');
+      // Re-bind + render diagrams after DOM update
+      setTimeout(function() {
+        bindKSEvents();
+        renderMermaidDiagrams();
+      }, 50);
+    });
+  });
+
+  // Part toggle
+  document.querySelectorAll('[data-ks-toggle-part]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      const partId = this.getAttribute('data-ks-toggle-part');
+      const body = document.querySelector('[data-ks-part-body="' + partId + '"]');
+      if (body) body.classList.toggle('collapsed');
+      this.classList.toggle('collapsed');
+    });
+  });
+
+  // Formula calculator buttons
+  document.querySelectorAll('[data-calc-btn]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const calcId = this.getAttribute('data-calc-btn');
+      const resultEl = document.querySelector('[data-calc-result="' + calcId + '"]');
+      if (!resultEl) return;
+
+      let result;
+      if (calcId === 'f1') {
+        // d = K√t
+        const K = parseFloat(document.querySelector('[data-calc="f1"] [data-var="K"]').value) || 0;
+        const t = parseFloat(document.querySelector('[data-calc="f1"] [data-var="t"]').value) || 0;
+        result = K * Math.sqrt(t);
+        resultEl.textContent = result.toFixed(2) + ' mm';
+      } else if (calcId === 'f2') {
+        // t = α·K·D
+        const alpha = parseFloat(document.querySelector('[data-calc="f2"] [data-var="alpha"]').value) || 0;
+        const Kf = parseFloat(document.querySelector('[data-calc="f2"] [data-var="Kf"]').value) || 0;
+        const D = parseFloat(document.querySelector('[data-calc="f2"] [data-var="D"]').value) || 0;
+        result = alpha * Kf * D;
+        resultEl.textContent = result.toFixed(1) + ' min';
+      }
+    });
+  });
+}
 
 // ========== INIT ==========
 if (QUESTIONS.length === 0) {
