@@ -369,6 +369,7 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
 .reader-ans-btn { font-size:13px; }
 .hide-answers .reader-qcard .rq-answer { display:none; }
 .hide-answers .reader-opt-correct { color:inherit; font-weight:inherit; }
+.hide-explanations .reader-qcard .rq-explanation { display:none; }
 .reader-progress-toast { position:fixed; bottom:80px; right:24px; z-index:39; background:var(--text); color:#fff; padding:8px 16px; border-radius:20px; font-size:13px; animation:feedbackSlide .3s ease; pointer-events:none; }
 
 /* ===== Smart Review ===== */
@@ -429,13 +430,7 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
   .option { padding:14px 16px; font-size:15px; line-height:1.6; }
   .tf-btn { padding:22px; font-size:24px; }
   .review-layout { flex-direction:column; gap:8px; }
-  .review-sidebar { width:100%; }
-  .kp-nav-label { display:flex!important; align-items:center; gap:4px; font-size:12px; color:var(--primary); font-weight:600; margin-bottom:4px; padding:0 2px; }
-  .review-sidebar .kp-nav { display:flex; flex-wrap:nowrap; overflow-x:auto; max-height:none; position:static; gap:6px; padding:8px 6px; background:var(--surface); border-radius:var(--radius); -webkit-overflow-scrolling:touch; scrollbar-width:thin; mask-image:linear-gradient(to right, #000 85%, transparent 98%); -webkit-mask-image:linear-gradient(to right, #000 85%, transparent 98%); }
-  .review-sidebar .kp-nav-item { flex-shrink:0; white-space:nowrap; border-left:none; border-radius:16px; padding:8px 14px; font-size:13px; font-weight:500; background:var(--bg); color:var(--text-secondary); }
-  .review-sidebar .kp-nav-item.active { border-left:none; background:var(--primary); color:#fff; font-weight:600; box-shadow:0 2px 8px rgba(44,62,107,0.25); }
-  .kp-dropdown-wrap { display:block!important; padding:0 2px; margin-bottom:4px; }
-  .kp-dropdown-wrap select { width:100%; padding:10px 12px; border-radius:var(--radius-sm); border:1.5px solid var(--border); background:var(--surface); font-size:14px; color:var(--text); appearance:none; font-family:inherit; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; padding-right:36px; }
+  .review-sidebar { display:none; }
   .review-main { min-width:0; }
   .review-kp-section { margin-bottom:12px; }
   .review-kp-header { padding:10px 14px; }
@@ -458,6 +453,9 @@ body { font-family:var(--font-sans); background:var(--bg); color:var(--text); mi
   .reader-back-top { bottom:72px; right:16px; width:40px; height:40px; font-size:18px; }
   .reader-progress-toast { bottom:72px; right:16px; }
   .quiz-topbar { flex-wrap:wrap; gap:8px; }
+  .reader-toolbar { flex-direction:column; align-items:stretch; gap:6px; padding:10px 12px; }
+  .reader-toolbar .reader-toolbar-row { width:100%; justify-content:space-between; }
+  .reader-search { flex:1; min-width:0; }
 }
 </style>
 </head>
@@ -1158,6 +1156,7 @@ function renderSmartReview() {
 // Linear reading mode: browse all questions in chapter order, like a book
 let readerActiveSection = null;
 let readerShowAnswers = localStorage.getItem('readerShowAnswers') !== 'false'; // default true
+let readerShowExplanations = localStorage.getItem('readerShowExplanations') !== 'false'; // default true
 let readerFontSize = localStorage.getItem('readerFontSize') || 'md';
 let readerSearchTerm = '';
 let readerSearchTimeout = null;
@@ -1255,6 +1254,8 @@ function renderReader() {
   const viewedPct = QUESTIONS.length > 0 ? Math.round(viewedCount / QUESTIONS.length * 100) : 0;
   const hideAnsCls = readerShowAnswers ? '' : ' hide-answers';
   const fsCls = readerFontSize === 'sm' ? ' reader-fs-sm' : readerFontSize === 'lg' ? ' reader-fs-lg' : '';
+  const explBtnText = readerShowExplanations ? '📝 隐藏解析' : '📝 显示解析';
+  const hideExplCls = readerShowExplanations ? '' : ' hide-explanations';
 
   return `
     <div class="review-topbar" style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
@@ -1272,13 +1273,12 @@ function renderReader() {
         <button class="reader-fs-btn${readerFontSize==='sm'?' active':''}" data-fs="sm" title="小号">A⁻</button>
         <button class="reader-fs-btn${readerFontSize==='md'?' active':''}" data-fs="md" title="中号">A</button>
         <button class="reader-fs-btn${readerFontSize==='lg'?' active':''}" data-fs="lg" title="大号">A⁺</button>
-      </div>
-      <div class="reader-toolbar-row">
         <button class="btn btn-sm btn-outline reader-ans-btn" id="readerAnsToggle">${ansBtnText}</button>
+        <button class="btn btn-sm btn-outline reader-ans-btn" id="readerExplToggle">${explBtnText}</button>
         <span class="reader-stats">📊 ${viewedCount}/${QUESTIONS.length} (${viewedPct}%)</span>
       </div>
     </div>
-    <div class="review-layout${hideAnsCls}${fsCls}" id="readerLayout">
+    <div class="review-layout${hideAnsCls}${hideExplCls}${fsCls}" id="readerLayout">
       <div class="review-sidebar">
         <div class="kp-nav-label" style="display:none">📂 章节导航（左右滑动）</div>
         <div class="kp-dropdown-wrap" style="display:none">
@@ -1614,6 +1614,21 @@ function bindReaderAnswerToggle() {
   });
 }
 
+function bindReaderExplanationToggle() {
+  const btn = document.getElementById('readerExplToggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    readerShowExplanations = !readerShowExplanations;
+    localStorage.setItem('readerShowExplanations', readerShowExplanations);
+    const layout = document.getElementById('readerLayout');
+    if (layout) {
+      if (readerShowExplanations) layout.classList.remove('hide-explanations');
+      else layout.classList.add('hide-explanations');
+    }
+    this.textContent = readerShowExplanations ? '📝 隐藏解析' : '📝 显示解析';
+  });
+}
+
 // ========== EVENT BINDING ==========
 function bindEvents() {
   // Persistent DOM elements — bind once (avoid duplicate listeners on re-render)
@@ -1740,6 +1755,9 @@ function bindEvents() {
 
   // Reader answer toggle
   bindReaderAnswerToggle();
+
+  // Reader explanation toggle
+  bindReaderExplanationToggle();
 
   // Reader: restore scroll position for active section
   if (screen === 'reader' && readerActiveSection) {
