@@ -13,14 +13,15 @@ OUTDIR = ROOT / "audit"
 
 def norm(text: str) -> str:
     text = str(text or "").lower()
-    text = text.replace("fe₃c", "fe3c").replace("fe3c", "fe3c")
+    text = text.replace("fe₃c", "fe3c")
     text = re.sub(r"\*+|`+", "", text)
-    text = re.sub(r"[\s\\]+", "", text)
+    text = re.sub(r"[\s\\>]+", "", text)
     text = re.sub(r"[，。；：、,.!?！？;:\"'“”‘’（）()\[\]【】<>《》—－-]", "", text)
     return text
 
 
 def clean_md(text: str) -> str:
+    text = re.sub(r"(?m)^\s*>\s?", "", str(text or ""))
     text = text.strip()
     text = re.sub(r"\s+", " ", text)
     return text
@@ -36,25 +37,36 @@ def type_from_section(section: str, answer_raw: str, has_options: bool) -> str:
         return "fill"
     if "计算" in s:
         return "calculation"
-    if "简答" in s or "问答" in s:
+    if "简答" in s or "问答" in s or "案例" in s:
         return "shortanswer"
     return "shortanswer"
 
 
 def parse_choice_answer(raw: str, labels: list[str]) -> str:
     raw = raw.strip().upper()
-    # Most source answers are like: C，正确选项文字
     head = re.split(r"[，,。；;：:]", raw, maxsplit=1)[0].strip()
     found = [x for x in labels if re.search(rf"(?<![A-Z]){re.escape(x)}(?![A-Z])", head)]
     if found:
         return "".join(found)
     if head in labels:
         return head
-    # Fallback for compact multi-select answers such as AC / ABCD.
     compact = re.sub(r"[^A-Z]", "", head)
     if compact and all(ch in labels for ch in compact):
         return "".join(dict.fromkeys(compact))
     return head
+
+
+def find_answer(raw: str):
+    patterns = [
+        r"\*\*【答案[：:](.*?)】\*\*",
+        r"\*\*【参考答案[：:]?(.*?)】\*\*",
+        r"\*\*【参考答案】(.*?)\*\*",
+    ]
+    for pat in patterns:
+        m = re.search(pat, raw, re.S)
+        if m:
+            return m
+    return None
 
 
 def parse_blocks(text: str) -> list[dict]:
@@ -72,7 +84,7 @@ def parse_blocks(text: str) -> list[dict]:
         if current is None or current_no is None:
             return
         raw = "\n".join(current).strip()
-        answer_match = re.search(r"\*\*【答案[：:](.*?)】\*\*", raw, re.S)
+        answer_match = find_answer(raw)
         if not answer_match:
             blocks.append({
                 "source_no": current_no,
@@ -88,8 +100,8 @@ def parse_blocks(text: str) -> list[dict]:
         answer_raw = clean_md(answer_match.group(1))
         body = (raw[: answer_match.start()] + raw[answer_match.end() :]).strip()
         body = re.sub(r"^\d+\\?\.\s*", "", body).strip()
+        body = re.sub(r"(?m)^\s*>\s?", "", body)
 
-        # Parse A/B/C/D... options even when several options share one physical line.
         opt_matches = list(re.finditer(r"(?<!\w)([A-H])\.\s*", body))
         options: list[str] = []
         labels: list[str] = []
@@ -98,8 +110,7 @@ def parse_blocks(text: str) -> list[dict]:
             question_text = body[: opt_matches[0].start()].strip()
             for idx, m in enumerate(opt_matches):
                 end = opt_matches[idx + 1].start() if idx + 1 < len(opt_matches) else len(body)
-                option_text = body[m.end() : end].strip()
-                option_text = re.sub(r"\s{2,}", " ", option_text)
+                option_text = clean_md(body[m.end() : end])
                 labels.append(m.group(1))
                 options.append(option_text)
 
@@ -152,24 +163,22 @@ def detect_intent(question: str) -> str | None:
     q = norm(question)
     negative = ["错误的是", "错误的一项", "不正确的是", "不正确的一项", "表述不正确", "说法错误"]
     positive = ["正确的是", "正确的一项", "表述正确", "说法正确"]
-    if any(x in q for x in map(norm, negative)):
+    if any(norm(x) in q for x in negative):
         return "false"
-    if any(x in q for x in map(norm, positive)):
+    if any(norm(x) in q for x in positive):
         return "true"
     return None
 
 
 def main() -> int:
     OUTDIR.mkdir(exist_ok=True)
-    source_text = SOURCE.read_text(encoding="utf-8")
-    source_questions = parse_blocks(source_text)
+    source_questions = parse_blocks(SOURCE.read_text(encoding="utf-8"))
     existing = json.loads(EXISTING.read_text(encoding="utf-8"))
 
     existing_by_norm: dict[str, list[dict]] = defaultdict(list)
     for q in existing:
         existing_by_norm[norm(q.get("question", ""))].append(q)
 
-    # Build an atomic truth table from all judgement questions in the 2000-bank and existing bank.
     truth: dict[str, set[bool]] = defaultdict(set)
     truth_examples: dict[str, str] = {}
     for q in source_questions:
@@ -184,7 +193,6 @@ def main() -> int:
             truth_examples[k] = q.get("question", "")
 
     conflicting_truth = {k: vals for k, vals in truth.items() if len(vals) > 1}
-
     stats = Counter()
     issues: list[dict] = []
     parsed: list[dict] = []
@@ -199,8 +207,7 @@ def main() -> int:
 
         stats[f"type:{q['type']}"] += 1
         qn = norm(q.get("question", ""))
-        duplicates = existing_by_norm.get(qn, [])
-        duplicate_ids = [x.get("id") for x in duplicates]
+        duplicate_ids = [x.get("id") for x in existing_by_norm.get(qn, [])]
         if duplicate_ids:
             stats["exact_duplicate_existing"] += 1
 
@@ -230,17 +237,12 @@ def main() -> int:
                     else:
                         option_truth.append(None)
                 known = sum(v is not None for v in option_truth)
-                wanted = True if intent == "true" else False
+                wanted = intent == "true"
                 matches = [labels[i] for i, v in enumerate(option_truth) if v is wanted]
                 if known == len(options):
                     if len(matches) == 1:
                         inferred = matches[0]
-                        auto = {
-                            "intent": intent,
-                            "option_truth": option_truth,
-                            "inferred_answer": inferred,
-                            "source_answer": q.get("answer"),
-                        }
+                        auto = {"intent": intent, "option_truth": option_truth, "inferred_answer": inferred, "source_answer": q.get("answer")}
                         if q.get("answer") == inferred:
                             status = "auto_verified_composite"
                             stats["auto_verified_composite"] += 1
@@ -266,17 +268,9 @@ def main() -> int:
         if flags:
             status = "problem"
             for flag in flags:
-                issues.append({
-                    "kind": "question_problem",
-                    "index": idx,
-                    "source_no": q.get("source_no"),
-                    "level": q.get("level"),
-                    "section": q.get("section"),
-                    "question": q.get("question"),
-                    "flag": flag,
-                })
+                issues.append({"kind": "question_problem", "index": idx, "source_no": q.get("source_no"), "level": q.get("level"), "section": q.get("section"), "question": q.get("question"), "flag": flag})
 
-        item = {
+        parsed.append({
             "source_index": idx,
             "source_no": q.get("source_no"),
             "level": q.get("level"),
@@ -292,11 +286,9 @@ def main() -> int:
             "flags": flags,
             "auto_check": auto,
             "source": "金属热处理工考工晋级大题库_答案随题版_2000题",
-        }
-        parsed.append(item)
+        })
         stats[f"status:{status}"] += 1
 
-    # Detect exact duplicate questions inside the 2000 source itself.
     internal_groups: dict[str, list[int]] = defaultdict(list)
     for q in parsed:
         if q.get("question"):
@@ -307,16 +299,12 @@ def main() -> int:
 
     level_counts = Counter(q.get("level", "") for q in parsed)
     section_counts = Counter((q.get("level", ""), q.get("section", "")) for q in parsed)
-
     audit = {
         "source_file": str(SOURCE.relative_to(ROOT)),
         "existing_question_count": len(existing),
         "stats": dict(stats),
         "level_counts": dict(level_counts),
-        "section_counts": [
-            {"level": level, "section": section, "count": count}
-            for (level, section), count in section_counts.items()
-        ],
+        "section_counts": [{"level": level, "section": section, "count": count} for (level, section), count in section_counts.items()],
         "conflicting_truth_count": len(conflicting_truth),
         "conflicting_truth_examples": [truth_examples[k] for k in list(conflicting_truth)[:100]],
         "internal_duplicate_groups": list(internal_dups.values())[:500],
@@ -327,46 +315,31 @@ def main() -> int:
     (OUTDIR / "parsed_2000.json").write_text(json.dumps(parsed, ensure_ascii=False, indent=2), encoding="utf-8")
     (OUTDIR / "audit_2000.json").write_text(json.dumps(audit, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    md = []
-    md.append("# 2000题结构审校报告")
-    md.append("")
-    md.append("> 本报告只做结构、重复和内部逻辑审校；它不是最终知识正确性结论。正式入库还必须经过权威资料核对与解析补全。")
-    md.append("")
-    md.append("## 总览")
-    md.append("")
-    md.append(f"- 原文件解析题数：**{stats['parsed']}**")
-    md.append(f"- 现有正式题库：**{len(existing)}**")
-    md.append(f"- 与现有题库文字完全重复：**{stats['exact_duplicate_existing']}**")
-    md.append(f"- 2000题内部重复组：**{stats['internal_duplicate_groups']}**")
-    md.append(f"- 可由既有判断命题自动验证的组合题：**{stats['auto_verified_composite']}**")
-    md.append(f"- 组合题答案冲突：**{stats['composite_answer_conflict']}**")
-    md.append(f"- 组合题非唯一答案：**{stats['composite_non_unique']}**")
-    md.append(f"- 同一判断命题出现相反答案：**{len(conflicting_truth)}**")
-    md.append(f"- 结构/逻辑问题记录：**{len(issues)}**")
-    md.append("")
-    md.append("## 题型")
-    md.append("")
+    md = [
+        "# 2000题结构审校报告", "",
+        "> 本报告只做结构、重复和内部逻辑审校；它不是最终知识正确性结论。正式入库还必须经过权威资料核对与解析补全。", "",
+        "## 总览", "",
+        f"- 原文件解析题数：**{stats['parsed']}**",
+        f"- 现有正式题库：**{len(existing)}**",
+        f"- 与现有题库文字完全重复：**{stats['exact_duplicate_existing']}**",
+        f"- 2000题内部重复组：**{stats['internal_duplicate_groups']}**",
+        f"- 可由既有判断命题自动验证的组合题：**{stats['auto_verified_composite']}**",
+        f"- 组合题答案冲突：**{stats['composite_answer_conflict']}**",
+        f"- 组合题非唯一答案：**{stats['composite_non_unique']}**",
+        f"- 同一判断命题出现相反答案：**{len(conflicting_truth)}**",
+        f"- 结构/逻辑问题记录：**{len(issues)}**", "",
+        "## 题型", "",
+    ]
     for typ in ["choice", "truefalse", "fill", "shortanswer", "calculation"]:
         md.append(f"- {typ}: {stats[f'type:{typ}']}")
-    md.append("")
-    md.append("## 等级")
-    md.append("")
+    md.extend(["", "## 等级", ""])
     for level, count in level_counts.items():
         md.append(f"- {level}: {count}")
-    md.append("")
-    md.append("## 下一轮规则")
-    md.append("")
-    md.append("1. duplicate_existing：优先沿用现有715题及其解析，不重复入库。")
-    md.append("2. auto_verified_composite：仍需抽查知识依据，但已通过唯一答案内部逻辑检查。")
-    md.append("3. problem：必须人工/权威资料核对，未解决前禁止进入正式刷题池。")
-    md.append("4. needs_review / internally_consistent：进入知识正确性与解析补全流程。")
-    md.append("")
-    md.append("## 问题样例（前100条）")
-    md.append("")
+    md.extend(["", "## 下一轮规则", "", "1. duplicate_existing：优先沿用现有715题及其解析，不重复入库。", "2. auto_verified_composite：仍需抽查知识依据，但已通过唯一答案内部逻辑检查。", "3. problem：必须人工/权威资料核对，未解决前禁止进入正式刷题池。", "4. needs_review / internally_consistent：进入知识正确性与解析补全流程。", "", "## 问题样例（前100条）", ""])
     for issue in issues[:100]:
         md.append(f"- `{issue.get('level','')} / {issue.get('section','')} / #{issue.get('source_no','')}` {issue.get('flag') or issue.get('parse_error')}: {issue.get('question','')}")
-
     (OUTDIR / "AUDIT_2000.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+
     print(json.dumps(audit["stats"], ensure_ascii=False, indent=2))
     print(f"parsed={len(parsed)}, issues={len(issues)}, conflicts={len(conflicting_truth)}")
     return 0
