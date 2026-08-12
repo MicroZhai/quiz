@@ -1,0 +1,47 @@
+name: Build heat-treatment files
+
+on:
+  push:
+    branches:
+      - tmp-clean-three-files
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install document tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc libreoffice-writer fonts-noto-cjk
+
+      - name: Reconstruct Markdown and build DOCX/PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR='热处理题库'
+          BASE='金属热处理工考工晋级大题库_答案随题版_2000题'
+          mkdir -p "$DIR"
+          cat _transfer/md.s* | base64 -d | xz -d > "$DIR/$BASE.md"
+          test "$(sha256sum "$DIR/$BASE.md" | awk '{print $1}')" = 'e678d2ca091369ffa90727f52a089cd4acbdea4aec1ba9f28977c0b1efdd7c7d'
+          pandoc "$DIR/$BASE.md" -o "$DIR/$BASE.docx"
+          libreoffice --headless --convert-to pdf --outdir "$DIR" "$DIR/$BASE.docx"
+          test -s "$DIR/$BASE.docx"
+          test -s "$DIR/$BASE.pdf"
+
+      - name: Keep only the requested three files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -r _transfer
+          git rm .github/workflows/build-three-files.yml
+          git add '热处理题库'
+          git commit -m '添加热处理2000题题库三种格式'
+          git push
