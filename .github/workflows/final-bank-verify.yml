@@ -1,0 +1,46 @@
+name: Final Question Bank Verification
+
+on:
+  push:
+    paths:
+      - '.github/workflows/final-bank-verify.yml'
+      - 'tools/final_bank_verify.py'
+      - 'questions.json'
+      - 'questions.js'
+      - 'service-worker.js'
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify and write status
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          python tools/final_bank_verify.py
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit status report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audit/FINAL_STATUS.md
+          if ! git diff --cached --quiet; then
+            git commit -m "记录题库最终独立验收结果"
+            git push
+          fi
+
+      - name: Fail if verification failed
+        if: steps.verify.outputs.code != '0'
+        run: exit 1
