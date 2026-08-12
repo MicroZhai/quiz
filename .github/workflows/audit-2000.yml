@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'tools/audit_import_2000.py'
+      - 'tools/prepare_review_batches.py'
       - '.github/workflows/audit-2000.yml'
       - '热处理题库/金属热处理工考工晋级大题库_答案随题版_2000题.md'
 
@@ -22,14 +23,17 @@ jobs:
       - name: Run full structural audit
         run: python tools/audit_import_2000.py
 
+      - name: Prepare knowledge-review batches
+        run: python tools/prepare_review_batches.py
+
       - name: Commit audit outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add audit/parsed_2000.json audit/audit_2000.json audit/AUDIT_2000.md
+          git add audit/parsed_2000.json audit/audit_2000.json audit/AUDIT_2000.md audit/review_batches
           if git diff --cached --quiet; then
             echo "No audit changes"
           else
-            git commit -m "生成2000题结构审校结果"
+            git commit -m "生成2000题知识审校批次"
             git push
           fi
