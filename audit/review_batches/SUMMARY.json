@@ -1,0 +1,17 @@
+{
+  "original_count": 1037,
+  "judgment": 418,
+  "choice": 558,
+  "shortanswer": 61,
+  "composite_count": 963,
+  "composite_auto_verified": 962,
+  "composite_unresolved": 1,
+  "existing_high_similarity": 1,
+  "existing_medium_similarity": 2,
+  "batch_counts": {
+    "judgment": 11,
+    "choice": 14,
+    "shortanswer": 3,
+    "composite_unresolved": 1
+  }
+}
