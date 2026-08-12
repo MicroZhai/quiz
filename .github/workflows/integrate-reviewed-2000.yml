@@ -1,0 +1,67 @@
+name: Integrate Reviewed 2000 Question Bank
+
+on:
+  push:
+    paths:
+      - '.github/workflows/integrate-reviewed-2000.yml'
+      - 'tools/integrate_reviewed_2000.py'
+      - 'tools/apply_review_fixes.py'
+      - 'tools/validate_imported_bank.py'
+      - 'audit/reviews/**'
+      - 'audit/parsed_2000.json'
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Integrate only reviewed questions
+        run: python tools/integrate_reviewed_2000.py
+
+      - name: Apply reviewed fixes and format open answers
+        run: python tools/apply_review_fixes.py
+
+      - name: Validate source data
+        run: python validate_quiz.py --data-only
+
+      - name: Build questions.js
+        run: python build_quiz.py
+
+      - name: Validate reviewed bank integration
+        run: python tools/validate_imported_bank.py
+
+      - name: Validate app structure
+        run: python validate_quiz.py
+
+      - name: Bump PWA cache key to current question count
+        run: |
+          python - <<'PY'
+          import json, re
+          from pathlib import Path
+          root = Path('.')
+          count = len(json.loads((root/'questions.json').read_text(encoding='utf-8')))
+          sw = root/'service-worker.js'
+          text = sw.read_text(encoding='utf-8')
+          text = re.sub(r"const CACHE_VERSION = '[^']+';", f"const CACHE_VERSION = 'quiz-learning-q{count}-reviewed-v1';", text, count=1)
+          sw.write_text(text, encoding='utf-8')
+          print('PWA cache version ->', count)
+          PY
+
+      - name: Commit reviewed bank and generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add questions.json questions.js service-worker.js audit/FINAL_IMPORT_REPORT.md
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "合并审校后的2000题到正式题库"
+            git push
+          fi
