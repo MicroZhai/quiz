@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'quiz-learning-v1';
+const CACHE_VERSION = 'quiz-learning-q2698-reviewed-v1';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const CORE_ASSETS = [
   './',
