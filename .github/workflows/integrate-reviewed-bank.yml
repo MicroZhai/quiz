@@ -1,0 +1,108 @@
+name: Integrate Reviewed Question Bank
+
+on:
+  push:
+    paths:
+      - '.github/workflows/integrate-reviewed-bank.yml'
+      - 'tools/dedupe_existing_bank.py'
+      - 'tools/integrate_reviewed_2000.py'
+      - 'tools/apply_review_fixes.py'
+      - 'tools/validate_imported_bank.py'
+      - 'audit/reviews/**'
+      - 'audit/parsed_2000.json'
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run atomic reviewed-bank pipeline
+        id: pipeline
+        shell: bash
+        run: |
+          set +e
+          mkdir -p audit
+          : > audit/INTEGRATION_DIAGNOSTIC.md
+          echo '# 2000题导入自动验收诊断' >> audit/INTEGRATION_DIAGNOSTIC.md
+          echo >> audit/INTEGRATION_DIAGNOSTIC.md
+          overall=0
+
+          run_check() {
+            title="$1"
+            shift
+            tmp="$(mktemp)"
+            echo "## ${title}" >> audit/INTEGRATION_DIAGNOSTIC.md
+            echo >> audit/INTEGRATION_DIAGNOSTIC.md
+            "$@" >"$tmp" 2>&1
+            code=$?
+            echo "退出码：${code}" >> audit/INTEGRATION_DIAGNOSTIC.md
+            echo >> audit/INTEGRATION_DIAGNOSTIC.md
+            echo '```text' >> audit/INTEGRATION_DIAGNOSTIC.md
+            cat "$tmp" >> audit/INTEGRATION_DIAGNOSTIC.md
+            echo '```' >> audit/INTEGRATION_DIAGNOSTIC.md
+            echo >> audit/INTEGRATION_DIAGNOSTIC.md
+            cat "$tmp"
+            rm -f "$tmp"
+            if [ "$code" -ne 0 ]; then overall=1; fi
+            return "$code"
+          }
+
+          run_check '清理旧正式题库完全重复项' python tools/dedupe_existing_bank.py || true
+          if [ "$overall" -eq 0 ]; then run_check '合并审校题库' python tools/integrate_reviewed_2000.py || true; fi
+          if [ "$overall" -eq 0 ]; then run_check '应用修题与简答格式' python tools/apply_review_fixes.py || true; fi
+          if [ "$overall" -eq 0 ]; then run_check '题库数据校验' python validate_quiz.py --data-only || true; fi
+          if [ "$overall" -eq 0 ]; then run_check '生成 questions.js' python build_quiz.py || true; fi
+          if [ "$overall" -eq 0 ]; then run_check '2000题专项验收' python tools/validate_imported_bank.py || true; fi
+          if [ "$overall" -eq 0 ]; then run_check '网页结构验收' python validate_quiz.py || true; fi
+
+          if [ "$overall" -eq 0 ]; then
+            python - <<'PY' >> audit/INTEGRATION_DIAGNOSTIC.md 2>&1
+          import json, re
+          from pathlib import Path
+          root = Path('.')
+          count = len(json.loads((root/'questions.json').read_text(encoding='utf-8')))
+          sw = root/'service-worker.js'
+          text = sw.read_text(encoding='utf-8')
+          text = re.sub(r"const CACHE_VERSION = '[^']+';", f"const CACHE_VERSION = 'quiz-learning-q{count}-reviewed-v1';", text, count=1)
+          sw.write_text(text, encoding='utf-8')
+          print(f'\n## PWA缓存\n\n已更新到题数 {count}。')
+          PY
+          fi
+
+          echo "pipeline_ok=$((1-overall))" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit successful reviewed bank atomically
+        if: steps.pipeline.outputs.pipeline_ok == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add questions.json questions.js service-worker.js audit/FINAL_IMPORT_REPORT.md audit/DEDUP_EXISTING_REPORT.md audit/INTEGRATION_DIAGNOSTIC.md
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "合并审校后的2000题并清理旧重复题"
+            git push
+          fi
+
+      - name: Commit failed diagnostic only
+        if: steps.pipeline.outputs.pipeline_ok != '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audit/INTEGRATION_DIAGNOSTIC.md audit/DEDUP_EXISTING_REPORT.md || true
+          if ! git diff --cached --quiet; then
+            git commit -m "记录2000题导入失败诊断"
+            git push
+          fi
+
+      - name: Fail if validation failed
+        if: steps.pipeline.outputs.pipeline_ok != '1'
+        run: exit 1
