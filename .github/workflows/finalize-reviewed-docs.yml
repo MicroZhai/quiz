@@ -1,0 +1,77 @@
+name: Finalize Reviewed Bank Documentation
+
+on:
+  push:
+    paths:
+      - '.github/workflows/finalize-reviewed-docs.yml'
+      - 'audit/FINAL_STATUS.md'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check PASS status
+        id: ready
+        run: |
+          if grep -q '状态：PASS' audit/FINAL_STATUS.md 2>/dev/null; then echo 'ready=1' >> "$GITHUB_OUTPUT"; else echo 'ready=0' >> "$GITHUB_OUTPUT"; fi
+
+      - name: Update documentation
+        if: steps.ready.outputs.ready == '1'
+        run: |
+          python - <<'PY'
+          import json, re
+          from collections import Counter
+          from pathlib import Path
+          root=Path('.')
+          qs=json.loads((root/'questions.json').read_text(encoding='utf-8'))
+          bank='metal_heat_treatment_2000_reviewed_2026'
+          imported=[q for q in qs if q.get('source_bank')==bank]
+          types=Counter(q.get('type') for q in qs)
+          newtypes=Counter(q.get('type') for q in imported)
+          block=f'''<!-- reviewed-bank-status:start -->
+          ## 当前题库状态
+
+          - 正式题库共 **{len(qs)} 题**，均为去重后的可刷题记录。
+          - 本次“金属热处理工考工晋级大题库”审校后正式加入 **{len(imported)} 题**。
+          - 正式题型：选择题 {types.get('choice',0)} / 判断题 {types.get('truefalse',0)} / 填空题 {types.get('fill',0)} / 简答题 {types.get('shortanswer',0)} / 计算题 {types.get('calculation',0)}。
+          - 新增题库所有题目均包含学习解析；简答/案例题包含“参考答案要点 + 解析”；强化辨析题包含逐项对错解释。
+          - 审校、修题、去重和最终验收记录位于 `audit/`，正式来源标识为 `{bank}`。
+
+          <!-- reviewed-bank-status:end -->'''.replace('          ','')
+          for name in ('README.md','CLAUDE.md'):
+              path=root/name
+              text=path.read_text(encoding='utf-8')
+              pat=r'<!-- reviewed-bank-status:start -->.*?<!-- reviewed-bank-status:end -->'
+              if re.search(pat,text,flags=re.S):
+                  text=re.sub(pat,block,text,flags=re.S)
+              else:
+                  # Put current status close to the top without rewriting the rest of the document.
+                  lines=text.splitlines()
+                  insert=2 if len(lines)>=2 else len(lines)
+                  lines[insert:insert]=['',block,'']
+                  text='\n'.join(lines)+'\n'
+              path.write_text(text,encoding='utf-8')
+          PY
+
+      - name: Remove superseded diagnostic workflow
+        if: steps.ready.outputs.ready == '1'
+        run: |
+          if [ -f .github/workflows/integrate-reviewed-2000.yml ]; then git rm .github/workflows/integrate-reviewed-2000.yml; fi
+
+      - name: Commit final documentation
+        if: steps.ready.outputs.ready == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md CLAUDE.md .github/workflows || true
+          if ! git diff --cached --quiet; then
+            git commit -m "完成2000题审校入库文档收尾"
+            git push
+          fi
