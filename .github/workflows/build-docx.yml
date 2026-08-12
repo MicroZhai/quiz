@@ -1,0 +1,31 @@
+name: Add heat-treatment DOCX
+
+on:
+  push:
+    branches:
+      - tmp-clean-three-files
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and add DOCX
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+          DIR='热处理题库'
+          BASE='金属热处理工考工晋级大题库_答案随题版_2000题'
+          pandoc "$DIR/$BASE.md" -o "$DIR/$BASE.docx"
+          test -s "$DIR/$BASE.docx"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/build-docx.yml
+          git add -f "$DIR/$BASE.docx"
+          git commit -m '补充热处理2000题Word版'
+          git push
