@@ -1,0 +1,20 @@
+[
+{"source_index":894,"verdict":"pass","answer":"√","knowledge_point":"生产节拍","explanation":"正确。热处理节拍由炉内升温和保温、出炉转移、淬火槽或气淬冷却以及上下料等环节共同决定，单独压缩某一环节可能造成温度不足或冷却能力超载。","basis":"热处理生产组织基础"},
+{"source_index":895,"verdict":"pass","answer":"√","knowledge_point":"关键备件","explanation":"正确。对故障影响大、采购周期长或频繁损耗的关键备件进行库存、寿命和供应周期管理，可缩短故障后的恢复时间并降低停机风险。","basis":"设备维护管理基础"},
+{"source_index":896,"verdict":"pass","answer":"√","knowledge_point":"外包过程审核","explanation":"正确。外购热处理质量不能只看最终合格证，还应审核供应商的设备和测温能力、工艺控制、人员资格、检验方法以及批次和记录追溯能力。","basis":"GB/T 32541-2016；供应商过程审核基础"},
+{"source_index":897,"verdict":"pass","answer":"×","knowledge_point":"客户要求","explanation":"错误。客户技术要求属于产品要求，若与企业内部工艺存在冲突，应通过技术评审、澄清或经授权的变更解决，不能单方面忽略客户要求。","basis":"质量管理与合同要求基础"},
+{"source_index":898,"verdict":"pass","answer":"√","knowledge_point":"新工艺导入","explanation":"正确。新材料或新工艺的热处理响应和失效模式可能未知，正式量产前应通过试验验证组织、性能、变形和重复性，并进行相应风险评估。","basis":"GB/T 32541-2016；工艺验证基础"},
+{"source_index":899,"verdict":"pass","answer":"√","knowledge_point":"文件版本控制","explanation":"正确。工艺文件修订后应撤回或明确作废旧版本，并确保现场、设备程序和相关记录模板使用当前批准版本，避免新旧工艺混用。","basis":"文件控制基础"},
+{"source_index":900,"verdict":"pass","answer":"√","knowledge_point":"人员能力","explanation":"正确。培训和考核结果可证明人员接受过规定内容并达到相应知识或实操要求，是人员能力确认的证据之一，但关键岗位还可结合实际操作记录和持续表现评价。","basis":"职业技能与质量管理基础"},
+{"source_index":901,"verdict":"pass","answer":"√","knowledge_point":"异常停炉","explanation":"正确。异常停炉会改变工件实际温度—时间历程，是否能够继续处理取决于材料相变、已经经历的保温和降温情况以及产品技术要求，必须基于记录进行技术评估。","basis":"热处理异常处置基础"},
+{"source_index":902,"verdict":"pass","answer":"×","knowledge_point":"保温中断","explanation":"错误。停电期间工件可能发生降温甚至穿越相变区，重新升温后的组织状态与连续保温并不等价，因此简单把剩余分钟数补足不能保证质量，应按温度历史和材料重新评估工艺。","basis":"热处理时间温度效应基础"},
+{"source_index":903,"verdict":"pass","answer":"√","knowledge_point":"气氛异常","explanation":"正确。保护或渗碳气氛异常会改变表面氧势、碳势等条件，可能造成氧化、脱碳、增碳不足或过度渗碳，因此需要根据异常持续时间和气氛记录评估产品影响。","basis":"可控气氛与渗碳基础"},
+{"source_index":904,"verdict":"pass","answer":"√","knowledge_point":"淬火槽热容量","explanation":"正确。连续淬火把大量工件热量带入介质，若槽体容积和换热系统不足，散热速度低于吸热速度，介质温度会逐批上升并改变冷却性能。","basis":"淬火介质热平衡基础"},
+{"source_index":905,"verdict":"pass","answer":"√","knowledge_point":"冷却系统产能","explanation":"正确。高负荷生产不仅要看加热炉节拍，还要确认淬火介质、气淬换热器、冷却水等系统能连续排出热量，否则会出现冷却能力衰减和批次质量波动。","basis":"热处理产能与冷却基础"},
+{"source_index":906,"verdict":"pass","answer":"√","knowledge_point":"报警与反应计划","explanation":"正确。关键温度、气氛、介质和设备参数应有与产品风险相匹配的报警或控制限，并明确谁确认、何时停机、如何隔离产品和上报。","basis":"GB/T 32541-2016；反应计划基础"},
+{"source_index":907,"verdict":"pass","answer":"×","knowledge_point":"数据记录","explanation":"错误。关键工艺长期无记录会失去产品经历和参数符合性的证据；数据系统故障时应按批准的应急记录方案或停产条件执行，而不能无限期无记录运行。","basis":"GB/T 32541-2016；数据完整性原则"},
+{"source_index":908,"verdict":"pass","answer":"√","knowledge_point":"工艺审核","explanation":"正确。现场参数与受控文件不一致既要纠正执行偏差，也要追溯不一致开始时间、相关批次和产品风险，必要时进行复检或技术评审。","basis":"GB/T 32541-2016"},
+{"source_index":909,"verdict":"pass","answer":"√","knowledge_point":"持续改进优先级","explanation":"正确。资源有限时应优先处理安全或客户风险高、重复发生、损失大或趋势恶化的问题，以获得更大的风险降低和质量收益。","basis":"风险优先与持续改进基础"},
+{"source_index":910,"verdict":"pass","answer":"×","knowledge_point":"工艺文件","explanation":"错误。口头约定缺乏版本、权限和追溯，容易随人员变化而失真；成熟经验应转化为经验证和批准的正式工艺文件或标准作业。","basis":"GB/T 32541-2016；文件控制基础"},
+{"source_index":911,"verdict":"pass","answer":"√","knowledge_point":"经验标准化","explanation":"正确。技师的重要价值之一是把经过验证的个人经验抽象为条件、方法、边界和异常处理规则，形成标准作业、案例和培训资料，使团队能够稳定复制。","basis":"金属热处理工国家职业技能标准（2019年版）"}
+]
