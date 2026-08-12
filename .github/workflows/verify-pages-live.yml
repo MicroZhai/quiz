@@ -1,0 +1,97 @@
+name: Verify Live PWA Deployment
+
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-pages-live.yml'
+      - 'audit/FINAL_STATUS.md'
+      - 'questions.js'
+      - 'service-worker.js'
+      - 'manifest.webmanifest'
+      - 'index.html'
+
+permissions:
+  contents: write
+
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check local verification is ready
+        id: ready
+        shell: bash
+        run: |
+          if grep -q '状态：PASS' audit/FINAL_STATUS.md 2>/dev/null; then
+            echo 'ready=1' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=0' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify live Pages assets
+        if: steps.ready.outputs.ready == '1'
+        id: live
+        shell: bash
+        run: |
+          set +e
+          expected=$(python - <<'PY'
+          import json
+          print(len(json.load(open('questions.json', encoding='utf-8'))))
+          PY
+          )
+          base='https://microzhai.github.io/quiz'
+          ok=0
+          detail=''
+          for i in $(seq 1 30); do
+            stamp=$(date +%s)
+            qjs=$(curl -fsSL --max-time 15 "$base/questions.js?v=$stamp" 2>/dev/null)
+            sw=$(curl -fsSL --max-time 15 "$base/service-worker.js?v=$stamp" 2>/dev/null)
+            manifest=$(curl -fsSL --max-time 15 "$base/manifest.webmanifest?v=$stamp" 2>/dev/null)
+            index=$(curl -fsSL --max-time 15 "$base/?v=$stamp" 2>/dev/null)
+            remote=$(printf '%s' "$qjs" | sed -n 's#.*总题数：\([0-9][0-9]*\).*#\1#p' | head -1)
+            if [ "$remote" = "$expected" ] && printf '%s' "$sw" | grep -q "q${expected}-reviewed-v1" && printf '%s' "$manifest" | grep -q '"display": "standalone"' && printf '%s' "$index" | grep -q 'manifest.webmanifest'; then
+              ok=1
+              detail="线上题数=$remote；PWA缓存和manifest均匹配"
+              break
+            fi
+            detail="第${i}次：本地题数=$expected，线上题数=${remote:-未识别}"
+            sleep 4
+          done
+          echo "ok=$ok" >> "$GITHUB_OUTPUT"
+          echo "expected=$expected" >> "$GITHUB_OUTPUT"
+          echo "detail=$detail" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Write live deployment report
+        if: steps.ready.outputs.ready == '1'
+        run: |
+          if [ "${{ steps.live.outputs.ok }}" = "1" ]; then status='PASS'; else status='FAIL'; fi
+          cat > audit/PAGES_STATUS.md <<EOF
+          # PWA线上部署验收
+
+          **状态：${status}**
+
+          - 本地正式题数：**${{ steps.live.outputs.expected }}**
+          - 线上地址：\`https://microzhai.github.io/quiz/\`
+          - 回读结果：${{ steps.live.outputs.detail }}
+          - 检查项：线上 questions.js 题数、Service Worker缓存版本、PWA manifest standalone、首页manifest引用。
+          EOF
+
+      - name: Commit live report
+        if: steps.ready.outputs.ready == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audit/PAGES_STATUS.md
+          if ! git diff --cached --quiet; then
+            git commit -m "记录PWA线上部署验收结果"
+            git push
+          fi
+
+      - name: Fail if live deployment is not current
+        if: steps.ready.outputs.ready == '1' && steps.live.outputs.ok != '1'
+        run: exit 1
