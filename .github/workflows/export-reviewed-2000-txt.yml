@@ -1,0 +1,119 @@
+name: Export Reviewed 2000 Questions TXT
+
+on:
+  push:
+    paths:
+      - '.github/workflows/export-reviewed-2000-txt.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Export reviewed bank to text chunks
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          ROOT = Path('.')
+          OUT = ROOT / 'audit' / 'export_txt'
+          OUT.mkdir(parents=True, exist_ok=True)
+          bank_id = 'metal_heat_treatment_2000_reviewed_2026'
+          questions = json.loads((ROOT/'questions.json').read_text(encoding='utf-8'))
+          items = [q for q in questions if q.get('source_bank') == bank_id]
+          items.sort(key=lambda q: int(q.get('source_index', 0)))
+          assert len(items) == 2000, f'expected 2000, got {len(items)}'
+
+          type_name = {
+              'choice':'选择题',
+              'truefalse':'判断题',
+              'shortanswer':'简答/案例题',
+              'fill':'填空题',
+              'calculation':'计算题',
+          }
+          status_name = {
+              'reviewed':'人工审校通过',
+              'fixed':'审校后修订',
+              'composite_verified':'强化题校验通过',
+          }
+
+          def fmt(q):
+              idx = int(q.get('source_index', 0))
+              lines = []
+              lines.append('=' * 72)
+              lines.append(f'【第 {idx} 题】{type_name.get(q.get("type"), q.get("type", ""))}')
+              lines.append(f'等级：{q.get("source_level", "")}')
+              lines.append(f'知识点：{q.get("knowledge_point", "综合")}')
+              lines.append(f'审校状态：{status_name.get(q.get("review_status"), q.get("review_status", ""))}')
+              lines.append(f'正式题库ID：{q.get("id", "")}')
+              lines.append('')
+              lines.append('题目：')
+              lines.append(str(q.get('question','')).strip())
+              opts = q.get('options') or []
+              labels = q.get('option_labels') or []
+              if opts:
+                  lines.append('')
+                  lines.append('选项：')
+                  for i,opt in enumerate(opts):
+                      label = labels[i] if i < len(labels) else chr(65+i)
+                      lines.append(f'{label}. {opt}')
+              lines.append('')
+              if q.get('type') == 'shortanswer':
+                  lines.append('参考答案：')
+              else:
+                  lines.append('正确答案：')
+              lines.append(str(q.get('answer','')).strip())
+              lines.append('')
+              lines.append('学习型解析：')
+              lines.append(str(q.get('explanation','')).strip())
+              basis = str(q.get('review_basis','')).strip()
+              if basis:
+                  lines.append('')
+                  lines.append('审校依据/说明：')
+                  lines.append(basis)
+              lines.append('')
+              return '\n'.join(lines)
+
+          header = '''金属热处理工考工晋级大题库（2000题审校版）\n\n本文件为网页正式题库中“2000题审校版”的最终正文导出。\n内容以实际入库后的题干、选项、答案、学习型解析和知识点为准。\n共2000题，分10个TXT分卷，每卷200题。\n\n特别说明：\n- source_index 262、263：因原单选题存在45钢/40Cr均可成立的歧义，已修订题干。\n- source_index 2000：已清理原资料误粘入D选项末尾的题库完成说明。\n- 其余题目保留审校后的最终答案，并补充学习型解析。\n'''
+
+          for old in OUT.glob('part_*.txt'):
+              old.unlink()
+          for part in range(10):
+              start = part * 200
+              block = items[start:start+200]
+              text = []
+              if part == 0:
+                  text.append(header)
+              text.append(f'\n########## 第 {part+1} 卷：第 {start+1}—{start+len(block)} 题 ##########\n')
+              text.extend(fmt(q) for q in block)
+              path = OUT / f'part_{part+1:02d}.txt'
+              path.write_text('\n'.join(text), encoding='utf-8')
+              print(path, path.stat().st_size)
+
+          manifest = OUT / 'README.txt'
+          manifest.write_text(
+              '2000题审校版TXT导出\n共10个分卷，每卷200题；按 part_01.txt 至 part_10.txt 顺序合并即为完整文本。\n',
+              encoding='utf-8'
+          )
+          PY
+
+      - name: Commit exported text chunks
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audit/export_txt
+          if git diff --cached --quiet; then
+            echo "No export changes"
+          else
+            git commit -m "导出2000题审校版TXT正文"
+            git push
+          fi
