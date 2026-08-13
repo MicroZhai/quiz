@@ -1,0 +1,22 @@
+name: Export Current Bank Artifact
+
+on:
+  push:
+    paths:
+      - '.github/workflows/export-current-bank-artifact.yml'
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: current-bank
+          path: |
+            questions.json
+            questions.js
+            quiz.html
+            sw.js
+          if-no-files-found: error
