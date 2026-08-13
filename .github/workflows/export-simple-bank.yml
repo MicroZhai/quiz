@@ -1,0 +1,132 @@
+name: Export Simple Question Bank TXT
+
+on:
+  push:
+    paths:
+      - '.github/workflows/export-simple-bank.yml'
+      - 'questions.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Export simple TXT
+        shell: python
+        run: |
+          import json
+          import re
+          from pathlib import Path
+
+          src = Path('questions.json')
+          out = Path('基础题库_精简版_题号题型题干选项答案.txt')
+          questions = json.loads(src.read_text(encoding='utf-8'))
+
+          TYPE_MAP = {
+              'choice': '单选题',
+              'single_choice': '单选题',
+              'single-choice': '单选题',
+              'single': '单选题',
+              'multiple_choice': '多选题',
+              'multi_choice': '多选题',
+              'multiple-choice': '多选题',
+              'multiple': '多选题',
+              'true_false': '判断题',
+              'truefalse': '判断题',
+              'true-false': '判断题',
+              'tf': '判断题',
+              'judgment': '判断题',
+              'fill_blank': '填空题',
+              'fill_blank_question': '填空题',
+              'fill-in': '填空题',
+              'fillin': '填空题',
+              'blank': '填空题',
+              'short_answer': '简答题',
+              'shortanswer': '简答题',
+              'short-answer': '简答题',
+              'essay': '简答题',
+              'calculation': '计算题',
+              'calculate': '计算题',
+              'case': '案例题',
+              'case_analysis': '案例题',
+          }
+
+          def type_name(raw):
+              if raw is None:
+                  return '未分类'
+              s = str(raw).strip()
+              return TYPE_MAP.get(s.lower(), s)
+
+          def answer_text(value):
+              if isinstance(value, bool):
+                  return '正确' if value else '错误'
+              if isinstance(value, list):
+                  return '、'.join(answer_text(v) for v in value)
+              if value is None:
+                  return ''
+              return str(value).strip()
+
+          def clean_option(text, label):
+              s = str(text).strip()
+              # Remove an existing leading option label to avoid output such as “A. A. ...”.
+              s = re.sub(r'^\s*[A-HＡ-Ｈ][\.、．:：\)）]\s*', '', s, count=1, flags=re.I)
+              return f'{label}. {s}'
+
+          lines = []
+          for i, q in enumerate(questions, 1):
+              lines.append(f'第{i}题')
+              lines.append(f'题型：{type_name(q.get("type"))}')
+              lines.append(f'题干：{str(q.get("question", "")).strip()}')
+
+              options = q.get('options') or []
+              labels = q.get('option_labels') or []
+              if isinstance(options, dict):
+                  pairs = list(options.items())
+                  if pairs:
+                      lines.append('选项：')
+                      for k, v in pairs:
+                          lines.append(clean_option(v, str(k).strip()))
+              elif isinstance(options, list) and options:
+                  lines.append('选项：')
+                  for idx, opt in enumerate(options):
+                      label = str(labels[idx]).strip() if idx < len(labels) and str(labels[idx]).strip() else chr(65 + idx)
+                      lines.append(clean_option(opt, label))
+
+              lines.append(f'答案：{answer_text(q.get("answer"))}')
+              lines.append('')
+
+          text = '\n'.join(lines).rstrip() + '\n'
+          out.write_text(text, encoding='utf-8')
+
+          count = len(re.findall(r'^第\d+题$', text, flags=re.M))
+          if count != len(questions):
+              raise SystemExit(f'题数校验失败：TXT={count}, JSON={len(questions)}')
+
+          forbidden = ['学习型解析：', '解析：', '知识点：', '审校状态：', '正式题库ID：', 'source_bank']
+          leaked = [x for x in forbidden if x in text]
+          if leaked:
+              raise SystemExit(f'发现不应出现的字段：{leaked}')
+
+          for i, q in enumerate(questions, 1):
+              if not str(q.get('question', '')).strip():
+                  raise SystemExit(f'第{i}题题干为空')
+              if q.get('answer') is None or answer_text(q.get('answer')) == '':
+                  raise SystemExit(f'第{i}题答案为空')
+
+          Path('export_count.txt').write_text(str(len(questions)), encoding='utf-8')
+          print(f'导出完成：{len(questions)}题')
+
+      - name: Upload TXT
+        uses: actions/upload-artifact@v4
+        with:
+          name: simple-question-bank-txt
+          path: |
+            基础题库_精简版_题号题型题干选项答案.txt
+            export_count.txt
+          if-no-files-found: error
