@@ -1,0 +1,57 @@
+name: Export All 2698 Simple TXT
+
+on:
+  push:
+    paths:
+      - '.github/workflows/export-all-2698-simple-txt.yml'
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Export simplified full bank
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          questions = json.loads(Path('questions.json').read_text(encoding='utf-8'))
+          assert len(questions) == 2698, f'expected 2698 questions, got {len(questions)}'
+
+          lines = []
+          for i, q in enumerate(questions, 1):
+              lines.append(f'第{i}题')
+              lines.append(f'题干：{str(q.get("question", "")).strip()}')
+              options = q.get('options') or []
+              labels = q.get('option_labels') or []
+              if options:
+                  lines.append('选项：')
+                  for j, opt in enumerate(options):
+                      label = labels[j] if j < len(labels) else chr(65 + j)
+                      lines.append(f'{label}. {str(opt).strip()}')
+              answer = q.get('answer', '')
+              if isinstance(answer, list):
+                  answer = ''.join(str(x) for x in answer)
+              lines.append(f'正确答案：{str(answer).strip()}')
+              lines.append('')
+
+          out = Path('金属热处理工2698题_简化版_题干选项答案.txt')
+          out.write_text('\n'.join(lines).rstrip() + '\n', encoding='utf-8')
+
+          text = out.read_text(encoding='utf-8')
+          assert '第1题' in text and '第2698题' in text
+          assert '学习型解析：' not in text
+          assert '知识点：' not in text
+          print(f'exported {len(questions)} questions to {out}')
+          PY
+
+      - name: Upload TXT
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-2698-simple-txt
+          path: 金属热处理工2698题_简化版_题干选项答案.txt
+          if-no-files-found: error
