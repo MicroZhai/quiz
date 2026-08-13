@@ -1,0 +1,294 @@
+name: Import Reviewed Word Archive Questions V2
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-word-archive-reviewed-v2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-audit-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge reviewed Word archive and audit whole bank
+        run: |
+          python - <<'PY'
+          import base64, gzip, json, re, unicodedata
+          from pathlib import Path
+          from collections import defaultdict
+
+          ROOT = Path('.')
+          BANK = 'word_archive_reviewed_2026'
+          payload_path = ROOT/'audit'/'word_archive_additions_2026.json.gz.b64'
+          additions = json.loads(gzip.decompress(base64.b64decode(payload_path.read_text(encoding='utf-8').strip())).decode('utf-8'))
+          bank = json.loads((ROOT/'questions.json').read_text(encoding='utf-8'))
+          initial_count = len(bank)
+
+          # Idempotence: if a prior trial already imported this bank, remove only those rows and rebuild them from the reviewed payload.
+          previously_imported = [q for q in bank if q.get('source_bank') == BANK]
+          if previously_imported:
+              bank = [q for q in bank if q.get('source_bank') != BANK]
+              initial_count = len(bank)
+
+          if len(additions) != 145:
+              raise SystemExit(f'Expected 145 reviewed Word additions, got {len(additions)}')
+          if initial_count < 2698:
+              raise SystemExit(f'Existing reviewed bank unexpectedly small: {initial_count}')
+
+          def txt(v):
+              if v is None: return ''
+              if isinstance(v, (list,dict)): return json.dumps(v,ensure_ascii=False)
+              s = unicodedata.normalize('NFKC', str(v)).replace('\u00a0',' ')
+              return re.sub(r'\s+',' ',s).strip()
+
+          def norm(v):
+              s = txt(v).lower()
+              s = re.sub(r'^\s*(?:第?\s*\d+\s*[题\.、\)）:]?|\d+\s*[\.、\)）])\s*','',s)
+              return re.sub(r'[\s，。；：、！？,.!?;:“”"\'‘’（）()【】\[\]<>《》—_·…]+','',s)
+
+          def labels(q):
+              a=q.get('answer')
+              if isinstance(a,list):
+                  return [txt(x).upper() for x in a]
+              s=txt(a).upper()
+              return re.findall(r'[A-Z]',s) if q.get('type')=='choice' else [s]
+
+          def opt_labels(q):
+              opts=q.get('options') or []
+              labs=[txt(x).upper() for x in (q.get('option_labels') or [])]
+              return labs if len(labs)==len(opts) else [chr(65+i) for i in range(len(opts))]
+
+          def answer_semantic(q):
+              t=q.get('type')
+              if t=='choice':
+                  opts=[txt(x) for x in (q.get('options') or [])]
+                  labs=opt_labels(q)
+                  mp={labs[i]:opts[i] for i in range(len(opts))}
+                  return tuple(sorted(norm(mp.get(x,x)) for x in labels(q)))
+              if t=='truefalse':
+                  s=txt(q.get('answer')).lower()
+                  if s in {'√','对','正确','true','1','yes'}: return ('true',)
+                  if s in {'×','错','错误','false','0','no'}: return ('false',)
+                  return (s,)
+              return (norm(q.get('answer')) ,)
+
+          def compare_key(q):
+              t=q.get('type')
+              stem=norm(q.get('question'))
+              if t=='choice':
+                  option_set=tuple(sorted(norm(x) for x in (q.get('options') or [])))
+                  return (t,stem,option_set)
+              return (t,stem)
+
+          def validate_row(q, where='bank'):
+              if not txt(q.get('question')): return 'empty question'
+              if not txt(q.get('answer')): return 'empty answer'
+              if q.get('type')=='choice':
+                  opts=q.get('options') or []
+                  labs=opt_labels(q)
+                  if len(opts)<2: return 'choice has fewer than 2 options'
+                  if len(labs)!=len(opts): return 'choice labels/options mismatch'
+                  ans=labels(q)
+                  if not ans or any(x not in labs for x in ans): return f'choice answer not mapped: {ans}/{labs}'
+              return None
+
+          # Standardize reviewed additions.
+          clean_add=[]
+          for i,raw in enumerate(additions,1):
+              q=dict(raw)
+              q['question']=txt(q.get('question'))
+              q['type']=txt(q.get('type')).lower()
+              q['explanation']=txt(q.get('explanation'))
+              if q.get('options') is not None: q['options']=[txt(x) for x in (q.get('options') or [])]
+              if q.get('option_labels') is not None: q['option_labels']=[txt(x).upper() for x in (q.get('option_labels') or [])]
+              q['source_bank']=BANK
+              q.setdefault('source_index',i)
+              q.setdefault('review_status','reviewed')
+              q.setdefault('section','Word资料补充题库')
+              q.setdefault('topic',q.get('knowledge_point') or '综合')
+              q.setdefault('knowledge_point',q.get('topic') or '综合')
+              q.setdefault('knowledge_point_key',re.sub(r'\s+','_',txt(q.get('knowledge_point'))) or '综合')
+              err=validate_row(q,'addition')
+              if err: raise SystemExit(f'Word addition {q.get("source_index")}: {err}')
+              if not q['explanation']:
+                  raise SystemExit(f'Word addition {q.get("source_index")} has no learning explanation')
+              clean_add.append(q)
+
+          index=defaultdict(list)
+          for q in bank: index[compare_key(q)].append(q)
+
+          same_duplicates=[]
+          conflict_excluded=[]
+          accepted=[]
+          for q in clean_add:
+              matches=index.get(compare_key(q),[])
+              if matches:
+                  sem=answer_semantic(q)
+                  if any(answer_semantic(old)==sem for old in matches):
+                      same_duplicates.append((q,matches[0]))
+                      # Keep stable old row; enrich explanation only if the reviewed Word explanation is clearly better.
+                      old=[x for x in matches if answer_semantic(x)==sem][0]
+                      if len(q['explanation']) > len(txt(old.get('explanation'))): old['explanation']=q['explanation']
+                  else:
+                      # Existing 2698-question bank was already reviewed; contradictory legacy Word duplicates are excluded rather than allowed to overwrite it.
+                      conflict_excluded.append((q,matches))
+                  continue
+              accepted.append(q)
+              index[compare_key(q)].append(q)
+
+          max_id=max(int(q.get('id') or 0) for q in bank)
+          for q in accepted:
+              max_id+=1
+              q['id']=max_id
+              bank.append(q)
+
+          # Full-bank audit and safe dedupe.
+          groups=defaultdict(list)
+          for q in bank: groups[compare_key(q)].append(q)
+          safe_dup_groups=[]; unresolved=[]
+          for rows in groups.values():
+              if len(rows)<=1: continue
+              sems={answer_semantic(q) for q in rows}
+              if len(sems)==1: safe_dup_groups.append(rows)
+              else: unresolved.append(rows)
+
+          removed=[]
+          if safe_dup_groups:
+              to_remove=set()
+              for rows in safe_dup_groups:
+                  keep=min(rows,key=lambda q:int(q.get('id') or 10**9))
+                  best=max(rows,key=lambda q:len(txt(q.get('explanation'))))
+                  if len(txt(best.get('explanation'))) > len(txt(keep.get('explanation'))): keep['explanation']=best.get('explanation')
+                  for q in rows:
+                      if q is not keep: to_remove.add(int(q.get('id')))
+              removed=sorted(to_remove)
+              bank=[q for q in bank if int(q.get('id')) not in to_remove]
+
+          # Recheck all conflicts after safe dedupe.
+          groups=defaultdict(list)
+          for q in bank: groups[compare_key(q)].append(q)
+          unresolved=[]
+          for rows in groups.values():
+              if len(rows)>1 and len({answer_semantic(q) for q in rows})>1: unresolved.append(rows)
+
+          if unresolved:
+              report=['# 全库未解决答案矛盾','',f'共 {len(unresolved)} 组；发布已阻止。']
+              for rows in unresolved:
+                  report += ['', '## '+txt(rows[0].get('question'))]
+                  for q in rows:
+                      report.append(f'- ID {q.get("id")} | answer={q.get("answer")} | semantic={answer_semantic(q)}')
+              (ROOT/'audit'/'FULL_BANK_CONFLICTS.md').write_text('\n'.join(report)+'\n',encoding='utf-8')
+              raise SystemExit(f'Unresolved whole-bank contradictions: {len(unresolved)}')
+
+          ids=[]; structural=[]; missing_exp=[]
+          for q in bank:
+              try: ids.append(int(q.get('id')))
+              except: structural.append((q.get('id'),'invalid id'))
+              err=validate_row(q)
+              if err: structural.append((q.get('id'),err))
+              if not txt(q.get('explanation')): missing_exp.append(q.get('id'))
+          if len(ids)!=len(set(ids)): structural.append(('ALL','duplicate IDs'))
+          if structural:
+              raise SystemExit('Whole-bank structural errors: '+repr(structural[:30]))
+
+          # Ensure no remaining duplicate compare keys at all.
+          final_groups=defaultdict(list)
+          for q in bank: final_groups[compare_key(q)].append(q)
+          remaining_dup=[rows for rows in final_groups.values() if len(rows)>1]
+          if remaining_dup: raise SystemExit(f'Remaining normalized duplicate groups: {len(remaining_dup)}')
+
+          archive_final=[q for q in bank if q.get('source_bank')==BANK]
+          (ROOT/'questions.json').write_text(json.dumps(bank,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          report=['# Word压缩包导入与全库审计最终报告','']
+          report += [
+            f'- 原正式题库：{initial_count} 题',
+            f'- Word压缩包审核通过候选：{len(clean_add)} 题',
+            f'- 与旧库同题同答案：{len(same_duplicates)} 题（未重复加入）',
+            f'- 与既有已审题答案冲突：{len(conflict_excluded)} 题（旧Word版本排除，未覆盖已审答案）',
+            f'- Word题本轮新增：{len(accepted)} 题（全库安全去重前）',
+            f'- 全库同题同答案安全去重：{len(removed)} 题',
+            f'- Word来源最终保留：{len(archive_final)} 题',
+            f'- 最终正式题库：{len(bank)} 题',
+            '- 全库未解决相同题目答案矛盾：0 组',
+            '- 全库重复比较键：0 组',
+            '- ID/题干/答案/选择题选项映射结构错误：0 项',
+            f'- 全库缺少解析：{len(missing_exp)} 题',
+          ]
+          report += ['','## 判重规则','选择题按“规范化题干 + 规范化选项集合”比较，并把答案字母转换为实际正确选项文本；因此选项顺序变化不会造成误判，同时不同选项版本不会被简单粗暴地判成矛盾。']
+          if conflict_excluded:
+              report += ['','## 排除的答案冲突Word题']
+              for q,olds in conflict_excluded:
+                  report.append(f'- Word源题 {q.get("source_index")}：{q.get("question")} | Word答案 {q.get("answer")} | 既有ID {", ".join(str(x.get("id")) for x in olds)}')
+          if removed:
+              report += ['','## 全库去重删除ID',', '.join(map(str,removed))]
+          (ROOT/'audit'/'WORD_ARCHIVE_IMPORT_FINAL.md').write_text('\n'.join(report)+'\n',encoding='utf-8')
+          print('\n'.join(report))
+          PY
+
+      - name: Build
+        run: python build_quiz.py
+
+      - name: Refresh PWA cache key
+        run: |
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          n=len(json.loads(Path('questions.json').read_text(encoding='utf-8')))
+          p=Path('sw.js'); s=p.read_text(encoding='utf-8')
+          patterns=[
+            r"(const\s+CACHE_NAME\s*=\s*['\"])([^'\"]+)(['\"])",
+            r"(let\s+CACHE_NAME\s*=\s*['\"])([^'\"]+)(['\"])",
+          ]
+          changed=False
+          for pat in patterns:
+              m=re.search(pat,s)
+              if m:
+                  base=re.sub(r'(?:[-_]q?\d+)$','',m.group(2))
+                  value=f'{base}-q{n}'
+                  s=s[:m.start(2)]+value+s[m.end(2):]
+                  changed=True
+                  break
+          if changed:
+              p.write_text(s,encoding='utf-8')
+              print('CACHE_NAME refreshed for',n)
+          else:
+              print('CACHE_NAME pattern not found; service worker unchanged')
+          PY
+
+      - name: Validate
+        run: |
+          python validate_quiz.py
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          q=json.loads(Path('questions.json').read_text(encoding='utf-8'))
+          report=Path('audit/WORD_ARCHIVE_IMPORT_FINAL.md').read_text(encoding='utf-8')
+          assert f'最终正式题库：{len(q)} 题' in report
+          assert '全库未解决相同题目答案矛盾：0 组' in report
+          assert '全库重复比较键：0 组' in report
+          assert Path('questions.js').stat().st_size>1000
+          assert Path('quiz.html').exists() and Path('manifest.webmanifest').exists() and Path('sw.js').exists()
+          print('FINAL=',len(q))
+          PY
+
+      - name: Commit final reviewed bank
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add questions.json questions.js quiz.html index.html sw.js audit/WORD_ARCHIVE_IMPORT_FINAL.md
+          if [ -f audit/FULL_BANK_CONFLICTS.md ]; then git add audit/FULL_BANK_CONFLICTS.md; fi
+          if git diff --cached --quiet; then
+            echo 'No data changes'
+          else
+            git commit -m '合并Word题库并完成全库重复矛盾审计'
+            git pull --rebase origin main
+            git push origin main
+          fi
